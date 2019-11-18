@@ -1,0 +1,160 @@
+﻿<div class="card">
+    <div class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large; text-align: center">
+        Prestamos
+    </div>
+</div>
+<br />
+<div class="card-body">
+    @*<button id="btnModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddPrestamoModal"><i class="fas fa-arrow-circle-right"></i> Agregar prestamo </button>*@
+    <button id="btnModal" type="button" class="btn btn-primary" onclick="showModalAddProyect()"><i class="fas fa-arrow-circle-right"></i> Agregar prestamo </button>
+    
+</div>
+<br />
+<div>
+    <div class="table-responsive">
+        <table id="tblPrestamo" class="table" style="color: black; text-align:left; ">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Número prestamo</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Concepto</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Monto a cobrar</th>
+                    <th scope="col">Cantidad de cuotas</th>
+                    <th scope="col">Fecha de Fin</th>
+                    <th scope="col">Modificar</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="AddPrestamoModal">
+    <div class="modal-dialog" style="max-width:60%">
+        <div class="modal-content" style="color:black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">NuevoPrestamo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+
+                    <table id="tblEditPrestamo" class="table" style="color:black">
+
+                        <tbody style="text-align:left">
+                            <tr>
+                                <th>Cliente</th>
+                                <td>
+                                    <select class="select2 form-control custom-select" id="cboCliente" style="width: 100%; height:36px;"> </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Concepto</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtConcepto" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Monto</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtAmount" type="number">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Monto a cobrar</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtAmountInterest" type="number">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Esatdo de Cuotas</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtQuantity" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Día vencimiento cuota</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtDateEnd" type="date">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="AddPrestamo();"><i class="fas fa-savet"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="EditPrestamoModal">
+    <div class="modal-dialog" style="max-width:60%">
+        <div class="modal-content" style="color:black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Editar Prestamo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <input id="txtIdPrestamo" type="text" style="display:none" />
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblPrestamoDetail" class="table" style="color: black; text-align:left; ">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Numero Cuota</th>
+                                <th scope="col">Importe</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Fecha de Modificación</th>
+                                <th scope="col">Modificar</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="AddPrestamo();"><i class="fas fa-savet"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- En Modal  -->
+
+
+<link href="~/Scripts/AlertMessage/alertifyjs/css/alertify.css" rel="stylesheet" />
+<link href="~/Scripts/AlertMessage/alertifyjs/css/themes/default.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.0/jquery-3.4.0.min.js"></script>
+<script src="~/Scripts/bootstrap-4.2.1/js/bootstrap.min.js"></script>
+
+<script src="~/Scripts/fontawesome/all.js"></script>
+<script src="~/Scripts/AlertMessage/alertifyjs/alertify.js"></script>
+
+<!--DataTables-->
+<link href="~/Content/dataTables/DataTables-1.10.18/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/dataTables/Buttons-1.5.6/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.0/datatables/DataTables-1.10.18/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/dataTables.buttons.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/jszip.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/pdfmake.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/vfs_fonts.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.print.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.html5.min.js"></script>
+
+<script src="~/Scripts/jquery-3.4.0/BlockUI/jquery.blockUI.min.js"></script>
+
+<script src="~/Scripts/Controller/PrestamoController.js"></script>
+
+<script src="~/Scripts/Controller/URLController.js"></script>
+
+
