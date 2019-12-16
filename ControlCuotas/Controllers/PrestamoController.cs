@@ -146,6 +146,67 @@ namespace ControlCuotas.Controllers
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+
+        
+        public JsonResult GetCuotaDetail(int IdCuota)
+        {
+            try
+            {
+
+                dt = Service.GetCuotaDetail(IdCuota);
+
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+
+
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        
+        public JsonResult SaveCuotaForId(int IdCuota, DateTime? fecha, string observation)
+        {
+            try
+            {
+
+                dt = Service.SaveCuotaForId(IdCuota, fecha, observation);
+
+                if ((int)dt.Rows[0][0] == 0)
+                {
+                    data.message = "Error al editar la cuota";
+                    data.status = "error";
+                }
+                else
+                {
+                    data.message = "Se modifico correctamente";
+                }
+
+                
+
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+
+
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+
         //En clase
     }
 }

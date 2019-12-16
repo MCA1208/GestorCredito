@@ -12,7 +12,7 @@
 
 <div class="card-body">
     @*<button id="btnModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifyProfileModal"><i class="fas fa-arrow-circle-right"></i> Modifical Perfil </button>*@
-    <button id="btnModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddClientModal"><i class="fas fa-arrow-circle-right"></i> Agregar Cliente </button>
+    <button id="btnModal" type="button" class="btn btn-primary" onclick="showModalAddClient()"><i class="fas fa-arrow-circle-right"></i> Agregar Cliente </button>
 </div>
 
 <div>
@@ -24,6 +24,9 @@
                     <th scope="col">DNI</th>
                     <th scope="col">Domicilio</th>
                     <th scope="col">Telefono</th>
+                    <th scope="col">Fecha nacimiento</th>
+                    <th scope="col">Estado civil</th>
+                    <th scope="col">Nombre conyuge</th>
                     <th scope="col">Zona</th>
                     <th scope="col">Modificar</th>
                 </tr>
@@ -50,14 +53,13 @@
                     <table id="tblModify" class="table" style="color:black">
 
                         <tbody style="text-align:left">
-
                             <tr>
                                 <th>Nombre y Apellido</th>
                                 <td>
                                     <input style="max-width:100%" class="form-control" id="txtName" type="text">
                                 </td>
                                 <td>
-                                    <input id="txtIdClient" type="text" style="display:none"/>
+                                    <input id="txtIdClient" type="text" style="display:none" />
                                 </td>
                             </tr>
                             <tr>
@@ -79,12 +81,29 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Fecha Nacimiento</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtbirthDate" type="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Casado</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtMarried" type="checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Nombre Conyuge</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtConyuge" type="text">
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Zona</th>
                                 <td>
                                     <select class="select2 form-control custom-select" id="cboZona" style="width: 100%; height:36px;"> </select>
                                 </td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -113,36 +132,47 @@
                     <table id="tblAddClient" class="table" style="color:black">
 
                         <tbody style="text-align:left">
-
                             <tr>
                                 <th>Nombre y Apellido</th>
                                 <td>
-
                                     <input style="max-width:100%" class="form-control" id="txtNameAdd" type="text">
                                 </td>
-
                             </tr>
                             <tr>
                                 <th>DNI</th>
                                 <td>
-
                                     <input style="max-width:100%" class="form-control" id="txtDNIAdd" type="text">
                                 </td>
-
                             </tr>
                             <tr>
                                 <th>Domicilio</th>
                                 <td>
                                     <input style="max-width:100%" class="form-control" id="txtAddressAdd" type="text">
                                 </td>
-
                             </tr>
                             <tr>
                                 <th>Telefono</th>
                                 <td>
                                     <input style="max-width:100%" class="form-control" id="txtPhoneAdd" type="text">
                                 </td>
-
+                            </tr>
+                            <tr>
+                                <th>Fecha Nacimiento</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtbirthDateAdd" type="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Casado</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtMarriedAdd" type="checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Nombre Conyuge</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtConyugeAdd" type="text">
+                                </td>
                             </tr>
                             <tr>
                                 <th>Zona</th>
@@ -150,9 +180,7 @@
                                     @*<input style="max-width:100%" class="form-control" id="txtZonaAdd" type="text">*@
                                     <select class="select2 form-control custom-select" id="cboZonaAdd" style="width: 100%; height:36px;"> </select>
                                 </td>
-
                             </tr>
-
                         </tbody>
                     </table>
                 </div>

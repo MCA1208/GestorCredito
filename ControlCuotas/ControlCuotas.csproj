@@ -128,6 +128,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ImageHelper.cs" />
+    <Compile Include="Helper\SecurityHelper.cs" />
     <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Models\StoreProcedureModel.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\PrestamoService.cs" />
+    <Compile Include="Service\ReportService.cs" />
     <Compile Include="Service\ZoneService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,17 +194,18 @@
     <Content Include="Scripts\bootstrap-4.2.1\js\bootstrap.min.js.map" />
     <Content Include="Content\dataTables\Buttons-1.5.6\common.scss" />
     <Content Include="Content\dataTables\Buttons-1.5.6\mixins.scss" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\chart\chart.js" />
     <Content Include="Scripts\Controller\ClientController.js" />
     <Content Include="Scripts\Controller\LoginController.js" />
     <Content Include="Scripts\Controller\PrestamoController.js" />
+    <Content Include="Scripts\Controller\ReportPrincipal.js" />
     <Content Include="Scripts\Controller\URLController.js" />
     <Content Include="Scripts\Controller\ZoneController.js" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <Content Include="Scripts\jquery-3.4.0\BlockUI\jquery.blockUI.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-3.4.0\BlockUI\jquery.blockUI.min.js" />
     <Content Include="Scripts\jquery-3.4.0\datatables\Buttons-1.5.6\buttons.colVis.min.js" />

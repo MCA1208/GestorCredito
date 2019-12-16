@@ -31,6 +31,11 @@ namespace ControlCuotas.Models
             public string spGetAllPrestamo  = "spGetAllPrestamo";
             public string spGetPrestamoDetailById = "spGetPrestamoDetailById";
             public string spChangeEstatusCuota = "spChangeEstatusCuota";
+            public string spGetCuotaDetail = "spGetCuotaDetail";
+            public string spSaveCuotaForId = "spSaveCuotaForId";
+
+            //REPORT
+            public string spGetReportPrincipal = "spGetReportPrincipal";
 
 
 

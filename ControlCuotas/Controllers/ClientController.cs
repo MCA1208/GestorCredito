@@ -30,14 +30,14 @@ namespace ControlCuotas.Controllers
         }
 
 
-        public JsonResult CreateClient(string name  ,string dni, string  address, string  phone, int   zone)
+        public JsonResult CreateClient(string name  ,string dni, string  address, string  phone, int   zone, DateTime? birthDate, bool? married, string conyuge)
         {
             try
             {
                 idUser = (int)System.Web.HttpContext.Current.Session["idUser"];
 
 
-                dt = Service.CreateClient(name, dni, address, phone, zone);
+                dt = Service.CreateClient(name, dni, address, phone, zone, birthDate, married, conyuge);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {
@@ -128,13 +128,13 @@ namespace ControlCuotas.Controllers
         }
 
         
-        public JsonResult ModifyClient(int IdClient, string name, string dni, string address, string phone, int zone)
+        public JsonResult ModifyClient(int IdClient, string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge)
         {
 
             try
             {
 
-                dt = ServiceClient.ModifyClient(IdClient, name, dni, address, phone, zone);
+                dt = ServiceClient.ModifyClient(IdClient, name, dni, address, phone, zone, birthDate, married, conyuge);
 
                 if ((int)dt.Rows[0][0] == 1){
 

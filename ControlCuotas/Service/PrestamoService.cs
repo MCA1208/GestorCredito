@@ -16,7 +16,7 @@ namespace ControlCuotas.Service
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
 
-        public DataTable CreateClient(string name, string dni, string address, string phone, int zone)
+        public DataTable CreateClient(string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spCreateClient, con);
@@ -27,6 +27,9 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@address", name);
             comando.Parameters.AddWithValue("@phone", dni);
             comando.Parameters.AddWithValue("@zone", zone);
+            comando.Parameters.AddWithValue("@birthDate", birthDate);
+            comando.Parameters.AddWithValue("@married", married);
+            comando.Parameters.AddWithValue("@conyuge", conyuge);
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
@@ -122,5 +125,36 @@ namespace ControlCuotas.Service
         }
 
 
+        public DataTable GetCuotaDetail(int IdCuota)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetCuotaDetail, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdCuota", IdCuota);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
+        public DataTable SaveCuotaForId(int IdCuota, DateTime? fecha, string observation)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spSaveCuotaForId, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdCuota", IdCuota);
+            comando.Parameters.AddWithValue("@fecha", fecha);
+            comando.Parameters.AddWithValue("@observation", observation);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
+        //FIN SERVICE
     }
 }

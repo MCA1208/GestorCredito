@@ -25,7 +25,7 @@ function GetAllClient() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.name + '</td><td>' + value.dni + '</td><td >' + value.address + '</td><td>' + value.phone + '</td><td>' + value.zone + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
+                    _html += '<tr><td>' + value.name + '</td><td>' + value.dni + '</td><td >' + value.address + '</td><td>' + value.phone + '</td><td>' + value.birthdate + '</td><td>' + value.married + '</td><td>' + value.conyuge + '</td><td>' + value.zone + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
 
                 });
 
@@ -79,7 +79,10 @@ function AddClient() {
         dni: $('#txtDNIAdd').val(),
         address: $('#txtAddressAdd').val(),
         phone: $('#txtPhoneAdd').val(),
-        zone: $('#cboZonaAdd').val()
+        zone: $('#cboZonaAdd').val(),
+        birthDate: $('#txtbirthDateAdd').val(),
+        Married: $('#txtMarriedAdd').val(),
+        conyuge: $('#txtConyugeAdd').val()
 
     };
 
@@ -88,7 +91,7 @@ function AddClient() {
             if (data.status !== "error") {
 
                 alertify.success(data.message);
-
+                $('#AddClientModal').modal('hide');
                 GetAllClient();
 
             }
@@ -135,7 +138,7 @@ function getzona() {
         })
         .fail(function (data) {
             alertify.error(data.statusText);
-        })
+        });
 
 }
 
@@ -145,14 +148,14 @@ function showModalEditProyect(IdClient) {
     param = {
 
         IdClient: IdClient
-    }
+    };
 
     $.post(directories.client.GetClientById, param)
         .done(function (data) {
             if (data.status !== "error") {
 
                 data = JSON.parse(data.result);
-                
+
                 $('#ModifyClientModal').modal('show');
                 $('#txtIdClient').val(data[0].id);
                 $('#txtName').val(data[0].name);
@@ -160,6 +163,9 @@ function showModalEditProyect(IdClient) {
                 $('#txtAddress').val(data[0].address);
                 $('#txtPhone').val(data[0].phone);
                 $('#cboZona').val(data[0].idZone);
+                $('#txtbirthDate').val(data[0].birthDate);
+                $('#txtMarried').val(data[0].married);
+                $('#txtConyuge').val(data[0].conyuge);
 
             }
             else {
@@ -170,7 +176,7 @@ function showModalEditProyect(IdClient) {
         })
         .fail(function (data) {
             alertify.error(data.statusText);
-        })
+        });
 
 }
 
@@ -182,15 +188,19 @@ function ModifyClient() {
         dni: $('#txtDNI').val(),
         address: $('#txtAddress').val(),
         phone: $('#txtPhone').val(),
-        zone: $('#cboZonaAdd').val()
+        zone: $('#cboZona').val(),
+        birthDate: $('#txtbirthDate').val(),
+        Married: $('#txtMarried').prop("checked"),
+        conyuge: $('#txtConyuge').val()
 
-    }
+    };
 
     $.post(directories.client.ModifyClient, param)
         .done(function (data) {
             if (data.status !== "error") {
 
                 alertify.success(data.message);
+                $('#ModifyClientModal').modal('hide');
                 GetAllClient();
 
             }
@@ -202,6 +212,13 @@ function ModifyClient() {
         })
         .fail(function (data) {
             alertify.error(data.statusText);
-        })
+        });
+
+}
+
+
+function showModalAddClient() {
+
+    $('#AddClientModal').modal('show');
 
 }

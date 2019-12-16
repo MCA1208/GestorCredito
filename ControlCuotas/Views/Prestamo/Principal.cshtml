@@ -96,7 +96,7 @@
 </div>
 
 <div class="modal fade" id="EditPrestamoModal">
-    <div class="modal-dialog" style="max-width:60%">
+    <div class="modal-dialog" role="document" style="max-width:80%">
         <div class="modal-content" style="color:black">
             <div class="modal-header">
                 <h5 class="modal-title" id="">Editar Prestamo</h5>
@@ -107,7 +107,7 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                    <table id="tblPrestamoDetail" class="table" style="color: black; text-align:left; ">
+                    <table id="tblPrestamoDetail" class="table-responsive" style="color: black; text-align:left; ">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">Id</th>
@@ -115,7 +115,9 @@
                                 <th scope="col">Importe</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Fecha de Modificación</th>
-                                <th scope="col">Modificar</th>
+                                <th scope="col">Pagó</th>
+                                <th scope="col">Observación de pago</th>
+                                <th scope="col">Módificar</th>
                             </tr>
                         </thead>
                     </table>
@@ -123,7 +125,48 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
-                <button type="button" class="btn btn-primary" onclick="AddPrestamo();"><i class="fas fa-savet"></i> Guardar</button>
+                @*<button type="button" class="btn btn-primary" onclick="AddPrestamo();"><i class="fas fa-savet"></i> Guardar</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="EditCuotaoModal">
+    <div class="modal-dialog" role="document" style="max-width:60%">
+        <div class="modal-content" style="color:black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Editar Cuota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <input id="txtIdCuota" type="text" style="display:none" />
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblEditPrestamo" class="table" style="color:black">
+                        <tbody style="text-align:left">
+                            <tr>
+                                <th>Fecha</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtFechaCuota" type="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Observación de pago</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtObservation" type="text">
+                                </td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="SaveCuotaForId();"><i class="fas fa-savet"></i> Guardar</button>
             </div>
         </div>
     </div>

@@ -64,17 +64,20 @@ namespace ControlCuotas.Service
         }
 
 
-        public DataTable ModifyClient(int IdClient, string name, string dni, string address, string phone, int zone)
+        public DataTable ModifyClient(int IdClient, string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spModifyClient, con);
 
-            comando.Parameters.AddWithValue("IdClient", IdClient);
-            comando.Parameters.AddWithValue("name", name);
-            comando.Parameters.AddWithValue("dni", dni);
-            comando.Parameters.AddWithValue("address", address);
-            comando.Parameters.AddWithValue("phone", phone);
-            comando.Parameters.AddWithValue("zone", zone);
+            comando.Parameters.AddWithValue("@IdClient", IdClient);
+            comando.Parameters.AddWithValue("@name", name);
+            comando.Parameters.AddWithValue("@dni", dni);
+            comando.Parameters.AddWithValue("@address", address);
+            comando.Parameters.AddWithValue("@phone", phone);
+            comando.Parameters.AddWithValue("@zone", zone);
+            comando.Parameters.AddWithValue("@birthDate", birthDate);
+            comando.Parameters.AddWithValue("@married", married);
+            comando.Parameters.AddWithValue("@conyuge", conyuge);
 
             comando.CommandType = CommandType.StoredProcedure;
 

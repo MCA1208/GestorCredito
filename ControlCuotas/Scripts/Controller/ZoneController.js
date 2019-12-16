@@ -61,7 +61,7 @@ function AddZone() {
                 
                 alertify.success(data.message);
                 GetAllZone();
-                $('#AddZonatModal').modal('hide')
+                $('#AddZonatModal').modal('hide');
             }
             else {
                 alertify.error(data.message);
@@ -88,7 +88,7 @@ function ShowModalEditZone(id) {
                 data = JSON.parse(data.result);
 
                 $('#ModifyZonaModal').modal('show');
-                $('#txtIdZone').val(data[0].id)
+                $('#txtIdZone').val(data[0].id);
                 $('#txtDescription').val(data[0].description);
             }
             else {
@@ -140,5 +140,11 @@ function ModifyZone() {
 
 
 
+
+}
+
+function showModalAddZone() {
+
+    $('#AddClientModal').modal('show');
 
 }

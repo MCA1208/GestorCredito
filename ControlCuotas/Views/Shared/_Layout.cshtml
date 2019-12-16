@@ -27,7 +27,6 @@
                     <li>
                         <a class="nav-link" href="@Url.Action("Principal","client")" style="font-family:Georgia">Cliente</a>
                     </li>
-
                     <li>
                         <a class="nav-link" href="@Url.Action("ReportPrincipal","Report")" style="font-family:Georgia">Reporte</a>
                     </li>
@@ -35,6 +34,9 @@
                         <a class="nav-link" href="@Url.Action("Principal","Zone")" style="font-family:Georgia">Zona</a>
                     </li>
                 </ul>
+                <div class="right">
+                    <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                </div>
             </div>
         </div>
     </div>

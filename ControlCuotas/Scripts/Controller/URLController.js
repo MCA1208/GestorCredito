@@ -9,7 +9,9 @@
         AddPrestamo: 'AddPrestamo',
         GetAllPrestamo: 'GetAllPrestamo',
         GetPrestamoDetailById: 'GetPrestamoDetailById',
-        ChangeEstatusCuota: 'ChangeEstatusCuota'
+        ChangeEstatusCuota: 'ChangeEstatusCuota',
+        GetCuotaDetail: 'GetCuotaDetail',
+        SaveCuotaForId: 'SaveCuotaForId'
        
     },
     client: {
@@ -25,6 +27,10 @@
         AddZone: 'AddZone',
         GetZoneById: 'GetZoneById',
         ModifyZone: 'ModifyZone'
+    },
+    report: {
+
+        GetReportPrincipal: 'GetReportPrincipal'
     }
 
 };

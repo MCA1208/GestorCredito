@@ -1,4 +1,5 @@
 ﻿using ControlCuotas.Models;
+using ControlSheet.Helper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace ControlCuotas.Controllers
 {
@@ -61,5 +63,15 @@ namespace ControlCuotas.Controllers
 
 
         }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon(); // it will clear the session at the end of request
+            SecurityHelper.LogOffUser();
+            return RedirectToAction("index", "Login");
+        }
+
+        //Fin class
     }
 }
