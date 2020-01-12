@@ -18,6 +18,9 @@ namespace ControlCuotas.Service
 
         public DataTable CreateClient(string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge)
         {
+
+            married = married == null ? false : true;
+
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spCreateClient, con);
 
@@ -54,7 +57,7 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateEnd)
+        public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity,DateTime dateStart, DateTime dateEnd)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddPrestamo, con);
@@ -65,6 +68,7 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@amount", amount);
             comando.Parameters.AddWithValue("@amountInterest", amountInterest);
             comando.Parameters.AddWithValue("@quantity", quantity);
+            comando.Parameters.AddWithValue("@dateStart", dateStart);
             comando.Parameters.AddWithValue("@dateEnd", dateEnd);
 
             SqlDataAdapter da = new SqlDataAdapter(comando);

@@ -36,6 +36,7 @@ namespace ControlCuotas.Models
 
             //REPORT
             public string spGetReportPrincipal = "spGetReportPrincipal";
+            public string spReportCuponStatus = "spReportCuponStatus";
 
 
 

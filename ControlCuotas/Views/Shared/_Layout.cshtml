@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>Credi-To</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -27,9 +27,18 @@
                     <li>
                         <a class="nav-link" href="@Url.Action("Principal","client")" style="font-family:Georgia">Cliente</a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="@Url.Action("ReportPrincipal","Report")" style="font-family:Georgia">Reporte</a>
+                    <li id="liReport" class="col-sm" text-align:left">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes</a>
+                        <ul class="dropdown-menu">
+                            <li id="liReportPrincipal" style="border:2px solid silver;text-align:left">
+                                <a class="nav-link" href="@Url.Action("ReportPrincipal","Report")" style="color:dodgerblue; font-family:Georgia">Principal</a>
+                            </li>
+                            <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
+                                <a class="nav-link" href="@Url.Action("ReportCuponStatus","Report")" style="color:dodgerblue; font-family:Georgia">Estado de Cupones</a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li>
                         <a class="nav-link" href="@Url.Action("Principal","Zone")" style="font-family:Georgia">Zona</a>
                     </li>

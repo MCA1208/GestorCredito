@@ -54,6 +54,7 @@ function AddPrestamo() {
         amount: $('#txtAmount').val(),
         amountInterest: $('#txtAmountInterest').val(),
         quantity: $('#txtQuantity').val(),
+        dateStart: $('#txtDateStart').val(),
         dateEnd: $('#txtDateEnd').val()
     };
 
@@ -91,7 +92,7 @@ function GetAllPrestamo() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateEnd + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
 
                 });
 

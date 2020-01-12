@@ -37,5 +37,26 @@ namespace ControlCuotas.Service
 
         }
 
+        public DataTable GetReportCuotaStatus(int? IdClient, int? IdZone, DateTime? DateStart, DateTime? DateEnd)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spReportCuponStatus, con);
+
+            comando.Parameters.AddWithValue("@idClient", IdClient);
+            comando.Parameters.AddWithValue("@idZone", IdZone);
+            comando.Parameters.AddWithValue("@dateStart", DateStart);
+            comando.Parameters.AddWithValue("@dateEnd", DateEnd);
+
+
+            comando.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
     }//End Class
 }

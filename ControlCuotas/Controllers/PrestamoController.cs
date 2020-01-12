@@ -65,12 +65,12 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateEnd)
+        public JsonResult AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd)
         {
             try
             {
 
-                dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateEnd) ;
+                dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateStart, dateEnd) ;
 
                 //data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
 
