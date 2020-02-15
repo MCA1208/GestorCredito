@@ -25,7 +25,7 @@ function GetAllClient() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.name + '</td><td>' + value.dni + '</td><td >' + value.address + '</td><td>' + value.phone + '</td><td>' + value.birthdate + '</td><td>' + value.married + '</td><td>' + value.conyuge + '</td><td>' + value.zone + '</td>><td>' + value.cantidadPrestamo + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.dni + '</td><td >' + value.address + '</td><td>' + value.phone + '</td><td>' + value.birthdate + '</td><td>' + value.married + '</td><td>' + value.conyuge + '</td><td>' + value.zone + '</td>><td>' + value.cantidadPrestamo + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
 
                 });
 
@@ -92,6 +92,15 @@ function AddClient() {
 
                 alertify.success(data.message);
                 $('#AddClientModal').modal('hide');
+                $('#txtNameAdd').val();
+                $('#txtDNIAdd').val();
+                $('#txtAddressAdd').val();
+                $('#txtPhoneAdd').val();
+                $('#cboZonaAdd').val();
+                $('#txtbirthDateAdd').val();
+                $('#txtMarriedAdd').val();
+                $('#txtConyugeAdd').val();
+
                 GetAllClient();
 
             }

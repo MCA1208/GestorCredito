@@ -89,6 +89,22 @@ namespace ControlCuotas.Service
 
         }
 
+        public DataTable GetClientByDNI(string DNI)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetClientByDNI, con);
+
+            comando.Parameters.AddWithValue("@DNI", DNI);
+
+            comando.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
 
     }
 }

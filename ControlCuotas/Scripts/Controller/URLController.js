@@ -31,7 +31,8 @@
     report: {
 
         GetReportPrincipal: 'GetReportPrincipal',
-        GetReportCuotaStatus: 'GetReportCuotaStatus'
+        GetReportCuotaStatus: 'GetReportCuotaStatus',
+        GetReportGanancia: 'GetReportGanancia'
     }
 
 };

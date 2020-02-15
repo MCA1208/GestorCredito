@@ -26,7 +26,6 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@dateFrom", dateFrom);
             comando.Parameters.AddWithValue("@dateUp", DateUp);
 
-
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -47,7 +46,22 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@dateStart", DateStart);
             comando.Parameters.AddWithValue("@dateEnd", DateEnd);
 
+            comando.CommandType = CommandType.StoredProcedure;
 
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
+        public DataTable GetReportGanancia( DateTime? DateStart, DateTime? DateEnd)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spReportInvestmentAndProfit, con);
+            comando.Parameters.AddWithValue("@dateStart", DateStart);
+            comando.Parameters.AddWithValue("@dateEnd", DateEnd);
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);

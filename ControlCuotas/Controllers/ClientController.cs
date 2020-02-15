@@ -36,6 +36,16 @@ namespace ControlCuotas.Controllers
             {
                 idUser = (int)System.Web.HttpContext.Current.Session["idUser"];
 
+                DataTable getExistClient = ServiceClient.GetClientByDNI(dni);
+
+                if (getExistClient.Rows.Count > 0)
+                {
+                    data.status = "error";
+                    data.message = "Ya existe el Cliente Ingresado";
+                    return Json(data, JsonRequestBehavior.AllowGet);
+
+                }
+
 
                 dt = Service.CreateClient(name, dni, address, phone, zone, birthDate, married, conyuge);
 

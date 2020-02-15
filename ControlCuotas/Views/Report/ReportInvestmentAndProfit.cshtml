@@ -1,0 +1,64 @@
+﻿
+<div class="card">
+    <div class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large; text-align: center">
+        REPORTE INVERSIÓN VS GANANCIA
+
+    </div>
+</div>
+
+<div class="card-body">
+    <div class="row">
+        <br />
+        <div class="col-md-4 card-body">
+            <label>Fecha Desde: </label>
+            <input id="dateFrom" type="date" name="Fecha desde" />
+        </div>
+        <div class="col-md-4 card-body">
+            <label>Fecha Hasta: </label>
+            <input id="dateUp" type="date" name="Fecha hasta" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="card-body">
+            <button type="button" class="btn btn-primary" onclick="SearchReportGanancia();"><i class="fas fa-search"></i> Buscar</button>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="table-responsive">
+        <table id="tblReportGanancia" class="table" style="color: black; text-align:left; ">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Desde</th>
+                    <th scope="col">Hasta</th>
+                    <th scope="col">Inversión</th>
+                    <th scope="col">Total Con Intereses</th>
+                    <th scope="col">Ganancia</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<link href="~/Scripts/AlertMessage/alertifyjs/css/alertify.css" rel="stylesheet" />
+<link href="~/Scripts/AlertMessage/alertifyjs/css/themes/default.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.0/jquery-3.4.0.min.js"></script>
+<script src="~/Scripts/bootstrap-4.2.1/js/bootstrap.min.js"></script>
+<script src="~/Scripts/fontawesome/all.js"></script>
+<script src="~/Scripts/AlertMessage/alertifyjs/alertify.js"></script>
+<!--DataTables-->
+<link href="~/Content/dataTables/DataTables-1.10.18/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/dataTables/Buttons-1.5.6/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.0/datatables/DataTables-1.10.18/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/dataTables.buttons.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/jszip.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/pdfmake.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/vfs_fonts.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.print.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.html5.min.js"></script>
+<script src="~/Scripts/Controller/ReportInvestmentAndProfitController.js"></script>
+<script src="~/Scripts/Controller/URLController.js"></script>
+<script src="~/Scripts/jquery-3.4.0/BlockUI/jquery.blockUI.min.js"></script>

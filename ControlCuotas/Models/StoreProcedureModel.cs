@@ -19,6 +19,7 @@ namespace ControlCuotas.Models
             public string spGetComboZona    = "spGetComboZona";
             public string spGetClientById   = "spGetClientById";
             public string spModifyClient    = "spModifyClient";
+            public string spGetClientByDNI  = "spGetClientByDNI";
 
             //ZONE
             public string spGetAllZone      = "spGetAllZone";
@@ -37,7 +38,7 @@ namespace ControlCuotas.Models
             //REPORT
             public string spGetReportPrincipal = "spGetReportPrincipal";
             public string spReportCuponStatus = "spReportCuponStatus";
-
+            public string spReportInvestmentAndProfit = "spReportInvestmentAndProfit";
 
 
         }

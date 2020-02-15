@@ -57,7 +57,7 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity,DateTime dateStart, DateTime dateEnd)
+        public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddPrestamo, con);
@@ -80,8 +80,8 @@ namespace ControlCuotas.Service
         }
 
 
-        
-         public DataTable GetAllPrestamo()
+
+        public DataTable GetAllPrestamo()
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spGetAllPrestamo, con);

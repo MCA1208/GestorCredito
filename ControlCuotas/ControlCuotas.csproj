@@ -201,6 +201,7 @@
     <Content Include="Scripts\Controller\LoginController.js" />
     <Content Include="Scripts\Controller\PrestamoController.js" />
     <Content Include="Scripts\Controller\ReportCuponStatusController.js" />
+    <Content Include="Scripts\Controller\ReportInvestmentAndProfitController.js" />
     <Content Include="Scripts\Controller\ReportPrincipal.js" />
     <Content Include="Scripts\Controller\URLController.js" />
     <Content Include="Scripts\Controller\ZoneController.js" />
@@ -254,6 +255,7 @@
     <Content Include="Views\Zone\Principal.cshtml" />
     <Content Include="Views\Report\ReportPrincipal.cshtml" />
     <Content Include="Views\Report\ReportCuponStatus.cshtml" />
+    <Content Include="Views\Report\ReportInvestmentAndProfit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
