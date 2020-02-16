@@ -152,6 +152,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\asesoria-empresarial.jpg" />
+    <Content Include="Image\fondo2.jpg" />
+    <Content Include="Image\FondoInicio.jpg" />
     <Content Include="Scripts\AlertMessage\alertifyjs\alertify.js" />
     <Content Include="Scripts\AlertMessage\alertifyjs\alertify.min.js" />
     <Content Include="Scripts\AlertMessage\alertifyjs\css\alertify.css" />
