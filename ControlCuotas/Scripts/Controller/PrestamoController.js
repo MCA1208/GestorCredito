@@ -63,6 +63,7 @@ function AddPrestamo() {
             if (data.status !== "error") {
 
                 alertify.success(data.message);
+                $("#AddPrestamoModal").modal("hide");
                 GetAllPrestamo();
 
             }

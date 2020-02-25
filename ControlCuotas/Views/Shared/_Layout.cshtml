@@ -7,6 +7,14 @@
     <title>Credi-To</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        li {
+            border: 2px solid #5c0422; height:50px
+            
+        }
+
+    </style>
 </head>
 <body style=" background:#abd6ff; color: black">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -39,6 +47,9 @@
                             <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
                                 <a class="nav-link" href="@Url.Action("ReportInvestmentAndProfit","Report")" style="color:dodgerblue; font-family:Georgia">Ganancia por perido</a>
                             </li>
+                            <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
+                                <a class="nav-link" href="@Url.Action("ReportCuponClient","Report")" style="color:dodgerblue; font-family:Georgia">Cupon por cliente</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -47,7 +58,7 @@
                     </li>
                 </ul>
                 <div class="right">
-                    <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                    <button style=" float:right;" type="button" class="btn btn-info" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</button>
                 </div>
             </div>
         </div>

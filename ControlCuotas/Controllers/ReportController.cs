@@ -31,7 +31,11 @@ namespace ControlCuotas.Controllers
         {
             return View();
         }
-
+        
+        public ActionResult ReportCuponClient()
+        {
+            return View();
+        }
 
         public JsonResult GetReportPrincipal(int? IdClient, int? IdZone, DateTime? dateFrom, DateTime? DateUp)
         {
@@ -99,8 +103,26 @@ namespace ControlCuotas.Controllers
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        
 
+       public JsonResult GetReportCuponClient(int IdClient)
+        {
+            try
+            {
+                dt = Service.GetReportCuponClient(IdClient);
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
 
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
 
     }//Fin Class
 }

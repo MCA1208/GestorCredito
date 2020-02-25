@@ -71,6 +71,21 @@ namespace ControlCuotas.Service
             return dt;
 
         }
+        
+        public DataTable GetReportCuponClient(int IdClient)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetReportCuponByClient, con);
+            comando.Parameters.AddWithValue("@IdClient", IdClient);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
 
     }//End Class
 }

@@ -20,7 +20,7 @@ function Login() {
 
     $.blockUI();
 
-    $.post("LoginUser", data)
+    $.post(directories.home.loginUser, data)
         .done(function (data) {
 
             if (data.status !== "error") {

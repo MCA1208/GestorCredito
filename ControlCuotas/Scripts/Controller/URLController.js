@@ -32,7 +32,8 @@
 
         GetReportPrincipal: 'GetReportPrincipal',
         GetReportCuotaStatus: 'GetReportCuotaStatus',
-        GetReportGanancia: 'GetReportGanancia'
+        GetReportGanancia: 'GetReportGanancia',
+        GetReportCuponClient: 'GetReportCuponClient'
     }
 
 };
