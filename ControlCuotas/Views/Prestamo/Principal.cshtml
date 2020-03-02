@@ -7,7 +7,7 @@
 <div class="card-body">
     @*<button id="btnModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddPrestamoModal"><i class="fas fa-arrow-circle-right"></i> Agregar prestamo </button>*@
     <button id="btnModal" type="button" class="btn btn-primary" onclick="showModalAddProyect()"><i class="fas fa-arrow-circle-right"></i> Agregar prestamo </button>
-    
+
 </div>
 <br />
 <div>
@@ -15,7 +15,7 @@
         <table id="tblPrestamo" class="table" style="color: black; text-align:left; ">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Número prestamo</th>
+                    <th scope="col">Número préstamo</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Concepto</th>
                     <th scope="col">Monto</th>
@@ -23,7 +23,8 @@
                     <th scope="col">Cantidad de cuotas</th>
                     <th scope="col">Fecha de Inicio</th>
                     <th scope="col">Fecha de Fin</th>
-                    <th scope="col">Modificar</th>
+                    <th scope="col">Modificar Préstamo</th>
+                    <th scope="col">Modificar Cuotas</th>
                 </tr>
             </thead>
         </table>
@@ -106,7 +107,7 @@
     <div class="modal-dialog" role="document" style="max-width:80%">
         <div class="modal-content" style="color:black">
             <div class="modal-header">
-                <h5 class="modal-title" id="">Editar Prestamo</h5>
+                <h5 class="modal-title" id="">Editar Cuotas de Prestamo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -166,7 +167,7 @@
                                     <input style="max-width:100%" class="form-control" id="txtObservation" type="text">
                                 </td>
                             </tr>
-                           
+
                         </tbody>
                     </table>
                 </div>
@@ -174,6 +175,46 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="SaveCuotaForId();"><i class="fas fa-savet"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="EditPrestamoDateModal">
+    <div class="modal-dialog" role="document" style="max-width:60%">
+        <div class="modal-content" style="color:black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="h5Title">Editar Prestamo: </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <input id="txtIdPrestamo" type="text" style="display:none" />
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblEditPrestamoDate" class="table" style="color:black">
+                        <tbody style="text-align:left">
+                            <tr>
+                                <th>Fecha Inicio</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtDateStartPrestamo" type="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Fecha Fin</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtDateEndPrestamo" type="date">
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="SavePrestamoForId();"><i class="fas fa-savet"></i> Guardar</button>
             </div>
         </div>
     </div>

@@ -93,7 +93,8 @@ function GetAllPrestamo() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalEditPrestamo(' + value.id + ');"><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
+                        + '<button type = "button" class="btn btn-primary" onclick = "showModalEditProyect(' + value.id + ');" > <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td >';
 
                 });
 
@@ -289,6 +290,75 @@ function SaveCuotaForId() {
                 GetAllPrestamo();
 
 
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
+        });
+
+}
+
+function showModalEditPrestamo(id) {
+
+    $('#EditPrestamoDateModal').modal('show');
+
+    GetPrestamnoById(id);
+
+}
+
+function GetPrestamnoById(id) {
+
+    param = {
+        IdPrestamo: id
+    };
+
+    $.post(directories.prestamo.GetPrestamoDetail, param)
+        .done(function (data) {
+            if (data.status !== "error") {
+
+                data = JSON.parse(data.result);
+                $('#txtDateStartPrestamo').val(data[0].dateStart); 
+                $('#txtDateEndPrestamo').val(data[0].dateEnd);
+                $('#txtIdPrestamo').val(id);
+                $('#h5Title').text('Editar Prestamo N°: ' + id);
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
+        });
+
+}
+
+function SavePrestamoForId() {
+
+    if ($('#txtDateStartPrestamo').val() === "" || $('#txtDateEndPrestamo').val() === "") { 
+        alertify.alert("Alterta", "las dos fechas son obligatorias");
+        return;
+    }
+
+    param = {
+        IdPrestamo: $('#txtIdPrestamo').val(),
+        dateStart: $('#txtDateStartPrestamo').val(),
+        dateEnd: $('#txtDateEndPrestamo').val()
+    };
+
+    $.post(directories.prestamo.SavePrestamoForId, param)
+        .done(function (data) {
+            if (data.status !== "error") {
+
+                alertify.success(data.message);
+                $('#EditPrestamoDateModal').modal('hide');
+                GetAllPrestamo();
             }
             else {
                 alertify.error(data.message);

@@ -51,14 +51,14 @@ function AddZone() {
 
     param = {
         description: $('#txtDecriptionAdd').val()
-    }
+    };
 
-    $.post(directories.zona.AddZone,param)
+    $.post(directories.zona.AddZone, param)
         .done(function (data) {
-            if (data.status !== "error") {   
+            if (data.status !== "error") {
 
                 data = JSON.parse(data.result);
-                
+
                 alertify.success(data.message);
                 GetAllZone();
                 $('#AddZonatModal').modal('hide');
@@ -71,7 +71,7 @@ function AddZone() {
         })
         .fail(function (data) {
             alertify.error(data.statusText);
-        })
+        });
 }
 
 
@@ -79,7 +79,7 @@ function ShowModalEditZone(id) {
 
     param = {
         IdZone: id
-    }
+    };
 
     $.post(directories.zona.GetZoneById, param)
         .done(function (data) {
@@ -99,7 +99,7 @@ function ShowModalEditZone(id) {
         })
         .fail(function (data) {
             alertify.error(data.statusText);
-        })
+        });
 
 
 }
@@ -109,7 +109,7 @@ function ModifyZone() {
     param = {
         IdZone: $('#txtIdZone').val(),
         Description: $('#txtDescription').val()
-    }
+    };
 
     $.post(directories.zona.ModifyZone, param)
         .done(function (data) {
@@ -123,10 +123,10 @@ function ModifyZone() {
                 else {
                     alertify.error(data.message);
                 }
-                
+
                 GetAllZone();
                 $('#ModifyZonaModal').modal('hide');
-               
+
             }
             else {
                 alertify.error(data.message);
@@ -136,7 +136,7 @@ function ModifyZone() {
         })
         .fail(function (data) {
             alertify.error(data.statusText);
-        })
+        });
 
 
 
@@ -145,6 +145,6 @@ function ModifyZone() {
 
 function showModalAddZone() {
 
-    $('#AddClientModal').modal('show');
+    $('#AddZonatModal').modal('show');
 
 }

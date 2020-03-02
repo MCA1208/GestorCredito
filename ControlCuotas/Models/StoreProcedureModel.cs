@@ -20,6 +20,7 @@ namespace ControlCuotas.Models
             public string spGetClientById   = "spGetClientById";
             public string spModifyClient    = "spModifyClient";
             public string spGetClientByDNI  = "spGetClientByDNI";
+            public string spDeleteClient    = "spDeleteClient";
 
             //ZONE
             public string spGetAllZone      = "spGetAllZone";
@@ -34,6 +35,9 @@ namespace ControlCuotas.Models
             public string spChangeEstatusCuota = "spChangeEstatusCuota";
             public string spGetCuotaDetail = "spGetCuotaDetail";
             public string spSaveCuotaForId = "spSaveCuotaForId";
+            public string spGetPrestamoForId = "spGetPrestamoForId";
+            public string spSavePrestamoForId = "spSavePrestamoForId";
+
 
             //REPORT
             public string spGetReportPrincipal = "spGetReportPrincipal";

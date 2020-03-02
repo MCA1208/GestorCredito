@@ -16,7 +16,7 @@ namespace ControlCuotas.Service
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
 
-        public DataTable CreateClient(string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge)
+        public DataTable CreateClient(string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge, string dniConyuge, int cboSitCred)
         {
 
             married = married == null ? false : true;
@@ -33,6 +33,8 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@birthDate", birthDate);
             comando.Parameters.AddWithValue("@married", married);
             comando.Parameters.AddWithValue("@conyuge", conyuge);
+            comando.Parameters.AddWithValue("@dniConyuge", dniConyuge);
+            comando.Parameters.AddWithValue("@cboSitCred", cboSitCred);
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
@@ -151,6 +153,36 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@IdCuota", IdCuota);
             comando.Parameters.AddWithValue("@fecha", fecha);
             comando.Parameters.AddWithValue("@observation", observation);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
+        public DataTable GetPrestamoById(int IdPrestamo)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetPrestamoForId, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdPrestamo", IdPrestamo);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
+        public DataTable SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spSavePrestamoForId, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdPrestamo", IdPrestamo);
+            comando.Parameters.AddWithValue("@dateStart", dateStart);
+            comando.Parameters.AddWithValue("@dateEnd", dateEnd);
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
             da.Fill(dt);

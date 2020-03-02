@@ -11,14 +11,17 @@
         GetPrestamoDetailById: 'GetPrestamoDetailById',
         ChangeEstatusCuota: 'ChangeEstatusCuota',
         GetCuotaDetail: 'GetCuotaDetail',
-        SaveCuotaForId: 'SaveCuotaForId'
+        SaveCuotaForId: 'SaveCuotaForId',
+        GetPrestamoDetail: 'GetPrestamoDetail',
+        SavePrestamoForId: 'SavePrestamoForId'
        
     },
     client: {
 
         GetAllClient: 'GetAllClient',
         GetClientById: 'GetClientById',
-        ModifyClient: 'ModifyClient'
+        ModifyClient: 'ModifyClient',
+        DeleteClient: 'DeleteCli'
 
     },
     zona: {

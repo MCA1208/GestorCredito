@@ -206,6 +206,52 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetPrestamoDetail(int IdPrestamo)
+        {
+            try
+            {
+                dt = Service.GetPrestamoById(IdPrestamo);
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        //
+        public JsonResult SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd)
+        {
+            try
+            {
+                dt = Service.SavePrestamoForId(IdPrestamo, dateStart, dateEnd);
+
+                if ((int)dt.Rows[0][0] == 0)
+                {
+                    data.message = "Error al editar el prestamo";
+                    data.status = "error";
+                }
+                else
+                {
+                    data.message = "Se modifico correctamente";
+                }
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
 
         //En clase
     }

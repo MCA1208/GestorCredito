@@ -19,13 +19,23 @@ function GetAllClient() {
         .done(function (data) {
             if (data.status !== "error") {
 
+                var sitCred = "";
+
                 $('#tblClient > tbody').html('');
                 var _html = '';
                 _html += '<tbody class="customtable" style= text-align:left;>';
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.dni + '</td><td >' + value.address + '</td><td>' + value.phone + '</td><td>' + value.birthdate + '</td><td>' + value.married + '</td><td>' + value.conyuge + '</td><td>' + value.zone + '</td>><td>' + value.cantidadPrestamo + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
+                    if (value.situationCred === 1)
+                        sitCred = "class='fas fa-grin' style='font - size: 60px; color: aqua'";
+                    if (value.situationCred === 2)
+                        sitCred = "class='fas fa-meh'style='font - size: 60px; color: green'";
+                    if (value.situationCred === 3)
+                        sitCred = "class='fas fa-angry'style='font - size: 60px; color: red'";
+                    
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.dni + '</td><td>' + value.address + '</td><td>' + value.phone + '</td><td>' + value.birthdate + '</td><td>' + value.married + '</td><td>' + value.conyuge + '</td><td>' + value.dniMarried + '</td><td>' + value.zone + '</td>><td>' + value.cantidadPrestamo + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i ' + sitCred + '></i></span></a>' + '</td ><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                        + '<button class="btn btn-danger" id="" type="button" onclick="DeleteClient(' + value.id + ', ' + `'${ value.name }'` +');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
 
@@ -82,7 +92,9 @@ function AddClient() {
         zone: $('#cboZonaAdd').val(),
         birthDate: $('#txtbirthDateAdd').val(),
         Married: $('#txtMarriedAdd').val(),
-        conyuge: $('#txtConyugeAdd').val()
+        conyuge: $('#txtConyugeAdd').val(),
+        dniConyuge: $('#txtDniConyugeAdd').val(),
+        cboSitCred: $("#cboSitcredAdd").val()
 
     };
 
@@ -175,6 +187,8 @@ function showModalEditProyect(IdClient) {
                 $('#txtbirthDate').val(data[0].birthdate);
                 $('#txtMarried').prop('checked', data[0].married);
                 $('#txtConyuge').val(data[0].conyuge);
+                $('#txtDniConyuge').val(data[0].dniMarried);
+                $("#cboSitcred").val(data[0].situationCred);
 
             }
             else {
@@ -200,7 +214,9 @@ function ModifyClient() {
         zone: $('#cboZona').val(),
         birthDate: $('#txtbirthDate').val(),
         Married: $('#txtMarried').prop("checked"),
-        conyuge: $('#txtConyuge').val()
+        conyuge: $('#txtConyuge').val(),
+        dniConyuge: $('#txtDniConyuge').val(),
+        cboSitCred: $("#cboSitcred").val()
 
     };
 
@@ -229,5 +245,40 @@ function ModifyClient() {
 function showModalAddClient() {
 
     $('#AddClientModal').modal('show');
+
+}
+
+
+function DeleteClient(id, name) {
+
+    alertify.confirm('CLIENTE', 'Confirma eliminar al cliente ' + name.bold() + '?', function () {
+
+        param = {
+            IdClient: id
+
+        };
+        
+        $.post("DeleteCli", param)
+            .done(function (data) {
+                if (data.status !== "error") {
+
+                    alertify.success(data.message);
+                    GetAllClient();
+
+                }
+                else {
+                    alertify.error(data.message);
+
+                }
+
+            })
+            .fail(function (data) {
+                alertify.error(data.statusText);
+            });
+
+    },
+    function () {
+        alertify.error('Se canceló la operación');
+    });
 
 }

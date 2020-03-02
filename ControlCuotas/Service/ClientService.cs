@@ -64,7 +64,7 @@ namespace ControlCuotas.Service
         }
 
 
-        public DataTable ModifyClient(int IdClient, string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge)
+        public DataTable ModifyClient(int IdClient, string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge, string dniConyuge, int cboSitCred)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spModifyClient, con);
@@ -78,6 +78,8 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@birthDate", birthDate);
             comando.Parameters.AddWithValue("@married", married);
             comando.Parameters.AddWithValue("@conyuge", conyuge);
+            comando.Parameters.AddWithValue("@dniConyuge", dniConyuge);
+            comando.Parameters.AddWithValue("@cboSitCred", cboSitCred);
 
             comando.CommandType = CommandType.StoredProcedure;
 
@@ -105,6 +107,24 @@ namespace ControlCuotas.Service
             return dt;
 
         }
+
+        public DataTable DeleteClient(int IdClient)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spDeleteClient, con);
+
+            comando.Parameters.AddWithValue("@IdClient", IdClient);
+
+            comando.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
 
     }
 }
