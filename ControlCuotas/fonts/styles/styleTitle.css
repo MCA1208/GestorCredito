@@ -1,0 +1,14 @@
+﻿body {
+}
+
+
+#titleDiv {
+    text-shadow: 3px 3px 5px #f00, 
+        6px 6px 5px #0f0, 
+        9px 9px 5px #00f;
+}
+
+#titleLogin {
+    /*text-shadow: 3px 3px 5px #00ffff, 6px 6px 5px #ffffff, 9px 9px 5px #000000;*/
+    text-shadow: #0ff 2px 2px 0px;
+}

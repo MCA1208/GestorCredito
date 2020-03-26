@@ -2,14 +2,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
 
 <div class="card">
-    <div class="card-body" style="color:black; background-color:aqua; font-family:fantasy; font-size:xx-large">
-        Administrador de Zona
+    <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large">
+        ADMINISTRADOR DE ZONA
     </div>
 </div>
-
-
+<br />
 <div class="card-body">
 
     <button id="btnModal" type="button" class="btn btn-primary" onclick="showModalAddZone()"><i class="fas fa-arrow-circle-right"></i> Agregar Zona </button>
@@ -20,7 +20,7 @@
         <table id="tblZone" class="table" style="color: black; text-align:left; ">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Codigo</th>
+                    <th scope="col">Código</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Modificar</th>
                 </tr>
@@ -123,8 +123,6 @@
 <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/vfs_fonts.js"></script>
 <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.print.min.js"></script>
 <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.html5.min.js"></script>
-
 <script src="~/Scripts/jquery-3.4.0/BlockUI/jquery.blockUI.min.js"></script>
 <script src="~/Scripts/Controller/ZoneController.js"></script>
-
 <script src="~/Scripts/Controller/URLController.js"></script>

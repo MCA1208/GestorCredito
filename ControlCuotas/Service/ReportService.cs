@@ -27,11 +27,8 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@dateUp", DateUp);
 
             comando.CommandType = CommandType.StoredProcedure;
-
             SqlDataAdapter da = new SqlDataAdapter(comando);
-
             da.Fill(dt);
-
             return dt;
 
         }
@@ -47,11 +44,8 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@dateEnd", DateEnd);
 
             comando.CommandType = CommandType.StoredProcedure;
-
             SqlDataAdapter da = new SqlDataAdapter(comando);
-
             da.Fill(dt);
-
             return dt;
 
         }
@@ -65,9 +59,7 @@ namespace ControlCuotas.Service
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
-
             da.Fill(dt);
-
             return dt;
 
         }
@@ -80,9 +72,32 @@ namespace ControlCuotas.Service
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
-
             da.Fill(dt);
+            return dt;
 
+        }
+        public DataTable GetReportSummaryClient(int IdClient)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spReportSummaryClient, con);
+            comando.Parameters.AddWithValue("@IdClient", IdClient);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            return dt;
+
+        }
+        
+        public DataTable GetReportSummaryDetail(int IdPrestamo)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spReportSummaryDetail, con);
+            comando.Parameters.AddWithValue("@IdPrestamo", IdPrestamo);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
             return dt;
 
         }

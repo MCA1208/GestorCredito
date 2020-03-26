@@ -26,6 +26,9 @@ namespace ControlCuotas.Controllers
         }
         public ActionResult Principal()
         {
+            if (System.Web.HttpContext.Current.Session["idUser"] == null)
+                return RedirectToAction("index", "Login");
+
             return View();
         }
 

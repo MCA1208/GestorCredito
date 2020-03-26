@@ -1,6 +1,7 @@
-﻿
+﻿<link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
+
 <div class="card">
-    <div class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large; text-align: center">
+    <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large; text-align: center">
         REPORTE INVERSIÓN VS GANANCIA
     </div>
 </div>
@@ -9,11 +10,11 @@
     <div class="row">
         <br />
         <div class="col-md-4 card-body">
-            <label>Fecha Desde: </label>
+            <label>Fecha desde: </label>
             <input id="dateFrom" type="date" name="Fecha desde" />
         </div>
         <div class="col-md-4 card-body">
-            <label>Fecha Hasta: </label>
+            <label>Fecha hasta: </label>
             <input id="dateUp" type="date" name="Fecha hasta" />
         </div>
     </div>
@@ -34,7 +35,7 @@
                     <th scope="col">Desde</th>
                     <th scope="col">Hasta</th>
                     <th scope="col">Inversión</th>
-                    <th scope="col">Total Con Intereses</th>
+                    <th scope="col">Total con intereses</th>
                     <th scope="col">Ganancia</th>
                 </tr>
             </thead>
@@ -61,3 +62,4 @@
 <script src="~/Scripts/Controller/ReportInvestmentAndProfitController.js"></script>
 <script src="~/Scripts/Controller/URLController.js"></script>
 <script src="~/Scripts/jquery-3.4.0/BlockUI/jquery.blockUI.min.js"></script>
+

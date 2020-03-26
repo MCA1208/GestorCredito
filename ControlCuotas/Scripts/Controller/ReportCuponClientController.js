@@ -14,16 +14,28 @@ function getClientCombo() {
             if (data.status !== "error") {
 
                 var ComboCliente = $('#cboCliente');
+                var ComboCliente2 = $('#cboCliente2');
+                var ComboCliente3 = $('#cboCliente3');
+                var ComboCliente4 = $('#cboCliente4');
 
                 $("#cboCliente").empty();
+                $("#cboCliente2").empty();
+                $("#cboCliente3").empty();
+                $("#cboCliente4").empty();
 
                 data = JSON.parse(data.result);
 
                 ComboCliente.append($("<option />").val('').text('Seleccione un cliente'));
+                ComboCliente2.append($("<option />").val('').text('Seleccione un cliente'));
+                ComboCliente3.append($("<option />").val('').text('Seleccione un cliente'));
+                ComboCliente4.append($("<option />").val('').text('Seleccione un cliente'));
 
                 $.each(data, function (key, value) {
 
                     ComboCliente.append($("<option />").val(value.id).text(value.name));
+                    ComboCliente2.append($("<option />").val(value.id).text(value.name));
+                    ComboCliente3.append($("<option />").val(value.id).text(value.name));
+                    ComboCliente4.append($("<option />").val(value.id).text(value.name));
 
                 });
 
@@ -40,18 +52,42 @@ function getClientCombo() {
 
 }
 
-function SearchCuponClient() {
+function SearchCuponClient(numCbo) {
 
-    if ($('#cboCliente').val() === "") {
+    var IdClientCbo = "";
 
-        alertify.alert('Mensaje de Alerta', 'Seleccione un cliente para la búsqueda');
-        return;
+    if (numCbo == 1) {
+        IdClientCbo = $('#cboCliente').val();
+        if ($('#cboCliente').val() === "") {
+            alertify.alert('Mensaje de Alerta', 'Seleccione un cliente para la búsqueda');
+            return;
+        }
     }
-
+    if (numCbo == 2) {
+        IdClientCbo = $('#cboCliente2').val();
+        if ($('#cboCliente2').val() === "") {
+            alertify.alert('Mensaje de Alerta', 'Seleccione un cliente para la búsqueda');
+            return;
+        }
+    }
+    if (numCbo == 3) { 
+    IdClientCbo = $('#cboCliente3').val();
+        if ($('#cboCliente3').val() === "") {
+            alertify.alert('Mensaje de Alerta', 'Seleccione un cliente para la búsqueda');
+            return;
+        }
+    }
+    if (numCbo == 4) {
+        IdClientCbo = $('#cboCliente4').val();
+        if ($('#cboCliente4').val() === "") {
+            alertify.alert('Mensaje de Alerta', 'Seleccione un cliente para la búsqueda');
+            return;
+        }
+    }
     $.blockUI();
 
     param = {
-        IdClient: $('#cboCliente').val()
+        IdClient: IdClientCbo
 
     };
 
@@ -60,16 +96,61 @@ function SearchCuponClient() {
         .done(function (data) {
             if (data.status !== "error") {
 
-                $('#tblCuponCliente > tbody').html('');
+                //$('#tblCuponCliente > tbody').html('');
+                //$('#tblCuponCliente2 > tbody').html('');
+                //$('#tblCuponCliente3 > tbody').html('');
                 var _html = '';
                 _html += '<tbody class="customtable" style= text-align:left;>';
                 data = JSON.parse(data.result);
-                $('#pNumPrestamo').text(data[0].id);
-                $('#pNameClient').text(data[0].name);
-                $('#pDniClient').text(data[0].dni);
-                $('#pDomicilioClient').text(data[0].address);
-                $('#pZoneClient').text(data[0].zone);
 
+                if (numCbo == 1) {
+                    $('#pNumPrestamo').text(data[0].id);
+                    $('#pNameClient').text(data[0].name);
+                    $('#pDniClient').text(data[0].dni);
+                    $('#pDomicilioClient').text(data[0].address);
+                    $('#pZoneClient').text(data[0].zone);
+                    $('#pNumPrestamo1').text(data[0].id);
+                    $('#pNameClient1').text(data[0].name);
+                    $('#pDniClient1').text(data[0].dni);
+                    $('#pDomicilioClient1').text(data[0].address);
+                    $('#pZoneClinet1').text(data[0].zone)
+                }
+                if (numCbo == 2) {
+                    $('#pNumPrestamo2').text(data[0].id);
+                    $('#pNameClient2').text(data[0].name);
+                    $('#pDniClient2').text(data[0].dni);
+                    $('#pDomicilioClient2').text(data[0].address);
+                    $('#pZoneClient2').text(data[0].zone);
+                    $('#pNumPrestamo2_2').text(data[0].id);
+                    $('#pNameClient2_2').text(data[0].name);
+                    $('#pDniClient2_2').text(data[0].dni);
+                    $('#pDomicilioClient2_2').text(data[0].address);
+                    $('#pZoneClinet2_2').text(data[0].zone)
+                }
+                if (numCbo == 3) {
+                    $('#pNumPrestamo3').text(data[0].id);
+                    $('#pNameClient3').text(data[0].name);
+                    $('#pDniClient3').text(data[0].dni);
+                    $('#pDomicilioClient3').text(data[0].address);
+                    $('#pZoneClient3').text(data[0].zone);
+                    $('#pNumPrestamo3_3').text(data[0].id);
+                    $('#pNameClient3_3').text(data[0].name);
+                    $('#pDniClient3_3').text(data[0].dni);
+                    $('#pDomicilioClient3_3').text(data[0].address);
+                    $('#pZoneClinet3_3').text(data[0].zone)
+                }
+                if (numCbo == 4) {
+                    $('#pNumPrestamo4').text(data[0].id);
+                    $('#pNameClient4').text(data[0].name);
+                    $('#pDniClient4').text(data[0].dni);
+                    $('#pDomicilioClient4').text(data[0].address);
+                    $('#pZoneClient4').text(data[0].zone);
+                    $('#pNumPrestamo4_4').text(data[0].id);
+                    $('#pNameClient4_4').text(data[0].name);
+                    $('#pDniClient4_4').text(data[0].dni);
+                    $('#pDomicilioClient4_4').text(data[0].address);
+                    $('#pZoneClinet4_4').text(data[0].zone)
+                }
                 var totalPrestamo = 0;
                 var totalPagado = 0;
                 var saldo = 0;
@@ -85,30 +166,28 @@ function SearchCuponClient() {
                     if (value.Saldo !== null)
                         saldo = value.Saldo.toFixed(2);
 
-                    _html += '<tr><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td  >' + totalPrestamo + '</td><td >' + value.cuotaPayment + '</td><td >' + totalPagado + '</td><td >' + saldo + '</td>';
+                    _html += '<tr><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + totalPrestamo + '</td><td >' + totalPagado + '</td><td >' + saldo + '</td><td >' + value.cuotaPayment + '</td>'
+                        + '<td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + totalPrestamo + '</td><td>' + totalPagado + '</td><td>' + saldo + '</td><td>' + value.cuotaPayment + '</td>';
 
                 });
                 _html += '</tbody >';
-                $('#tblCuponCliente').append(_html);
-
-
-                $('#tblCuponCredito > tbody').html('');
-                _html = '';
-                _html += '<tbody class="customtable" style= text-align:left;>';
-                $('#pNumPrestamo2').text(data[0].id);
-                $('#pNameClient2').text(data[0].name);
-                $('#pDniClient2').text(data[0].dni);
-                $('#pDomicilioClient2').text(data[0].address);
-                $('#pZoneClinet2').text(data[0].zone);
-                $.each(data, function (key, value) {
-
-                    _html += '<tr><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td >' + totalPrestamo + '</td><td >' + value.cuotaPayment + '</td><td >' + totalPagado + '</td><td >' + saldo + '</td>';
-
-                });
-                _html += '</tbody >';
-                $('#tblCuponCredito').append(_html);
-
-
+                if (numCbo == 1) {
+                    $('#tblCuponCliente > tbody').html('');
+                    $('#tblCuponCliente').append(_html);
+                }
+                if (numCbo == 2) {
+                    $('#tblCuponCliente2 > tbody').html('');
+                    $('#tblCuponCliente2').append(_html);
+                }
+                if (numCbo == 3) { 
+                    $('#tblCuponCliente3 > tbody').html('');
+                    $('#tblCuponCliente3').append(_html);
+                }
+                if (numCbo == 4) {
+                    $('#tblCuponCliente4 > tbody').html('');
+                    $('#tblCuponCliente4').append(_html);
+                }
+;
             }
             else {
                 alertify.error(data.message);
@@ -138,3 +217,5 @@ function printDiv() {
 
 
 }
+
+  

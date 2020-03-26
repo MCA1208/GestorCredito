@@ -89,12 +89,6 @@ function SearchReportprincipal() {
 
     };
 
-    //select p.id, z.[description], cl.[name], dni, [address], CONVERT(VARCHAR(10), dateStart, 103) as dateStart,
-    //    CONVERT(VARCHAR(10), dateEnd, 103) as dateEnd, sum(cast(cu.amount as float)) totalPrestamo,
-    //        (select sum(cast(amount as float)) from Cuota where  paymentDate is not null and idPrestamo = p.id) as totalPagado,
-    //            CONVERT(VARCHAR(10), dateEnd, 103) as dateEnd, sum(cast(cu.amount as float)) -
-    //            (select sum(cast(amount as float)) from Cuota where  paymentDate is not null and idPrestamo = p.id) as Saldo,
-    //                'Credi-To' as Copia
 
     $.post(directories.report.GetReportCuotaStatus, param)
         .done(function (data) {

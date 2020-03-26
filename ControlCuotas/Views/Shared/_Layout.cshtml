@@ -19,13 +19,13 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
 
-            <div class="container">
+            <div class="container" >
                 <ul class="nav navbar-nav">
                     <li>
-                        <a class="nav-link" href="@Url.Action("Principal","Prestamo")" style="font-family:Georgia">Prestamo</a>
+                        <a class="nav-link" href="@Url.Action("Principal","Prestamo")" style="font-family:Georgia">Prestamos</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="@Url.Action("Principal","client")" style="font-family:Georgia">Cliente</a>
+                        <a class="nav-link" href="@Url.Action("Principal","Client")" style="font-family:Georgia">Clientes</a>
                     </li>
                     <li id="liReport" class="col-sm" text-align:left">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes</a>
@@ -34,7 +34,7 @@
                                 <a class="nav-link" href="@Url.Action("ReportPrincipal","Report")" style="color:dodgerblue; font-family:Georgia">Principal</a>
                             </li>
                             <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
-                                <a class="nav-link" href="@Url.Action("ReportCuponStatus","Report")" style="color:dodgerblue; font-family:Georgia">Estado de Cupones</a>
+                                <a class="nav-link" href="@Url.Action("ReportCuponStatus","Report")" style="color:dodgerblue; font-family:Georgia">Estado de cupones</a>
                             </li>
                             <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
                                 <a class="nav-link" href="@Url.Action("ReportInvestmentAndProfit","Report")" style="color:dodgerblue; font-family:Georgia">Ganancia por perido</a>
@@ -42,15 +42,18 @@
                             <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
                                 <a class="nav-link" href="@Url.Action("ReportCuponClient","Report")" style="color:dodgerblue; font-family:Georgia">Cupon por cliente</a>
                             </li>
+                            <li id="liReportSummary" style="border:2px solid silver;text-align:left">
+                                <a class="nav-link" href="@Url.Action("ReportSummaryClient","Report")" style="color:dodgerblue; font-family:Georgia">Resumen de cuenta</a>
+                            </li>
                         </ul>
                     </li>
 
                     <li>
-                        <a class="nav-link" href="@Url.Action("Principal","Zone")" style="font-family:Georgia">Zona</a>
+                        <a class="nav-link" href="@Url.Action("Principal","Zone")" style="font-family:Georgia">Zonas</a>
                     </li>
                 </ul>
                 <div class="right">
-                    <button style=" float:right;" type="button" class="btn btn-info" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                    <button style=" float:right; top:50%" type="button" class="btn btn-info" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</button>
                 </div>
             </div>
         </div>

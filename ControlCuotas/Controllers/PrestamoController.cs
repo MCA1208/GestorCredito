@@ -15,13 +15,16 @@ namespace ControlCuotas.Controllers
         public int idUser = 0;
         ResultModel data = new ResultModel();
         Service.PrestamoService Service = new Service.PrestamoService();
-
+        LoginController loginUser = new LoginController();
 
         Service.ClientService ServiceClient = new Service.ClientService();
         // GET: Cuotas
 
         public ActionResult Principal()
         {
+            if (System.Web.HttpContext.Current.Session["idUser"] == null)
+                return RedirectToAction("index", "Login");
+
             return View();
         }
 

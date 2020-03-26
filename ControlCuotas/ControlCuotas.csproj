@@ -148,8 +148,12 @@
     <Content Include="Content\dataTables\Buttons-1.5.6\buttons.dataTables.min.css" />
     <Content Include="Content\dataTables\DataTables-1.10.18\dataTables.jqueryui.min.css" />
     <Content Include="Content\dataTables\DataTables-1.10.18\jquery.dataTables.min.css" />
+    <Content Include="Content\dataTables\images\sort_asc.png" />
+    <Content Include="Content\dataTables\images\sort_both.png" />
+    <Content Include="Content\dataTables\images\sort_desc.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\styles\styleTitle.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\asesoria-empresarial.jpg" />
@@ -207,6 +211,7 @@
     <Content Include="Scripts\Controller\ReportCuponStatusController.js" />
     <Content Include="Scripts\Controller\ReportInvestmentAndProfitController.js" />
     <Content Include="Scripts\Controller\ReportPrincipal.js" />
+    <Content Include="Scripts\Controller\ReportSummaryClient.js" />
     <Content Include="Scripts\Controller\URLController.js" />
     <Content Include="Scripts\Controller\ZoneController.js" />
     <Content Include="Scripts\fontawesome\all.js" />
@@ -229,6 +234,7 @@
     <Content Include="Scripts\jquery-3.4.0\datatables\Scroller-2.0.0\scroller.dataTables.js" />
     <Content Include="Scripts\jquery-3.4.0\jquery-3.4.0.min.js" />
     <Content Include="Scripts\jquery-3.4.0\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.0\jquery.PrintArea.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -261,6 +267,7 @@
     <Content Include="Views\Report\ReportCuponStatus.cshtml" />
     <Content Include="Views\Report\ReportInvestmentAndProfit.cshtml" />
     <Content Include="Views\Report\ReportCuponClient.cshtml" />
+    <Content Include="Views\Report\ReportSummaryClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
