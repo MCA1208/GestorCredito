@@ -27,8 +27,8 @@ namespace ControlCuotas.Service
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@name", name);
             comando.Parameters.AddWithValue("@dni", dni);
-            comando.Parameters.AddWithValue("@address", name);
-            comando.Parameters.AddWithValue("@phone", dni);
+            comando.Parameters.AddWithValue("@address", address);
+            comando.Parameters.AddWithValue("@phone", phone);
             comando.Parameters.AddWithValue("@zone", zone);
             comando.Parameters.AddWithValue("@birthDate", birthDate);
             comando.Parameters.AddWithValue("@married", married);

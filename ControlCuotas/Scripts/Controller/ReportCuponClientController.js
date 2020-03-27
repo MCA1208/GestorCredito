@@ -106,48 +106,48 @@ function SearchCuponClient(numCbo) {
                 if (numCbo == 1) {
                     $('#pNumPrestamo').text(data[0].id);
                     $('#pNameClient').text(data[0].name);
-                    $('#pDniClient').text(data[0].dni);
+                    $('#pTelClient').text(data[0].phone);
                     $('#pDomicilioClient').text(data[0].address);
                     $('#pZoneClient').text(data[0].zone);
                     $('#pNumPrestamo1').text(data[0].id);
                     $('#pNameClient1').text(data[0].name);
-                    $('#pDniClient1').text(data[0].dni);
+                    $('#pTelClient1').text(data[0].phone);
                     $('#pDomicilioClient1').text(data[0].address);
                     $('#pZoneClinet1').text(data[0].zone)
                 }
                 if (numCbo == 2) {
                     $('#pNumPrestamo2').text(data[0].id);
                     $('#pNameClient2').text(data[0].name);
-                    $('#pDniClient2').text(data[0].dni);
+                    $('#pTelClient2').text(data[0].phone);
                     $('#pDomicilioClient2').text(data[0].address);
                     $('#pZoneClient2').text(data[0].zone);
                     $('#pNumPrestamo2_2').text(data[0].id);
                     $('#pNameClient2_2').text(data[0].name);
-                    $('#pDniClient2_2').text(data[0].dni);
+                    $('#pTelClient2_2').text(data[0].phone);
                     $('#pDomicilioClient2_2').text(data[0].address);
                     $('#pZoneClinet2_2').text(data[0].zone)
                 }
                 if (numCbo == 3) {
                     $('#pNumPrestamo3').text(data[0].id);
                     $('#pNameClient3').text(data[0].name);
-                    $('#pDniClient3').text(data[0].dni);
+                    $('#pTelClient3').text(data[0].phone);
                     $('#pDomicilioClient3').text(data[0].address);
                     $('#pZoneClient3').text(data[0].zone);
                     $('#pNumPrestamo3_3').text(data[0].id);
                     $('#pNameClient3_3').text(data[0].name);
-                    $('#pDniClient3_3').text(data[0].dni);
+                    $('#pTelClient3_3').text(data[0].phone);
                     $('#pDomicilioClient3_3').text(data[0].address);
                     $('#pZoneClinet3_3').text(data[0].zone)
                 }
                 if (numCbo == 4) {
                     $('#pNumPrestamo4').text(data[0].id);
                     $('#pNameClient4').text(data[0].name);
-                    $('#pDniClient4').text(data[0].dni);
+                    $('#pTelClient4').text(data[0].phone);
                     $('#pDomicilioClient4').text(data[0].address);
                     $('#pZoneClient4').text(data[0].zone);
                     $('#pNumPrestamo4_4').text(data[0].id);
                     $('#pNameClient4_4').text(data[0].name);
-                    $('#pDniClient4_4').text(data[0].dni);
+                    $('#pTelClient4_4').text(data[0].phone);
                     $('#pDomicilioClient4_4').text(data[0].address);
                     $('#pZoneClinet4_4').text(data[0].zone)
                 }

@@ -113,7 +113,7 @@ function AddClient() {
                 $('#txtMarriedAdd').val();
                 $('#txtConyugeAdd').val();
 
-                GetAllClient();
+                location.reload();
 
             }
             else {
