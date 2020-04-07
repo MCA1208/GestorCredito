@@ -102,5 +102,20 @@ namespace ControlCuotas.Service
 
         }
 
-    }//End Class
+        public DataTable GetReportCobranza(int IdZone, DateTime DateStart, DateTime DateEnd)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spReportCobranza, con);
+            comando.Parameters.AddWithValue("@IdZone", IdZone);
+            comando.Parameters.AddWithValue("@DateStart", DateStart);
+            comando.Parameters.AddWithValue("@DateEnd", DateEnd);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            da.Fill(dt);
+            return dt;
+
+        }
+
+    }//End Class  
 }

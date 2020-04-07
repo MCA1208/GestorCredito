@@ -46,6 +46,7 @@ namespace ControlCuotas.Models
             public string spGetReportCuponByClient = "spGetReportCuponByClient";
             public string spReportSummaryClient = "spReportSummaryClient";
             public string spReportSummaryDetail = "spReportSummaryDetail";
+            public string spReportCobranza = "spReportCobranza";
 
         }
     }

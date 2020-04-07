@@ -40,10 +40,13 @@
                                 <a class="nav-link" href="@Url.Action("ReportInvestmentAndProfit","Report")" style="color:dodgerblue; font-family:Georgia">Ganancia por perido</a>
                             </li>
                             <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
-                                <a class="nav-link" href="@Url.Action("ReportCuponClient","Report")" style="color:dodgerblue; font-family:Georgia">Cupon por cliente</a>
+                                <a class="nav-link" href="@Url.Action("ReportCuponClient","Report")" style="color:dodgerblue; font-family:Georgia">Cupón por cliente</a>
                             </li>
                             <li id="liReportSummary" style="border:2px solid silver;text-align:left">
                                 <a class="nav-link" href="@Url.Action("ReportSummaryClient","Report")" style="color:dodgerblue; font-family:Georgia">Resumen de cuenta</a>
+                            </li>
+                            <li id="liReportCobranza" style="border:2px solid silver;text-align:left">
+                                <a class="nav-link" href="@Url.Action("ReportCobranza","Report")" style="color:dodgerblue; font-family:Georgia">Cupón de cobranza</a>
                             </li>
                         </ul>
                     </li>
@@ -52,7 +55,7 @@
                         <a class="nav-link" href="@Url.Action("Principal","Zone")" style="font-family:Georgia">Zonas</a>
                     </li>
                 </ul>
-                <div class="right">
+                <div class="right" style="padding:10px;">
                     <button style=" float:right; top:50%" type="button" class="btn btn-info" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</button>
                 </div>
             </div>

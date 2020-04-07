@@ -109,11 +109,13 @@ function SearchCuponClient(numCbo) {
                     $('#pTelClient').text(data[0].phone);
                     $('#pDomicilioClient').text(data[0].address);
                     $('#pZoneClient').text(data[0].zone);
+                    $('#pCuota').text(data[0].amountCuota);
                     $('#pNumPrestamo1').text(data[0].id);
                     $('#pNameClient1').text(data[0].name);
                     $('#pTelClient1').text(data[0].phone);
                     $('#pDomicilioClient1').text(data[0].address);
                     $('#pZoneClinet1').text(data[0].zone)
+                    $('#pCuota1').text(data[0].amountCuota);
                 }
                 if (numCbo == 2) {
                     $('#pNumPrestamo2').text(data[0].id);
@@ -121,11 +123,13 @@ function SearchCuponClient(numCbo) {
                     $('#pTelClient2').text(data[0].phone);
                     $('#pDomicilioClient2').text(data[0].address);
                     $('#pZoneClient2').text(data[0].zone);
+                    $('#pCuota2').text(data[0].amountCuota);
                     $('#pNumPrestamo2_2').text(data[0].id);
                     $('#pNameClient2_2').text(data[0].name);
                     $('#pTelClient2_2').text(data[0].phone);
                     $('#pDomicilioClient2_2').text(data[0].address);
                     $('#pZoneClinet2_2').text(data[0].zone)
+                    $('#pCuota2_2').text(data[0].amountCuota);
                 }
                 if (numCbo == 3) {
                     $('#pNumPrestamo3').text(data[0].id);
@@ -133,11 +137,13 @@ function SearchCuponClient(numCbo) {
                     $('#pTelClient3').text(data[0].phone);
                     $('#pDomicilioClient3').text(data[0].address);
                     $('#pZoneClient3').text(data[0].zone);
+                    $('#pCuota3').text(data[0].amountCuota);
                     $('#pNumPrestamo3_3').text(data[0].id);
                     $('#pNameClient3_3').text(data[0].name);
                     $('#pTelClient3_3').text(data[0].phone);
                     $('#pDomicilioClient3_3').text(data[0].address);
                     $('#pZoneClinet3_3').text(data[0].zone)
+                    $('#pCuota3_3').text(data[0].amountCuota);
                 }
                 if (numCbo == 4) {
                     $('#pNumPrestamo4').text(data[0].id);
@@ -145,11 +151,14 @@ function SearchCuponClient(numCbo) {
                     $('#pTelClient4').text(data[0].phone);
                     $('#pDomicilioClient4').text(data[0].address);
                     $('#pZoneClient4').text(data[0].zone);
+                    $('#pCuota4').text(data[0].amountCuota);
                     $('#pNumPrestamo4_4').text(data[0].id);
                     $('#pNameClient4_4').text(data[0].name);
                     $('#pTelClient4_4').text(data[0].phone);
                     $('#pDomicilioClient4_4').text(data[0].address);
                     $('#pZoneClinet4_4').text(data[0].zone)
+                    $('#pCuota4_4').text(data[0].amountCuota);
+
                 }
                 var totalPrestamo = 0;
                 var totalPagado = 0;

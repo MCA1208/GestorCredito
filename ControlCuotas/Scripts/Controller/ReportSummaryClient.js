@@ -73,7 +73,7 @@ function SearchSummaryClient() {
 
                 $('#tblReportSummaryClient').append(_html);
 
-                $('#tblReportSummaryClient').DataTable({
+                /*$('#tblReportSummaryClient').DataTable({
                     destroy: true,
                     retrieve: true,
                     dom: 'Bfrtip',
@@ -83,7 +83,7 @@ function SearchSummaryClient() {
                         { "extend": 'print', "text": '<span data-toggle="tooltip" data-placement="top" title="Imprimir" class="fas fa-print fa-2x"></span>' }
                     ]
 
-                });
+                });*/
 
             }
             else {

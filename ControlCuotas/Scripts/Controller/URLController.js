@@ -38,7 +38,8 @@
         GetReportGanancia: 'GetReportGanancia',
         GetReportCuponClient: 'GetReportCuponClient',
         GetReportSummaryClient: 'GetReportSummaryClient',
-        GetReportSummaryDetail: 'GetReportSummaryDetail'
+        GetReportSummaryDetail: 'GetReportSummaryDetail',
+        GetReportCobranza: 'GetReportCobranza'
     }
 
 };
