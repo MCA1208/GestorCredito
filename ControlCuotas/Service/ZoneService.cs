@@ -10,6 +10,11 @@ namespace ControlCuotas.Service
 {
     public class ZoneService
     {
+        public string userLogin = "";
+        public ZoneService()
+        {
+            userLogin = HttpContext.Current.Session["userName"].ToString();
+        }
 
         DataTable dt = new DataTable();
         SqlConnection con;
@@ -37,7 +42,7 @@ namespace ControlCuotas.Service
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddZone, con);
             comando.Parameters.AddWithValue("description", description);
-
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -70,7 +75,7 @@ namespace ControlCuotas.Service
             comando = new SqlCommand(spName.spModifyZone, con);
             comando.Parameters.AddWithValue("@IdZone", IdZone);
             comando.Parameters.AddWithValue("@Description", Description);
-
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);

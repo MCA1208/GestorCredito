@@ -3,13 +3,11 @@
     home: {
         loginUser: 'Login/LoginUser'
     },
-    prestamo: {
-        createClient: 'CreateClient',
+    prestamo: {        
         GetClientCombo: 'GetClientCombo',
         AddPrestamo: 'AddPrestamo',
         GetAllPrestamo: 'GetAllPrestamo',
         GetPrestamoDetailById: 'GetPrestamoDetailById',
-        ChangeEstatusCuota: 'ChangeEstatusCuota',
         GetCuotaDetail: 'GetCuotaDetail',
         SaveCuotaForId: 'SaveCuotaForId',
         GetPrestamoDetail: 'GetPrestamoDetail',
@@ -17,7 +15,7 @@
        
     },
     client: {
-
+        CreateClient: 'CreateClient',
         GetAllClient: 'GetAllClient',
         GetClientById: 'GetClientById',
         ModifyClient: 'ModifyClient',

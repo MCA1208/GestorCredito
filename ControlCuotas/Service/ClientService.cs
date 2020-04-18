@@ -10,11 +10,45 @@ namespace ControlCuotas.Service
 {
     public class ClientService
     {
+        public string userLogin = "";
+        public ClientService()
+        {
+            userLogin = HttpContext.Current.Session["userName"].ToString();
+        }
         DataTable dt = new DataTable();
         SqlConnection con;
         SqlCommand comando;
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
+
+        public DataTable CreateClient(string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge, string dniConyuge, int cboSitCred)
+        {
+
+            married = married == null ? false : true;
+
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spCreateClient, con);
+
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@name", name);
+            comando.Parameters.AddWithValue("@dni", dni);
+            comando.Parameters.AddWithValue("@address", address);
+            comando.Parameters.AddWithValue("@phone", phone);
+            comando.Parameters.AddWithValue("@zone", zone);
+            comando.Parameters.AddWithValue("@birthDate", birthDate);
+            comando.Parameters.AddWithValue("@married", married);
+            comando.Parameters.AddWithValue("@conyuge", conyuge);
+            comando.Parameters.AddWithValue("@dniConyuge", dniConyuge);
+            comando.Parameters.AddWithValue("@cboSitCred", cboSitCred);
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
 
         public DataTable GetComboZona()
         {
@@ -80,6 +114,7 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@conyuge", conyuge);
             comando.Parameters.AddWithValue("@dniConyuge", dniConyuge);
             comando.Parameters.AddWithValue("@cboSitCred", cboSitCred);
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
 
             comando.CommandType = CommandType.StoredProcedure;
 

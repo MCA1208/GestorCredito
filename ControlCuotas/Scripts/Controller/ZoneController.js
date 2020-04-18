@@ -49,6 +49,13 @@ function GetAllZone() {
 
 function AddZone() {
 
+    if ($('#txtDecriptionAdd').val() === "") {
+
+        alertify.alert("Debe ingresar una descripción");
+
+        return;
+    }
+
     param = {
         description: $('#txtDecriptionAdd').val()
     };

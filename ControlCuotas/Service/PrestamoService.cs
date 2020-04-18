@@ -1,48 +1,24 @@
 ﻿using ControlCuotas.Models;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Web;
 
 namespace ControlCuotas.Service
 {
     public class PrestamoService
     {
+        public string userLogin = "";
+        public PrestamoService()
+        {
+            userLogin = HttpContext.Current.Session["userName"].ToString();
+        }
+
         DataTable dt = new DataTable();
         SqlConnection con;
         SqlCommand comando;
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
-
-        public DataTable CreateClient(string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge, string dniConyuge, int cboSitCred)
-        {
-
-            married = married == null ? false : true;
-
-            con = new SqlConnection(Connection.stringConn);
-            comando = new SqlCommand(spName.spCreateClient, con);
-
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@name", name);
-            comando.Parameters.AddWithValue("@dni", dni);
-            comando.Parameters.AddWithValue("@address", address);
-            comando.Parameters.AddWithValue("@phone", phone);
-            comando.Parameters.AddWithValue("@zone", zone);
-            comando.Parameters.AddWithValue("@birthDate", birthDate);
-            comando.Parameters.AddWithValue("@married", married);
-            comando.Parameters.AddWithValue("@conyuge", conyuge);
-            comando.Parameters.AddWithValue("@dniConyuge", dniConyuge);
-            comando.Parameters.AddWithValue("@cboSitCred", cboSitCred);
-
-            SqlDataAdapter da = new SqlDataAdapter(comando);
-
-            da.Fill(dt);
-
-            return dt;
-
-        }
 
         public DataTable GetAllClient()
         {
@@ -72,6 +48,7 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@quantity", quantity);
             comando.Parameters.AddWithValue("@dateStart", dateStart);
             comando.Parameters.AddWithValue("@dateEnd", dateEnd);
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
@@ -113,24 +90,7 @@ namespace ControlCuotas.Service
             return dt;
 
         }
-
         
-
-        public DataTable ChangeEstatusCuota(int IdCuota)
-        {
-            con = new SqlConnection(Connection.stringConn);
-            comando = new SqlCommand(spName.spChangeEstatusCuota, con);
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@IdCuota", IdCuota);
-            SqlDataAdapter da = new SqlDataAdapter(comando);
-
-            da.Fill(dt);
-
-            return dt;
-
-        }
-
-
         public DataTable GetCuotaDetail(int IdCuota)
         {
             con = new SqlConnection(Connection.stringConn);
@@ -153,6 +113,7 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@IdCuota", IdCuota);
             comando.Parameters.AddWithValue("@fecha", fecha);
             comando.Parameters.AddWithValue("@observation", observation);
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
             da.Fill(dt);
@@ -183,6 +144,7 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@IdPrestamo", IdPrestamo);
             comando.Parameters.AddWithValue("@dateStart", dateStart);
             comando.Parameters.AddWithValue("@dateEnd", dateEnd);
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
             da.Fill(dt);

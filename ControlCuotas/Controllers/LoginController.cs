@@ -2,10 +2,7 @@
 using ControlSheet.Helper;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -30,14 +27,13 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-               
-
                 dt = Service.SpUserLogin(user, pass);
 
                 if (dt.Rows.Count > 0)
                 {
 
                     System.Web.HttpContext.Current.Session["idUser"] = dt.Rows[0]["id"];
+                    System.Web.HttpContext.Current.Session["userName"] = dt.Rows[0]["name"];
 
                     data.url = Url.Action("Principal", "Prestamo");
                 }

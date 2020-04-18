@@ -50,9 +50,9 @@ namespace ControlCuotas.Controllers
                 }
 
 
-                dt = Service.CreateClient(name, dni, address, phone, zone, birthDate, married, conyuge, dniConyuge, cboSitCred);
+                dt = ServiceClient.CreateClient(name, dni, address, phone, zone, birthDate, married, conyuge, dniConyuge, cboSitCred);
 
-                if ((int)dt.Rows[0][0] == 0)
+                if ((int)dt.Rows[0]["result"] == 0)
                 {
                     data.status = "error";
                     data.message = "error al agregar el cliente";

@@ -98,7 +98,7 @@ function AddClient() {
 
     };
 
-    $.post(directories.prestamo.createClient, param)
+    $.post(directories.client.CreateClient, param)
         .done(function (data) {
             if (data.status !== "error") {
 
@@ -113,7 +113,8 @@ function AddClient() {
                 $('#txtMarriedAdd').val();
                 $('#txtConyugeAdd').val();
 
-                location.reload();
+                //location.reload();
+                GetAllClient();
 
             }
             else {
