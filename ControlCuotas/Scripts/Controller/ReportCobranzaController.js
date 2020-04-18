@@ -41,12 +41,15 @@ function getzona() {
 
 function SearchReportCobranza() {
 
+    var dStart = $('#dateStart').val();
+    var dEnd = $('#dateEnd').val()
+
     if ($('#cboZona').val() === "") {
 
         alertify.alert('Mensaje de Alerta', 'Seleccione una zona para la búsqueda');
         return;
     }
-    if ($('#dateStart').val() === "" || $('#dateEnd').val() === "") {
+    if (dStart === "" || dEnd === "") {
 
         alertify.alert('Mensaje de Alerta', 'Las fechas son requeridas');
         return;
@@ -56,8 +59,8 @@ function SearchReportCobranza() {
 
     param = {
         IdZone: $('#cboZona').val(),
-        DateStart: $('#dateStart').val(),
-        DateEnd: $('#dateEnd').val(),
+        DateStart: dStart,
+        DateEnd: dEnd,
     };
     var zone = $('#cboZona :selected').text();
     var CantidadCupon = 0;
@@ -84,6 +87,8 @@ function SearchReportCobranza() {
                 $('#lblZona').text(zone);
                 $('#lblCant').text(CantidadCupon);
                 $('#lblTotal').text(TotalCupon);
+                $('#lblDateStart').text(dStart);
+                $('#lblDateEnd').text(dEnd);
                 $('#tblReportCobranza').append(_html);
                 $('#btnPrint').css('display', 'block');
 
