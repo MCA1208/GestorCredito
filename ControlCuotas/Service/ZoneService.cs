@@ -10,11 +10,6 @@ namespace ControlCuotas.Service
 {
     public class ZoneService
     {
-        public string userLogin = "";
-        public ZoneService()
-        {
-            userLogin = HttpContext.Current.Session["userName"].ToString();
-        }
 
         DataTable dt = new DataTable();
         SqlConnection con;
@@ -37,7 +32,7 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable AddZone(string description)
+        public DataTable AddZone(string description, string userLogin)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddZone, con);
@@ -69,7 +64,7 @@ namespace ControlCuotas.Service
 
         }
         
-        public DataTable ModifyZone(int IdZone,string Description)
+        public DataTable ModifyZone(int IdZone,string Description, string userLogin)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spModifyZone, con);

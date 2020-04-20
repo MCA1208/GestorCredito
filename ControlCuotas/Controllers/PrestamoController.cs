@@ -11,6 +11,14 @@ namespace ControlCuotas.Controllers
 {
     public class PrestamoController : Controller
     {
+        public string userNameLogin = "";
+        public int? userIdLogin;
+        public PrestamoController()
+        {
+            userNameLogin = System.Web.HttpContext.Current.Session["userName"]?.ToString();
+            userIdLogin = System.Web.HttpContext.Current.Session["idUser"] != null ? (int)System.Web.HttpContext.Current.Session["idUser"] : 0;
+        }
+
         DataTable dt = null;
         public int idUser = 0;
         ResultModel data = new ResultModel();
@@ -72,10 +80,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-
-                dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateStart, dateEnd) ;
-
-                //data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateStart, dateEnd, userNameLogin) ;
 
                 if ( (int)dt.Rows[0][0] == 0)
                 {
@@ -147,7 +152,7 @@ namespace ControlCuotas.Controllers
             try
             {
 
-                dt = Service.SaveCuotaForId(IdCuota, fecha, observation);
+                dt = Service.SaveCuotaForId(IdCuota, fecha, observation, userNameLogin);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {
@@ -198,7 +203,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.SavePrestamoForId(IdPrestamo, dateStart, dateEnd);
+                dt = Service.SavePrestamoForId(IdPrestamo, dateStart, dateEnd, userNameLogin);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {

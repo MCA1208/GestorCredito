@@ -1,66 +1,44 @@
 ﻿﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credi-To</title>
+
+    <meta charset="UTF-8">
+    <title>CREDI-TO</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="~/Scripts/jquery-3.4.0/jquery-3.4.0.min.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
-    <style>
-        li {
-            border: 2px solid #5c0422;
-            height: 50px
-        }
-    </style>
+    <link href="~/fonts/styles/_MenuLayout.css" rel="stylesheet" />
 </head>
-<body style=" background:#abd6ff; color: black">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
 
-            <div class="container" >
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a class="nav-link" href="@Url.Action("Principal","Prestamo")" style="font-family:Georgia">Prestamos</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="@Url.Action("Principal","Client")" style="font-family:Georgia">Clientes</a>
-                    </li>
-                    <li id="liReport" class="col-sm" text-align:left">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes</a>
-                        <ul class="dropdown-menu">
-                            <li id="liReportPrincipal" style="border:2px solid silver;text-align:left">
-                                <a class="nav-link" href="@Url.Action("ReportPrincipal","Report")" style="color:dodgerblue; font-family:Georgia">Principal</a>
-                            </li>
-                            <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
-                                <a class="nav-link" href="@Url.Action("ReportCuponStatus","Report")" style="color:dodgerblue; font-family:Georgia">Estado de cupones</a>
-                            </li>
-                            <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
-                                <a class="nav-link" href="@Url.Action("ReportInvestmentAndProfit","Report")" style="color:dodgerblue; font-family:Georgia">Ganancia por perido</a>
-                            </li>
-                            <li id="liReportSumHour" style="border:2px solid silver;text-align:left">
-                                <a class="nav-link" href="@Url.Action("ReportCuponClient","Report")" style="color:dodgerblue; font-family:Georgia">Cupón por cliente</a>
-                            </li>
-                            <li id="liReportSummary" style="border:2px solid silver;text-align:left">
-                                <a class="nav-link" href="@Url.Action("ReportSummaryClient","Report")" style="color:dodgerblue; font-family:Georgia">Resumen de cuenta</a>
-                            </li>
-                            <li id="liReportCobranza" style="border:2px solid silver;text-align:left">
-                                <a class="nav-link" href="@Url.Action("ReportCobranza","Report")" style="color:dodgerblue; font-family:Georgia">Cupón de cobranza</a>
-                            </li>
-                        </ul>
-                    </li>
+<body>
+    <header>
 
-                    <li>
-                        <a class="nav-link" href="@Url.Action("Principal","Zone")" style="font-family:Georgia">Zonas</a>
-                    </li>
-                </ul>
-                <div class="right" style="padding:10px;">
-                    <button style=" float:right; top:50%" type="button" class="btn btn-info" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</button>
-                </div>
-            </div>
+        <div class="menu_bar">
+            <a href="#" class="bt-menu"><span class="fas fa-bars"></span> Menú</a>
         </div>
-    </div>
+        <nav>
+            <ul>
+                <li><a href="@Url.Action("Principal","Prestamo")"><i class="fas fa-dollar-sign"></i> Prestamos</a></li>
+                <li><a href="@Url.Action("Principal","Client")"><i class="fas fa-user-circle"></i> Clientes</a></li>
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-chart-line"></i> Reportes<span class="caret icon-arrow-down6"></span></a>
+                    <ul class="children">
+                        <li><a href="@Url.Action("ReportPrincipal","Report")">Principal<span class="icon-dot"></span></a></li>
+                        <li><a href="@Url.Action("ReportCuponStatus","Report")">Estado de cupones <span class="icon-dot"></span></a></li>
+                        <li><a href="@Url.Action("ReportInvestmentAndProfit","Report")">Ganancia por periodo <span class="icon-dot"></span></a></li>
+                        <li><a href="@Url.Action("ReportCuponClient","Report")">Cupón por cliente <span class="icon-dot"></span></a></li>
+                        <li><a href="@Url.Action("ReportSummaryClient","Report")">Resumen de cuenta <span class="icon-dot"></span></a></li>
+                        <li><a href="@Url.Action("ReportCobranza","Report")">Cupón de cobranza <span class="icon-dot"></span></a></li>
+                    </ul>
+                </li>
+                <li><a href="@Url.Action("Principal","Zone")"><i class="fas fa-globe-americas"></i> Zonas</a></li>
+                <li><a href="#" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
     <div class="container body-content" style="text-align:center">
         @RenderBody()
         <hr />
@@ -68,9 +46,36 @@
             <p>&copy; @DateTime.Now.Year - CREDI-TO</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(main);
+
+        var contador = 1;
+
+        function main() {
+            $('.menu_bar').click(function () {
+                if (contador == 1) {
+                    $('nav').animate({
+                        left: '0'
+                    });
+                    contador = 0;
+                } else {
+                    contador = 1;
+                    $('nav').animate({
+                        left: '-100%'
+                    });
+                }
+            });
+
+            // Mostramos y ocultamos submenus
+            $('.submenu').click(function () {
+                $(this).children('.children').slideToggle();
+            });
+        }
+
+    </script>
 </body>
 </html>

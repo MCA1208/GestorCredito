@@ -11,6 +11,13 @@ namespace ControlCuotas.Controllers
 {
     public class ClientController : Controller
     {
+        public string userNameLogin = "";
+        public int? userIdLogin;
+        public ClientController()
+        {
+            userNameLogin = System.Web.HttpContext.Current.Session["userName"]?.ToString();
+            userIdLogin = System.Web.HttpContext.Current.Session["idUser"] != null ? (int)System.Web.HttpContext.Current.Session["idUser"] : 0;
+        }
 
         DataTable dt = null;
         public int idUser = 0;
@@ -50,7 +57,7 @@ namespace ControlCuotas.Controllers
                 }
 
 
-                dt = ServiceClient.CreateClient(name, dni, address, phone, zone, birthDate, married, conyuge, dniConyuge, cboSitCred);
+                dt = ServiceClient.CreateClient(name, dni, address, phone, zone, birthDate, married, conyuge, dniConyuge, cboSitCred, userNameLogin);
 
                 if ((int)dt.Rows[0]["result"] == 0)
                 {
@@ -147,7 +154,7 @@ namespace ControlCuotas.Controllers
             try
             {
 
-                dt = ServiceClient.ModifyClient(IdClient, name, dni, address, phone, zone, birthDate, married, conyuge,dniConyuge, cboSitCred);
+                dt = ServiceClient.ModifyClient(IdClient, name, dni, address, phone, zone, birthDate, married, conyuge,dniConyuge, cboSitCred, userNameLogin);
 
                 if ((int)dt.Rows[0][0] == 1){
 

@@ -2,18 +2,13 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Policy;
 using System.Web;
 
 namespace ControlCuotas.Service
 {
     public class PrestamoService
     {
-        public string userLogin = "";
-        public PrestamoService()
-        {
-            userLogin = HttpContext.Current.Session["userName"].ToString();
-        }
-
         DataTable dt = new DataTable();
         SqlConnection con;
         SqlCommand comando;
@@ -35,7 +30,7 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd)
+        public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd, string userLogin)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddPrestamo, con);
@@ -105,7 +100,7 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable SaveCuotaForId(int IdCuota, DateTime? fecha, string observation)
+        public DataTable SaveCuotaForId(int IdCuota, DateTime? fecha, string observation, string userLogin)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spSaveCuotaForId, con);
@@ -136,7 +131,7 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd)
+        public DataTable SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd, string userLogin)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spSavePrestamoForId, con);

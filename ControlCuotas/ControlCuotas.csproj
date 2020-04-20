@@ -154,6 +154,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\styles\styleTitle.css" />
+    <Content Include="fonts\styles\_MenuLayout.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\asesoria-empresarial.jpg" />

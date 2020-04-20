@@ -10,18 +10,14 @@ namespace ControlCuotas.Service
 {
     public class ClientService
     {
-        public string userLogin = "";
-        public ClientService()
-        {
-            userLogin = HttpContext.Current.Session["userName"].ToString();
-        }
+
         DataTable dt = new DataTable();
         SqlConnection con;
         SqlCommand comando;
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
 
-        public DataTable CreateClient(string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge, string dniConyuge, int cboSitCred)
+        public DataTable CreateClient(string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge, string dniConyuge, int cboSitCred, string userLogin)
         {
 
             married = married == null ? false : true;
@@ -98,7 +94,7 @@ namespace ControlCuotas.Service
         }
 
 
-        public DataTable ModifyClient(int IdClient, string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge, string dniConyuge, int cboSitCred)
+        public DataTable ModifyClient(int IdClient, string name, string dni, string address, string phone, int zone, DateTime? birthDate, bool? married, string conyuge, string dniConyuge, int cboSitCred, string userLogin)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spModifyClient, con);

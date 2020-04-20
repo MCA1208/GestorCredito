@@ -11,10 +11,15 @@ namespace ControlCuotas.Controllers
 {
     public class ZoneController : Controller
     {
-
+        public string userNameLogin = "";
+        public int? userIdLogin;
+        public ZoneController()
+        {
+            userNameLogin = System.Web.HttpContext.Current.Session["userName"]?.ToString();
+            userIdLogin = System.Web.HttpContext.Current.Session["idUser"] != null ? (int)System.Web.HttpContext.Current.Session["idUser"] : 0;
+        }
 
         DataTable dt = null;
-        public int idUser = 0;
         ResultModel data = new ResultModel();
         Service.ZoneService Service = new Service.ZoneService();
 
@@ -22,7 +27,7 @@ namespace ControlCuotas.Controllers
         // GET: Zone
         public ActionResult Principal()
         {
-            if (System.Web.HttpContext.Current.Session["idUser"] == null)
+            if(userIdLogin == 0)
                 return RedirectToAction("index", "Login");
 
             return View();
@@ -32,12 +37,8 @@ namespace ControlCuotas.Controllers
         public JsonResult GetAllZone()
         {
             try
-            {
-                idUser = (int)System.Web.HttpContext.Current.Session["idUser"];
-
-
+            {              
                 dt = Service.GetAllZone();
-
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch (Exception ex)
@@ -45,7 +46,6 @@ namespace ControlCuotas.Controllers
                 data.message = ex.Message;
                 data.status = "error";
                 return Json(data, JsonRequestBehavior.AllowGet);
-
             }
 
             return Json(data, JsonRequestBehavior.AllowGet);
@@ -55,7 +55,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.AddZone( description);
+                dt = Service.AddZone( description, userNameLogin);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {
@@ -102,7 +102,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.ModifyZone(IdZone, Description);
+                dt = Service.ModifyZone(IdZone, Description, userNameLogin);
 
                 data.result = dt.Rows[0][0];
 

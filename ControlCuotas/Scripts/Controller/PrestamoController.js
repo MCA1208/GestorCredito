@@ -4,12 +4,10 @@ $(document).ready(function () {
     
     getClientCombo();
 
-    GetAllPrestamo(); ChangeEstatusCuota
+    GetAllPrestamo(); 
 
 
 });
-
-
 
 function getClientCombo() {
 
@@ -204,33 +202,6 @@ function GetPrestamoDetail(id) {
             alertify.error(data.statusText);
         });
 
-}
-
-function changeEstatusCuota(id) {
-
-    param = {
-        IdCuota: id
-    };
-
-    $.post(directories.prestamo.ChangeEstatusCuota, param)
-        .done(function (data) {
-            if (data.status !== "error") {
-
-                alertify.success(data.message);
-                GetPrestamoDetail($('#txtIdPrestamo').val());
-                GetAllPrestamo();
-               
-
-            }
-            else {
-                alertify.error(data.message);
-
-            }
-
-        })
-        .fail(function (data) {
-            alertify.error(data.statusText);
-        });
 }
 
 function showModalEditCuota(id) {
