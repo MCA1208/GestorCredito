@@ -160,6 +160,7 @@
     <Content Include="Image\asesoria-empresarial.jpg" />
     <Content Include="Image\fondo2.jpg" />
     <Content Include="Image\FondoInicio.jpg" />
+    <Content Include="Image\logoCredito.PNG" />
     <Content Include="Scripts\AlertMessage\alertifyjs\alertify.js" />
     <Content Include="Scripts\AlertMessage\alertifyjs\alertify.min.js" />
     <Content Include="Scripts\AlertMessage\alertifyjs\css\alertify.css" />

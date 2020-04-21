@@ -227,6 +227,33 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult DeletePrestamo(int IdPrestamo)
+        {
+            try
+            {
+                dt = Service.DeletePrestamo(IdPrestamo);
+
+                if ((int)dt.Rows[0][0] == 0)
+                {
+                    data.message = "Error al eliminar el prestamo";
+                    data.status = "error";
+                }
+                else
+                {
+                    data.message = "Se elimino correctamente";
+                }
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
 
         //En clase
     }

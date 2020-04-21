@@ -92,7 +92,8 @@ function GetAllPrestamo() {
                 $.each(data, function (key, value) {
 
                     _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalEditPrestamo(' + value.id + ');"><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
-                        + '<button type = "button" class="btn btn-primary" onclick = "showModalEditProyect(' + value.id + ');" > <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td >';
+                        + '<button type = "button" class="btn btn-primary" onclick = "showModalEditProyect(' + value.id + ');" > <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td><td>'
+                        + '<button class="btn btn-danger" id="" type="button" onclick="DeletePrestamo(' + value.id + ', ' + `'${value.cliente}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
 
@@ -339,6 +340,40 @@ function SavePrestamoForId() {
         })
         .fail(function (data) {
             alertify.error(data.statusText);
+        });
+
+}
+
+
+function DeletePrestamo(id, name) {
+
+    alertify.confirm('CLIENTE', 'Confirma eliminar el préstamo ' + id + ' del cliente ' + name.bold() + '?', function () {
+
+        param = {
+            IdPrestamo: id
+        };
+
+        $.post(directories.prestamo.DeletePrestamo, param)
+            .done(function (data) {
+                if (data.status !== "error") {
+
+                    alertify.success(data.message);
+                    GetAllPrestamo();
+
+                }
+                else {
+                    alertify.error(data.message);
+
+                }
+
+            })
+            .fail(function (data) {
+                alertify.error(data.statusText);
+            });
+
+    },
+        function () {
+            alertify.error('Se canceló la operación');
         });
 
 }

@@ -112,9 +112,7 @@ namespace ControlCuotas.Service
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
             da.Fill(dt);
-
             return dt;
-
         }
 
         public DataTable GetPrestamoById(int IdPrestamo)
@@ -126,9 +124,7 @@ namespace ControlCuotas.Service
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
             da.Fill(dt);
-
             return dt;
-
         }
 
         public DataTable SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd, string userLogin)
@@ -143,11 +139,20 @@ namespace ControlCuotas.Service
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
             da.Fill(dt);
-
             return dt;
+        }
+        public DataTable DeletePrestamo(int IdPrestamo)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spDeletePrestamo, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdPrestamo", IdPrestamo);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
 
+            da.Fill(dt);
+            return dt;
         }
 
-        //FIN SERVICE
+        //FIN SERVICE 
     }
 }

@@ -65,7 +65,7 @@ function SearchSummaryClient() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td >' + value.dateStart + '</td><td >' + value.dateEnd + '</td><td >' + value.totalPrestamo + '</td><td>' + value.totalPagado + '</td><td>' + value.Saldo + '</td><td>' + value.cuotaPayment + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalSummaryDetail(' + value.id + ',' + `'${value.name}'` + ',' + `'${value.dateStart}'` + ',' + `'${value.dateEnd}'` + ',' + value.totalPrestamo + ',' + value.totalPagado + ',' + value.Saldo + ',' + `'${value.cuotaPayment}'` +');"><i style="size:9x" class="fas fa-eye"></i> Pre visualizar</button>' + '</td>';
+                    _html += '<tr><td>' + value.idPrestamo + '</td><td>' + value.name + '</td><td >' + value.dateStart + '</td><td >' + value.dateEnd + '</td><td >' + value.totalPrestamo + '</td><td>' + value.totalPagado + '</td><td>' + value.Saldo + '</td><td>' + value.cuotaPayment + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalSummaryDetail(' + value.id + ',' + `'${value.idPrestamo}'` +',' + `'${value.name}'` + ',' + `'${value.dateStart}'` + ',' + `'${value.dateEnd}'` + ',' + value.totalPrestamo + ',' + value.totalPagado + ',' + value.Saldo + ',' + `'${value.cuotaPayment}'` +');"><i style="size:9x" class="fas fa-eye"></i> Pre visualizar</button>' + '</td>';
 
                 });
 
@@ -101,12 +101,12 @@ function SearchSummaryClient() {
 
 }
 
-function showModalSummaryDetail(IdPrestamo, name, dateStart, dateEnd, total, pagado, saldo, cuota) {
+function showModalSummaryDetail(Id, IdPrestamo, name, dateStart, dateEnd, total, pagado, saldo, cuota) {
 
     $.blockUI();
 
     param = {
-        IdPrest: IdPrestamo
+        IdPrest: Id
     };
 
     $.post(directories.report.GetReportSummaryDetail, param)

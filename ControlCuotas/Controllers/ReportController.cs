@@ -192,11 +192,11 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
        
-        public JsonResult GetReportCobranza(int IdZone, DateTime DateStart, DateTime DateEnd)
+        public JsonResult GetReportCobranza(int IdZone)
         {
             try
             {
-                dt = Service.GetReportCobranza(IdZone, DateStart, DateEnd);
+                dt = Service.GetReportCobranza(IdZone);
 
                 if (dt.Rows.Count == 0)
                 {
