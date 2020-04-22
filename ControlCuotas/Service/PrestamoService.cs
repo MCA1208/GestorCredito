@@ -32,6 +32,7 @@ namespace ControlCuotas.Service
 
         public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd, string userLogin)
         {
+            dt.Clear();
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddPrestamo, con);
 
@@ -147,6 +148,20 @@ namespace ControlCuotas.Service
             comando = new SqlCommand(spName.spDeletePrestamo, con);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@IdPrestamo", IdPrestamo);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+            return dt;
+        }
+
+        public DataTable ExistPrestamo(int IdClient, DateTime DateStart, DateTime DateEnd)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spExistPrestamo, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdClient", IdClient);
+            comando.Parameters.AddWithValue("@DateStart", DateStart);
+            comando.Parameters.AddWithValue("@DateEnd", DateEnd);
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
             da.Fill(dt);

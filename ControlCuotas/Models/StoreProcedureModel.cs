@@ -37,6 +37,7 @@ namespace ControlCuotas.Models
             public string spGetPrestamoForId = "spGetPrestamoForId";
             public string spSavePrestamoForId = "spSavePrestamoForId";
             public string spDeletePrestamo = "spDeletePrestamo";
+            public string spExistPrestamo = "spExistPrestamo";
 
 
             //REPORT

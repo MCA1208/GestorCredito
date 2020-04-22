@@ -61,6 +61,14 @@ function AddPrestamo() {
             if (data.status !== "error") {
 
                 alertify.success(data.message);
+                $('#cboCliente').val('');
+                $('#txtConcepto').val('');
+                $('#txtAmount').val('');
+                $('#txtAmountInterest').val('');
+                $('#txtQuantity').val('');
+                $('#txtQuantity').val('');
+                $('#txtDateEnd').val('');
+
                 $("#AddPrestamoModal").modal("hide");
                 GetAllPrestamo();
 

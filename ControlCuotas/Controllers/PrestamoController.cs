@@ -20,6 +20,7 @@ namespace ControlCuotas.Controllers
         }
 
         DataTable dt = null;
+        DataTable ExistPrestamo = null;
         public int idUser = 0;
         ResultModel data = new ResultModel();
         Service.PrestamoService Service = new Service.PrestamoService();
@@ -80,9 +81,18 @@ namespace ControlCuotas.Controllers
         {
             try
             {
+                ExistPrestamo = Service.ExistPrestamo(cboCliente, dateStart, dateEnd);
+
+                if ((int)ExistPrestamo.Rows[0][0] == 1)
+                {
+                    data.message = "Ya existe un préstamo con el rango de las fechas ingresadas para este cliente";
+                    data.status = "error";
+                    return Json(data, JsonRequestBehavior.AllowGet);
+                }
+
                 dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateStart, dateEnd, userNameLogin) ;
 
-                if ( (int)dt.Rows[0][0] == 0)
+                if ( (int)dt.Rows[0]["result"] == 0)
                 {
                     data.message = "No se pudo insertar el prestamo";
                     data.status = "error";
