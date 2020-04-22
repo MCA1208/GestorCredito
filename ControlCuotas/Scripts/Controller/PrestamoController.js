@@ -355,7 +355,7 @@ function SavePrestamoForId() {
 
 function DeletePrestamo(id, name) {
 
-    alertify.confirm('CLIENTE', 'Confirma eliminar el préstamo ' + id + ' del cliente ' + name.bold() + '?', function () {
+    alertify.confirm('PRÉSTAMO', 'Confirma eliminar el préstamo ' + id + ' del cliente ' + name.bold() + '?', function () {
 
         param = {
             IdPrestamo: id
