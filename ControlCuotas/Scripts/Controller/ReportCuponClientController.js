@@ -106,7 +106,7 @@ function SearchCuponClient(numCbo) {
                 if (numCbo == 1) {
                     $('#pNumPrestamo').text(data[0].id);
                     $('#pNameClient').text(data[0].name);
-                    $('#pTelClient').text(data[0].phone);
+                    $('#pTelClient').text('Cel.3764185336 3764298491');
                     $('#pDomicilioClient').text(data[0].address);
                     $('#pZoneClient').text(data[0].zone);
                     $('#pCuota').text(data[0].totalCuota);
@@ -121,7 +121,7 @@ function SearchCuponClient(numCbo) {
                 if (numCbo == 2) {
                     $('#pNumPrestamo2').text(data[0].id);
                     $('#pNameClient2').text(data[0].name);
-                    $('#pTelClient2').text(data[0].phone);
+                    $('#pTelClient2').text('Cel.3764185336 3764298491');
                     $('#pDomicilioClient2').text(data[0].address);
                     $('#pZoneClient2').text(data[0].zone);
                     $('#pCuota2').text(data[0].totalCuota);
@@ -135,7 +135,7 @@ function SearchCuponClient(numCbo) {
                 if (numCbo == 3) {
                     $('#pNumPrestamo3').text(data[0].id);
                     $('#pNameClient3').text(data[0].name);
-                    $('#pTelClient3').text(data[0].phone);
+                    $('#pTelClient3').text('Cel.3764185336 3764298491');
                     $('#pDomicilioClient3').text(data[0].address);
                     $('#pZoneClient3').text(data[0].zone);
                     $('#pCuota3').text(data[0].totalCuota);
@@ -149,7 +149,7 @@ function SearchCuponClient(numCbo) {
                 if (numCbo == 4) {
                     $('#pNumPrestamo4').text(data[0].id);
                     $('#pNameClient4').text(data[0].name);
-                    $('#pTelClient4').text(data[0].phone);
+                    $('#pTelClient4').text('Cel.3764185336 3764298491');
                     $('#pDomicilioClient4').text(data[0].address);
                     $('#pZoneClient4').text(data[0].zone);
                     $('#pCuota4').text(data[0].totalCuota);

@@ -31,9 +31,18 @@ namespace ControlCuotas.Controllers
 
                 if (dt.Rows.Count > 0)
                 {
+                    int isAuth = System.Web.HttpContext.Current.Session["idUser"] != null ? (int)System.Web.HttpContext.Current.Session["idUser"] : 0;
+
+                    if (isAuth == (int)dt.Rows[0]["id"])
+                    {
+                        data.message = "El usuario "+ user +" ya esta logueado";
+                        data.status = "error";
+                        return Json(data, JsonRequestBehavior.AllowGet);
+                    }
 
                     System.Web.HttpContext.Current.Session["idUser"] = dt.Rows[0]["id"];
                     System.Web.HttpContext.Current.Session["userName"] = dt.Rows[0]["name"];
+                    System.Web.HttpContext.Current.Session["idProfile"] = dt.Rows[0]["idProfile"];
 
                     data.url = Url.Action("Principal", "Prestamo");
                 }

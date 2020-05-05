@@ -12,11 +12,13 @@ namespace ControlCuotas.Controllers
     public class PrestamoController : Controller
     {
         public string userNameLogin = "";
-        public int? userIdLogin;
+        public int userIdLogin;
+        public int userIdProfile;
         public PrestamoController()
         {
             userNameLogin = System.Web.HttpContext.Current.Session["userName"]?.ToString();
             userIdLogin = System.Web.HttpContext.Current.Session["idUser"] != null ? (int)System.Web.HttpContext.Current.Session["idUser"] : 0;
+            userIdProfile = System.Web.HttpContext.Current.Session["idProfile"] != null ? (int)System.Web.HttpContext.Current.Session["idProfile"] : 0;
         }
 
         DataTable dt = null;
@@ -24,7 +26,6 @@ namespace ControlCuotas.Controllers
         public int idUser = 0;
         ResultModel data = new ResultModel();
         Service.PrestamoService Service = new Service.PrestamoService();
-        LoginController loginUser = new LoginController();
 
         Service.ClientService ServiceClient = new Service.ClientService();
         // GET: Cuotas
@@ -42,7 +43,7 @@ namespace ControlCuotas.Controllers
             try
             {
 
-                dt = Service.GetAllPrestamo();
+                dt = Service.GetAllPrestamo(userIdLogin, userIdProfile);
 
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
@@ -62,7 +63,7 @@ namespace ControlCuotas.Controllers
             try
             {
 
-                dt = ServiceClient.GetClientCombo();
+                dt = ServiceClient.GetClientCombo(userIdLogin, userIdProfile);
 
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
@@ -90,7 +91,7 @@ namespace ControlCuotas.Controllers
                     return Json(data, JsonRequestBehavior.AllowGet);
                 }
 
-                dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateStart, dateEnd, userNameLogin) ;
+                dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateStart, dateEnd, userNameLogin, userIdLogin) ;
 
                 if ( (int)dt.Rows[0]["result"] == 0)
                 {
@@ -162,7 +163,7 @@ namespace ControlCuotas.Controllers
             try
             {
 
-                dt = Service.SaveCuotaForId(IdCuota, fecha, observation, userNameLogin);
+                dt = Service.SaveCuotaForId(IdCuota, fecha, observation, userNameLogin, userIdLogin);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {
@@ -213,7 +214,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.SavePrestamoForId(IdPrestamo, dateStart, dateEnd, userNameLogin);
+                dt = Service.SavePrestamoForId(IdPrestamo, dateStart, dateEnd, userNameLogin, userIdLogin);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {

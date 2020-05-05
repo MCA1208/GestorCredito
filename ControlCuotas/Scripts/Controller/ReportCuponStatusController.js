@@ -100,7 +100,7 @@ function SearchReportprincipal() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
                     
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td >' + value.name + '</td><td >' + value.dni + '</td><td >' + value.address + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + value.totalPrestamo + '</td><td>' + value.totalPagado + '</td><td>' + value.Saldo + '</td><td>' + value.Copia + '</td>';
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td >' + value.name + '</td><td >' + value.dni + '</td><td >' + value.address + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + value.totalPrestamo + '</td><td>' + value.totalPagado + '</td><td>' + value.Saldo + '</td>';
 
                 });
 

@@ -27,6 +27,7 @@ namespace ControlCuotas.Models
             public string spAddZone         = "spAddZone";
             public string spGetZoneById     = "spGetZoneById";
             public string spModifyZone      = "spModifyZone";
+            public string spDeleteZone      = "spDeleteZone";
 
             //PRESTAMO
             public string spAddPrestamo     = "spAddPrestamo";

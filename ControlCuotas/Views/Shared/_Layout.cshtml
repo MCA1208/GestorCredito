@@ -34,6 +34,7 @@
                 </li>
                 <li><a href="@Url.Action("Principal","Zone")"><i class="fas fa-globe-americas"></i> Zonas</a></li>
                 <li><a href="#" onclick="location.href='@Url.Action("LogOut","Login")'"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+                <li style="float:right; padding-right:10px; color:cadetblue; font-weight: bold;padding-top:10px"><i class="fas fa-user"></i> @System.Web.HttpContext.Current.Session["userName"]</li>
             </ul>
         </nav>
 

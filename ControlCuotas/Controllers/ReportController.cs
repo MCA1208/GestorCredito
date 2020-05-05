@@ -11,6 +11,15 @@ namespace ControlCuotas.Controllers
 {
     public class ReportController : Controller
     {
+        public string userNameLogin = "";
+        public int userIdLogin;
+        public int userIdProfile;
+        public ReportController()
+        {
+            userNameLogin = System.Web.HttpContext.Current.Session["userName"]?.ToString();
+            userIdLogin = System.Web.HttpContext.Current.Session["idUser"] != null ? (int)System.Web.HttpContext.Current.Session["idUser"] : 0;
+            userIdProfile = System.Web.HttpContext.Current.Session["idProfile"] != null ? (int)System.Web.HttpContext.Current.Session["idProfile"] : 0;
+        }
 
         DataTable dt = null;
         public int idUser = 0;
@@ -69,7 +78,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.GetReportPrincipal(IdClient, IdZone, dateFrom, DateUp);
+                dt = Service.GetReportPrincipal(IdClient, IdZone, dateFrom, DateUp, userIdLogin, userIdProfile);
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch (Exception ex)
@@ -87,7 +96,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.GetReportCuotaStatus(IdClient, IdZone, DateStart, DateEnd);
+                dt = Service.GetReportCuotaStatus(IdClient, IdZone, DateStart, DateEnd, userIdLogin, userIdProfile);
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch (Exception ex)
@@ -104,7 +113,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.GetReportGanancia(DateStart, DateEnd);
+                dt = Service.GetReportGanancia(DateStart, DateEnd, userIdLogin, userIdProfile);
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch (Exception ex)
@@ -148,7 +157,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.GetReportSummaryClient(IdClient);
+                dt = Service.GetReportSummaryClient(IdClient, userIdLogin, userIdProfile);
 
                 if (dt.Rows.Count == 0)
                 {
@@ -196,7 +205,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.GetReportCobranza(IdZone);
+                dt = Service.GetReportCobranza(IdZone, userIdLogin, userIdProfile);
 
                 if (dt.Rows.Count == 0)
                 {

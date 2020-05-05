@@ -12,11 +12,13 @@ namespace ControlCuotas.Controllers
     public class ZoneController : Controller
     {
         public string userNameLogin = "";
-        public int? userIdLogin;
+        public int userIdLogin;
+        public int userIdProfile;
         public ZoneController()
         {
             userNameLogin = System.Web.HttpContext.Current.Session["userName"]?.ToString();
             userIdLogin = System.Web.HttpContext.Current.Session["idUser"] != null ? (int)System.Web.HttpContext.Current.Session["idUser"] : 0;
+            userIdProfile = System.Web.HttpContext.Current.Session["idProfile"] != null ? (int)System.Web.HttpContext.Current.Session["idProfile"] : 0;
         }
 
         DataTable dt = null;
@@ -38,7 +40,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {              
-                dt = Service.GetAllZone();
+                dt = Service.GetAllZone(userIdLogin, userIdProfile);
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch (Exception ex)
@@ -55,7 +57,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.AddZone( description, userNameLogin);
+                dt = Service.AddZone( description, userNameLogin, userIdLogin);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {
@@ -102,7 +104,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.ModifyZone(IdZone, Description, userNameLogin);
+                dt = Service.ModifyZone(IdZone, Description, userNameLogin, userIdLogin);
 
                 data.result = dt.Rows[0][0];
 
@@ -128,6 +130,37 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+
+        public JsonResult DeleteZone(int IdZone)
+        {
+            try
+            {
+                dt = Service.DeleteZone(IdZone);
+
+                data.result = dt.Rows[0][0];
+
+                if ((int)dt.Rows[0][0] == 1)
+                {
+                    data.message = "Se modificó correctamente";
+                }
+                else
+                {
+                    data.message = "Error en la operación, o no se puede eliminar porque la zona tiene clientes asociados";
+                    data.status = "error";
+                }
+
+                data.result = JsonConvert.SerializeObject(data, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
         //End Class
     }
 }

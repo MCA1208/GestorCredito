@@ -12,11 +12,13 @@ namespace ControlCuotas.Controllers
     public class ClientController : Controller
     {
         public string userNameLogin = "";
-        public int? userIdLogin;
+        public int userIdLogin;
+        public int userIdProfile;
         public ClientController()
         {
             userNameLogin = System.Web.HttpContext.Current.Session["userName"]?.ToString();
             userIdLogin = System.Web.HttpContext.Current.Session["idUser"] != null ? (int)System.Web.HttpContext.Current.Session["idUser"] : 0;
+            userIdProfile = System.Web.HttpContext.Current.Session["idProfile"] != null ? (int)System.Web.HttpContext.Current.Session["idProfile"] : 0;
         }
 
         DataTable dt = null;
@@ -57,7 +59,7 @@ namespace ControlCuotas.Controllers
                 }
 
 
-                dt = ServiceClient.CreateClient(name, dni, address, phone, zone, birthDate, married, conyuge, dniConyuge, cboSitCred, userNameLogin);
+                dt = ServiceClient.CreateClient(name, dni, address, phone, zone, birthDate, married, conyuge, dniConyuge, cboSitCred, userNameLogin, userIdLogin);
 
                 if ((int)dt.Rows[0]["result"] == 0)
                 {
@@ -85,17 +87,12 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                //idUser = (int)System.Web.HttpContext.Current.Session["idUser"];
-
-
-                dt = Service.GetAllClient();
-
-
+                dt = ServiceClient.GetAllClient(userIdLogin, userIdProfile);
 
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch (Exception ex)
-            {
+            { 
                 data.message = ex.Message;
                 data.status = "error";
                 return Json(data, JsonRequestBehavior.AllowGet);
@@ -111,7 +108,7 @@ namespace ControlCuotas.Controllers
             try
             {
 
-                dt = ServiceClient.GetComboZona();
+                dt = ServiceClient.GetComboZona(userIdLogin, userIdProfile);
 
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
@@ -154,7 +151,7 @@ namespace ControlCuotas.Controllers
             try
             {
 
-                dt = ServiceClient.ModifyClient(IdClient, name, dni, address, phone, zone, birthDate, married, conyuge,dniConyuge, cboSitCred, userNameLogin);
+                dt = ServiceClient.ModifyClient(IdClient, name, dni, address, phone, zone, birthDate, married, conyuge,dniConyuge, cboSitCred, userNameLogin, userIdLogin);
 
                 if ((int)dt.Rows[0][0] == 1){
 

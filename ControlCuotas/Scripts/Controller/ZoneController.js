@@ -22,7 +22,8 @@ function GetAllZone() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditZone(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditZone(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                        + '<button class="btn btn-danger" id="" type="button" onclick="DeleteZone(' + value.id + ', ' + `'${value.description}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
 
@@ -154,4 +155,36 @@ function showModalAddZone() {
 
     $('#AddZonatModal').modal('show');
 
+}
+
+function DeleteZone(idZone, description) {
+
+    alertify.confirm('ZONA', 'Confirma eliminar la zona ' + description.bold() + '?', function () {
+
+        param = {
+            IdZone: idZone
+        };
+
+        $.post(directories.zona.DeleteZone, param)
+            .done(function (data) {
+                if (data.status !== "error") {
+
+                    alertify.success(data.message);
+                    GetAllZone();
+
+                }
+                else {
+                    alertify.error(data.message);
+
+                }
+
+            })
+            .fail(function (data) {
+                alertify.error(data.statusText);
+            });
+
+    },
+        function () {
+            alertify.error('Se canceló la operación');
+        });
 }

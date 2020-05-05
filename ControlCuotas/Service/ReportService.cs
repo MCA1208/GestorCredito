@@ -16,7 +16,7 @@ namespace ControlCuotas.Service
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
 
-        public DataTable GetReportPrincipal(int? IdClient, int? IdZone, DateTime? dateFrom, DateTime? DateUp)
+        public DataTable GetReportPrincipal(int? IdClient, int? IdZone, DateTime? dateFrom, DateTime? DateUp, int idUser, int idProfile)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spGetReportPrincipal, con);
@@ -25,6 +25,8 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@idZone", IdZone);
             comando.Parameters.AddWithValue("@dateFrom", dateFrom);
             comando.Parameters.AddWithValue("@dateUp", DateUp);
+            comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@idProfile", idProfile);
 
             comando.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -33,7 +35,7 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable GetReportCuotaStatus(int? IdClient, int? IdZone, DateTime? DateStart, DateTime? DateEnd)
+        public DataTable GetReportCuotaStatus(int? IdClient, int? IdZone, DateTime? DateStart, DateTime? DateEnd, int idUser, int idProfile)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spReportCuponStatus, con);
@@ -42,6 +44,8 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@idZone", IdZone);
             comando.Parameters.AddWithValue("@dateStart", DateStart);
             comando.Parameters.AddWithValue("@dateEnd", DateEnd);
+            comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@idProfile", idProfile);
 
             comando.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -50,12 +54,14 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable GetReportGanancia( DateTime? DateStart, DateTime? DateEnd)
+        public DataTable GetReportGanancia( DateTime? DateStart, DateTime? DateEnd, int idUser, int idProfile)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spReportInvestmentAndProfit, con);
             comando.Parameters.AddWithValue("@dateStart", DateStart);
             comando.Parameters.AddWithValue("@dateEnd", DateEnd);
+            comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@idProfile", idProfile);
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -76,11 +82,13 @@ namespace ControlCuotas.Service
             return dt;
 
         }
-        public DataTable GetReportSummaryClient(int IdClient)
+        public DataTable GetReportSummaryClient(int IdClient, int idUser, int idProfile)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spReportSummaryClient, con);
             comando.Parameters.AddWithValue("@IdClient", IdClient);
+            comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@idProfile", idProfile);
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
@@ -102,11 +110,13 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable GetReportCobranza(int IdZone)
+        public DataTable GetReportCobranza(int IdZone, int idUser, int idProfile)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spReportCobranza, con);
             comando.Parameters.AddWithValue("@IdZone", IdZone);
+            comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@idProfile", idProfile);
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);

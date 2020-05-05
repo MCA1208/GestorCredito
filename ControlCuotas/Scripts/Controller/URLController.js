@@ -28,7 +28,8 @@
         getAllZone: 'GetAllZone',
         AddZone: 'AddZone',
         GetZoneById: 'GetZoneById',
-        ModifyZone: 'ModifyZone'
+        ModifyZone: 'ModifyZone',
+        DeleteZone: 'DeleteZone'
     },
     report: {
 
