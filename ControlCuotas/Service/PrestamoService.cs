@@ -90,7 +90,7 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable SaveCuotaForId(int IdCuota, DateTime? fecha, string observation, string userLogin, int idUser)
+        public DataTable SaveCuotaForId(int IdCuota, DateTime? fecha, string observation, string observationPartial, string userLogin, int idUser)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spSaveCuotaForId, con);
@@ -98,6 +98,7 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@IdCuota", IdCuota);
             comando.Parameters.AddWithValue("@fecha", fecha);
             comando.Parameters.AddWithValue("@observation", observation);
+            comando.Parameters.AddWithValue("@observationPartial", observationPartial);
             comando.Parameters.AddWithValue("@userLogin", userLogin);
             comando.Parameters.AddWithValue("@idUser", idUser);
             SqlDataAdapter da = new SqlDataAdapter(comando);

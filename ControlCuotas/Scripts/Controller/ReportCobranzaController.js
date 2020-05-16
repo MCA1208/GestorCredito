@@ -74,7 +74,7 @@ function SearchReportCobranza() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.IdPrestamo + '</td><td>' + value.name + '</td><td >' + value.amount + '</td><td ></td><td >';
+                    _html += '<tr><td>' + value.IdPrestamo + '</td><td>' + value.name + '</td><td >' + value.amount + '</td><td >' + value.saldo + '</td><td></td><td >';
 
                     CantidadCupon++;
                     TotalCupon = TotalCupon + value.amount;

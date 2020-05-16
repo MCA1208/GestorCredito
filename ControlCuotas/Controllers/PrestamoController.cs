@@ -158,12 +158,12 @@ namespace ControlCuotas.Controllers
         }
 
         
-        public JsonResult SaveCuotaForId(int IdCuota, DateTime? fecha, string observation)
+        public JsonResult SaveCuotaForId(int IdCuota, DateTime? fecha, string observation, string observationPartial)
         {
             try
             {
 
-                dt = Service.SaveCuotaForId(IdCuota, fecha, observation, userNameLogin, userIdLogin);
+                dt = Service.SaveCuotaForId(IdCuota, fecha, observation, observationPartial, userNameLogin, userIdLogin);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {

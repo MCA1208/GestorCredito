@@ -146,7 +146,7 @@
     <div class="modal-dialog" role="document" style="max-width:60%">
         <div class="modal-content" style="color:black">
             <div class="modal-header">
-                <h5 class="modal-title" id="">Editar Cuota</h5>
+                <h5 class="modal-title" id="titleCuota">Editar Cuota de: </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -163,9 +163,16 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Observación de pago</th>
+                                <th>pago</th>
                                 <td>
-                                    <input style="max-width:100%" class="form-control" id="txtObservation" type="text">
+                                    <input style="max-width:100%" class="form-control" id="txtObservation" type="number">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Observación de pago parcial</th>
+                                <td>
+                                    @*<textarea name="textarea" rows="10" cols="50">Write something here</textarea>*@
+                                    <textarea style="max-width:100%" rows="10"  class="form-control" id="txtObservationPartial" type="text"></textarea>
                                 </td>
                             </tr>
 

@@ -176,11 +176,11 @@ function GetPrestamoDetail(id) {
                     if (value.paymentDate === null) {
 
                         value.paymentDate = '-';
-                        _html += '<tr><td>' + value.id + '</td><td>' + value.number + '</td><td >' + value.amount + '</td><td >' + value.status + '</td><td>' + value.paymentDate + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-ban"></i></span></a>' + '</td ><td>' + value.observation + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditCuota(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
+                        _html += '<tr><td>' + value.id + '</td><td>' + value.number + '</td><td >' + value.amount + '</td><td >' + value.status + '</td><td>' + value.paymentDate + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-ban"></i></span></a>' + '</td ><td>' + value.observation + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditCuota(' + value.id + ',' + value.number +');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
                     }
                     else {
 
-                        _html += '<tr><td>' + value.id + '</td><td>' + value.number + '</td><td >' + value.amount + '</td><td >' + value.status + '</td><td>' + value.paymentDate + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-check-circle"></i></span></a>' + '</td ><td>' + value.observation + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditCuota(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
+                        _html += '<tr><td>' + value.id + '</td><td>' + value.number + '</td><td >' + value.amount + '</td><td >' + value.status + '</td><td>' + value.paymentDate + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-check-circle"></i></span></a>' + '</td ><td>' + value.observation + '</td><td>' + '<button type="button" class="btn btn-primary" onclick="showModalEditCuota(' + value.id + ',' + value.number +');"><i class="fas fa-edit"></i> Editar </button>' + '</td>';
                     }
                 });
 
@@ -213,17 +213,17 @@ function GetPrestamoDetail(id) {
 
 }
 
-function showModalEditCuota(id) {
+function showModalEditCuota(id, number) {
 
     $('#EditCuotaoModal').modal('show');
 
     $('#txtIdCuota').val(id);
 
-    GetCuotaDetail(id);
+    GetCuotaDetail(id, number);
 
 }
 
-function GetCuotaDetail(id) {
+function GetCuotaDetail(id, number) {
 
     param = {
         IdCuota: id
@@ -237,6 +237,8 @@ function GetCuotaDetail(id) {
                 var b = data[0].observation;
                 $('#txtFechaCuota').val(data[0].paymentDate);
                 $('#txtObservation').val(data[0].observation);
+                $('#txtObservationPartial').val(data[0].observationPartial);
+                $('#titleCuota').text('Editar cuota N°: ' + number);
 
             }
             else {
@@ -256,7 +258,8 @@ function SaveCuotaForId() {
     param = {                 
         IdCuota: $('#txtIdCuota').val(),
         fecha: $('#txtFechaCuota').val(),
-        observation: $('#txtObservation').val()
+        observation: $('#txtObservation').val(),
+        observationPartial: $('#txtObservationPartial').val()
 
     };
 
