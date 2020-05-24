@@ -49,6 +49,7 @@ namespace ControlCuotas.Models
             public string spReportSummaryClient = "spReportSummaryClient";
             public string spReportSummaryDetail = "spReportSummaryDetail";
             public string spReportCobranza = "spReportCobranza";
+            public string spReportIrregularPayment ="spReportIrregularPayment";
 
         }
     }

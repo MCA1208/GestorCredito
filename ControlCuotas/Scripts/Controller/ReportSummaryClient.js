@@ -119,7 +119,7 @@ function showModalSummaryDetail(Id, IdPrestamo, name, dateStart, dateEnd, total,
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
                     
-                    _html += '<tr><td>' + value.number + '</td><td>' + value.statusPago + '</td><td >' + value.paymentDate + '</td><td >' + value.amount + '</td>';
+                    _html += '<tr><td>' + value.number + '</td><td>' + value.statusPago + '</td><td >' + value.paymentDate + '</td><td >' + value.observation + '</td>';
 
                 });
 

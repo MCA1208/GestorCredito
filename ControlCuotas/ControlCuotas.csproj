@@ -213,6 +213,7 @@
     <Content Include="Scripts\Controller\ReportCuponClientController.js" />
     <Content Include="Scripts\Controller\ReportCuponStatusController.js" />
     <Content Include="Scripts\Controller\ReportInvestmentAndProfitController.js" />
+    <Content Include="Scripts\Controller\ReportIrregularPaymentController.js" />
     <Content Include="Scripts\Controller\ReportPrincipal.js" />
     <Content Include="Scripts\Controller\ReportSummaryClient.js" />
     <Content Include="Scripts\Controller\URLController.js" />
@@ -272,6 +273,7 @@
     <Content Include="Views\Report\ReportCuponClient.cshtml" />
     <Content Include="Views\Report\ReportSummaryClient.cshtml" />
     <Content Include="Views\Report\ReportCobranza.cshtml" />
+    <Content Include="Views\Report\ReportIrregularPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

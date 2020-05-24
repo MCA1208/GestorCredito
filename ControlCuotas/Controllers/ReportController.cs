@@ -74,6 +74,14 @@ namespace ControlCuotas.Controllers
             return View();
         }
 
+        public ActionResult ReportIrregularPayment()
+        {
+            if (System.Web.HttpContext.Current.Session["idUser"] == null)
+                return RedirectToAction("index", "Login");
+
+            return View();
+        }
+
         public JsonResult GetReportPrincipal(int? IdClient, int? IdZone, DateTime? dateFrom, DateTime? DateUp)
         {
             try
@@ -225,5 +233,29 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-    }//Fin Class
+        public JsonResult GetReportIrregularPayment(int? IdClient, int? IdZone)
+        {
+            try
+            {
+                dt = Service.GetReportIrregularPayment(IdClient, IdZone);
+
+                if (dt.Rows.Count == 0)
+                {
+                    data.message = "Búsqueda sin resultados";
+                    data.status = "error";
+                }
+
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+    }//Fin Class 
 }

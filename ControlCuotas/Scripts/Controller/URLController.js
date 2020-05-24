@@ -39,7 +39,8 @@
         GetReportCuponClient: 'GetReportCuponClient',
         GetReportSummaryClient: 'GetReportSummaryClient',
         GetReportSummaryDetail: 'GetReportSummaryDetail',
-        GetReportCobranza: 'GetReportCobranza'
+        GetReportCobranza: 'GetReportCobranza',
+        GetReportIrregularPayment: 'GetReportIrregularPayment' 
     }
 
 };

@@ -48,7 +48,7 @@ namespace ControlCuotas.Controllers
                 }
                 else
                 {
-                    data.message = "las Credenciales ingresadas no son validas";
+                    data.message = "Las credenciales ingresadas no son validas";
                     data.status = "error";
                     return Json(data, JsonRequestBehavior.AllowGet);
                 }
