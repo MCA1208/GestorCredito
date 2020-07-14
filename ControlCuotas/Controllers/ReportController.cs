@@ -237,7 +237,7 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.GetReportIrregularPayment(IdClient, IdZone);
+                dt = Service.GetReportIrregularPayment(IdClient, IdZone, userIdLogin, userIdProfile);
 
                 if (dt.Rows.Count == 0)
                 {

@@ -125,12 +125,14 @@ namespace ControlCuotas.Service
 
         }
 
-        public DataTable GetReportIrregularPayment(int? IdClient, int? IdZone)
+        public DataTable GetReportIrregularPayment(int? IdClient, int? IdZone, int userIdLogin, int userIdProfile)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spReportIrregularPayment, con);
             comando.Parameters.AddWithValue("@idClient", IdClient);
             comando.Parameters.AddWithValue("@idZone", IdZone);
+            comando.Parameters.AddWithValue("@idUser", userIdLogin);
+            comando.Parameters.AddWithValue("@idProfile", userIdProfile);
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
