@@ -51,6 +51,14 @@ namespace ControlCuotas.Models
             public string spReportCobranza = "spReportCobranza";
             public string spReportIrregularPayment ="spReportIrregularPayment";
 
+            //VENDOR
+            public string spGetAllVendor = "spGetAllVendor";
+            public string spAddVendor = "spAddVendor";
+            public string spModifyVendor = "spModifyVendor";
+            public string spDeleteVendor = "spDeleteVendor";
+            public string spGetVendorById = "spGetVendorById";
+
+
         }
     }
 }

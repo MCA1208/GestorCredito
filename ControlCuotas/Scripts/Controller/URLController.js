@@ -41,6 +41,13 @@
         GetReportSummaryDetail: 'GetReportSummaryDetail',
         GetReportCobranza: 'GetReportCobranza',
         GetReportIrregularPayment: 'GetReportIrregularPayment' 
+    },
+    vendor: {
+        GetAllVendor: 'GetAllVendor',
+        AddVendor: 'AddVendor',
+        ModifyVendor: 'ModifyVendor',
+        GetVendorById: 'GetVendorById',
+        DeleteVendor: 'DeleteVendor'
     }
 
 };

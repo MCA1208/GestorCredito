@@ -68,7 +68,7 @@ namespace ControlCuotas.Controllers
                     return Json(data, JsonRequestBehavior.AllowGet);
                 }
 
-                data.message = "Se creo el cliente con exito";
+                data.message = "Se creó el cliente con éxito";
 
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }

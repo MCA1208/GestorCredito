@@ -124,6 +124,7 @@
     <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Controllers\ZoneController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -138,6 +139,7 @@
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\PrestamoService.cs" />
     <Compile Include="Service\ReportService.cs" />
+    <Compile Include="Service\VendorService.cs" />
     <Compile Include="Service\ZoneService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +219,7 @@
     <Content Include="Scripts\Controller\ReportPrincipal.js" />
     <Content Include="Scripts\Controller\ReportSummaryClient.js" />
     <Content Include="Scripts\Controller\URLController.js" />
+    <Content Include="Scripts\Controller\VendorController.js" />
     <Content Include="Scripts\Controller\ZoneController.js" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -274,6 +277,7 @@
     <Content Include="Views\Report\ReportSummaryClient.cshtml" />
     <Content Include="Views\Report\ReportCobranza.cshtml" />
     <Content Include="Views\Report\ReportIrregularPayment.cshtml" />
+    <Content Include="Views\Vendor\Principal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
