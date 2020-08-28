@@ -26,7 +26,7 @@ function GetAllVendor() {
                 //data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.dni + '</td><td>' + value.birthday + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditVendor(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.nickName + '</td><td>' + value.dni + '</td><td>' + value.birthday + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditVendor(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
                         + '<button class="btn btn-danger" id="" type="button" onclick="DeleteVendor(' + value.id + ', ' + `'${value.name}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
@@ -75,6 +75,7 @@ function ShowModalEditVendor(id) {
                 $('#txtName').val(data[0].name);
                 $('#txtDNI').val(data[0].dni);
                 $('#txtBirthday').val(data[0].birthday);
+                $('#txtNick').val(data[0].nickName);
       
             }
             else {
@@ -90,16 +91,18 @@ function ShowModalEditVendor(id) {
 
 function AddVendor() {
 
-    if ($('#txtNameAdd').val() === "" || $('#txtDNIAdd').val() === "" || $('#txtBirthdayAdd').val() === "") {
+    if ($('#txtNameAdd').val() === "" || $('#txtDNIAdd').val() === "" || $('#txtBirthdayAdd').val() === "" || $('#txtNickAdd').val() == "" ) {
 
-        alertify.alert("Todos los campos son obligatorios");
+        alertify.alert("Alterta vendedor","Todos los campos son obligatorios");
         return;
     }
 
     param = {
         name: $('#txtNameAdd').val(),
+        nick: $('#txtNickAdd').val(),
         dni: $('#txtDNIAdd').val(),
         birthDay: $('#txtBirthdayAdd').val()
+        
     };
 
     $.post(directories.vendor.AddVendor, param)
@@ -155,10 +158,15 @@ function DeleteVendor(id, name) {
 }
 
 function ModifyVendor() {
+    if ($('#txtName').val() === "" || $('#txtDNI').val() === "" || $('#txtBirthday').val() === "" || $('#txtNick').val() == "") {
 
+        alertify.alert("Alterta vendedor", "Todos los campos son obligatorios");
+        return;
+    }
     param = {
         IdVendor: $('#txtIdVendor').val(),
         name: $('#txtName').val(),
+        nick: $('#txtNick').val(),
         dni: $('#txtDNI').val(),
         birthday: $('#txtBirthday').val()
     };

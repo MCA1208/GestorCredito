@@ -35,11 +35,11 @@ namespace ControlCuotas.Controllers
             return View();
         }
 
-        public JsonResult AddVendor(string name, int dni, DateTime birthDay )
+        public JsonResult AddVendor(string name, string nick, int dni, DateTime birthDay )
         {
             try
             {
-                dt = service.AddVendor(name, dni, birthDay,userNameLogin, userIdLogin);
+                dt = service.AddVendor(name, nick, dni, birthDay,userNameLogin, userIdLogin);
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
                 data.message = "Se creó el vendedor con éxito";
               
@@ -71,12 +71,12 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ModifyVendor(int IdVendor, string name, int dni, DateTime birthday)
+        public JsonResult ModifyVendor(int IdVendor, string name,string nick, int dni, DateTime birthday)
         {
 
             try
             {
-                dt = service.ModifyVendor(IdVendor, name, dni, birthday, userNameLogin, userIdLogin);
+                dt = service.ModifyVendor(IdVendor, name, nick, dni, birthday, userNameLogin, userIdLogin);
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
                 if ((int)dt.Rows[0][0] == 1)
                 {

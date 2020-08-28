@@ -17,7 +17,7 @@ namespace ControlCuotas.Service
 
 
 
-        public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd, string userLogin, int idUser)
+        public DataTable AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd, string userLogin, int idUser, int idVendor)
         {
             dt.Clear();
             con = new SqlConnection(Connection.stringConn);
@@ -33,6 +33,7 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@dateEnd", dateEnd);
             comando.Parameters.AddWithValue("@userLogin", userLogin);
             comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@idVendor", idVendor);
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
@@ -119,7 +120,7 @@ namespace ControlCuotas.Service
             return dt;
         }
 
-        public DataTable SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd, string userLogin, int idUser)
+        public DataTable SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd, string userLogin, int idUser, int idVendor)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spSavePrestamoForId, con);
@@ -129,6 +130,7 @@ namespace ControlCuotas.Service
             comando.Parameters.AddWithValue("@dateEnd", dateEnd);
             comando.Parameters.AddWithValue("@userLogin", userLogin);
             comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@idVendor", idVendor);
             SqlDataAdapter da = new SqlDataAdapter(comando);
 
             da.Fill(dt);

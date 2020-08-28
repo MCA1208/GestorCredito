@@ -96,17 +96,26 @@ function SearchCuponClient(numCbo) {
         .done(function (data) {
             if (data.status !== "error") {
 
-                //$('#tblCuponCliente > tbody').html('');
-                //$('#tblCuponCliente2 > tbody').html('');
-                //$('#tblCuponCliente3 > tbody').html('');
                 var _html = '';
                 _html += '<tbody class="customtable" style= text-align:left;>';
                 data = JSON.parse(data.result);
 
+                var totalPrestamo = 0;
+                var totalPagado = 0;
+                var saldo = 0;
+                if (data[0].totalPrestamo !== null)
+                    totalPrestamo = data[0].totalPrestamo.toFixed(2);
+
+                if (data[0].totalPagado !== null)
+                    totalPagado = data[0].totalPagado.toFixed(2);
+
+                if (data[0].Saldo !== null)
+                    saldo = data[0].Saldo.toFixed(2);
+
                 if (numCbo == 1) {
                     $('#pNumPrestamo').text(data[0].id);
                     $('#pNameClient').text(data[0].name);
-                    $('#pTelClient').text('Cel.3764185336 3764298491');
+                    $('#pTelClient').text('3764185336');
                     $('#pDomicilioClient').text(data[0].address);
                     $('#pZoneClient').text(data[0].zone);
                     $('#pCuota').text(data[0].totalCuota);
@@ -116,88 +125,100 @@ function SearchCuponClient(numCbo) {
                     $('#pDomicilioClient1').text(data[0].address);
                     $('#pZoneClinet1').text(data[0].zone)
                     $('#pCuota1').text(data[0].totalCuota);
+                    $('#pDateStart1').text(data[0].dateStart);
+                    $('#pDateEnd1').text(data[0].dateEnd);
+                    $('#pTotal1').text(totalPrestamo);
+                    $('#pPagado1').text(totalPagado);
+                    $('#pSaldo1').text(saldo);
+                    $('#pCuo1').text(data[0].cuotaPayment);
+                    $('#pDateStart11').text(data[0].dateStart);
+                    $('#pDateEnd11').text(data[0].dateEnd);
+                    $('#pTotal11').text(totalPrestamo);
+                    $('#pPagado11').text(totalPagado);
+                    $('#pSaldo11').text(saldo);
+                    $('#pCuo11').text(data[0].cuotaPayment);
 
                 }
                 if (numCbo == 2) {
                     $('#pNumPrestamo2').text(data[0].id);
                     $('#pNameClient2').text(data[0].name);
-                    $('#pTelClient2').text('Cel.3764185336 3764298491');
+                    $('#pTelClient2').text('3764185336');
                     $('#pDomicilioClient2').text(data[0].address);
                     $('#pZoneClient2').text(data[0].zone);
                     $('#pCuota2').text(data[0].totalCuota);
-                    $('#pNumPrestamo2_2').text(data[0].id);
-                    $('#pNameClient2_2').text(data[0].name);
-                    $('#pTelClient2_2').text(data[0].phone);
-                    $('#pDomicilioClient2_2').text(data[0].address);
-                    $('#pZoneClinet2_2').text(data[0].zone)
-                    $('#pCuota2_2').text(data[0].totalCuota);
+                    $('#pNumPrestamo22').text(data[0].id);
+                    $('#pNameClient22').text(data[0].name);
+                    $('#pTelClient22').text(data[0].phone);
+                    $('#pDomicilioClient22').text(data[0].address);
+                    $('#pZoneClinet22').text(data[0].zone)
+                    $('#pCuota22').text(data[0].totalCuota);
+                    $('#pDateStart2').text(data[0].dateStart);
+                    $('#pDateEnd2').text(data[0].dateEnd);
+                    $('#pTotal2').text(totalPrestamo);
+                    $('#pPagado2').text(totalPagado);
+                    $('#pSaldo2').text(saldo);
+                    $('#pCuo2').text(data[0].cuotaPayment);
+                    $('#pDateStart22').text(data[0].dateStart);
+                    $('#pDateEnd22').text(data[0].dateEnd);
+                    $('#pTotal22').text(totalPrestamo);
+                    $('#pPagado22').text(totalPagado);
+                    $('#pSaldo22').text(saldo);
+                    $('#pCuo22').text(data[0].cuotaPayment);
                 }
                 if (numCbo == 3) {
                     $('#pNumPrestamo3').text(data[0].id);
                     $('#pNameClient3').text(data[0].name);
-                    $('#pTelClient3').text('Cel.3764185336 3764298491');
+                    $('#pTelClient3').text('3764185336');
                     $('#pDomicilioClient3').text(data[0].address);
                     $('#pZoneClient3').text(data[0].zone);
                     $('#pCuota3').text(data[0].totalCuota);
-                    $('#pNumPrestamo3_3').text(data[0].id);
-                    $('#pNameClient3_3').text(data[0].name);
-                    $('#pTelClient3_3').text(data[0].phone);
-                    $('#pDomicilioClient3_3').text(data[0].address);
-                    $('#pZoneClinet3_3').text(data[0].zone)
-                    $('#pCuota3_3').text(data[0].totalCuota);
+                    $('#pNumPrestamo33').text(data[0].id);
+                    $('#pNameClient33').text(data[0].name);
+                    $('#pTelClient33').text(data[0].phone);
+                    $('#pDomicilioClient33').text(data[0].address);
+                    $('#pZoneClinet33').text(data[0].zone)
+                    $('#pCuota33').text(data[0].totalCuota);
+                    $('#pDateStart3').text(data[0].dateStart);
+                    $('#pDateEnd3').text(data[0].dateEnd);
+                    $('#pTotal3').text(totalPrestamo);
+                    $('#pPagado3').text(totalPagado);
+                    $('#pSaldo3').text(saldo);
+                    $('#pCuo3').text(data[0].cuotaPayment);
+                    $('#pDateStart33').text(data[0].dateStart);
+                    $('#pDateEnd33').text(data[0].dateEnd);
+                    $('#pTotal33').text(totalPrestamo);
+                    $('#pPagado33').text(totalPagado);
+                    $('#pSaldo33').text(saldo);
+                    $('#pCuo33').text(data[0].cuotaPayment);
                 }
                 if (numCbo == 4) {
                     $('#pNumPrestamo4').text(data[0].id);
                     $('#pNameClient4').text(data[0].name);
-                    $('#pTelClient4').text('Cel.3764185336 3764298491');
+                    $('#pTelClient4').text('3764185336');
                     $('#pDomicilioClient4').text(data[0].address);
                     $('#pZoneClient4').text(data[0].zone);
                     $('#pCuota4').text(data[0].totalCuota);
-                    $('#pNumPrestamo4_4').text(data[0].id);
-                    $('#pNameClient4_4').text(data[0].name);
-                    $('#pTelClient4_4').text(data[0].phone);
-                    $('#pDomicilioClient4_4').text(data[0].address);
-                    $('#pZoneClinet4_4').text(data[0].zone)
-                    $('#pCuota4_4').text(data[0].totalCuota);
+                    $('#pNumPrestamo44').text(data[0].id);
+                    $('#pNameClient44').text(data[0].name);
+                    $('#pTelClient44').text(data[0].phone);
+                    $('#pDomicilioClient44').text(data[0].address);
+                    $('#pZoneClinet44').text(data[0].zone)
+                    $('#pCuota44').text(data[0].totalCuota);
+                    $('#pDateStart4').text(data[0].dateStart);
+                    $('#pDateEnd4').text(data[0].dateEnd);
+                    $('#pTotal4').text(totalPrestamo);
+                    $('#pPagado4').text(totalPagado);
+                    $('#pSaldo4').text(saldo);
+                    $('#pCuo4').text(data[0].cuotaPayment);
+                    $('#pDateStart44').text(data[0].dateStart);
+                    $('#pDateEnd44').text(data[0].dateEnd);
+                    $('#pTotal44').text(totalPrestamo);
+                    $('#pPagado44').text(totalPagado);
+                    $('#pSaldo44').text(saldo);
+                    $('#pCuo44').text(data[0].cuotaPayment);
 
                 }
-                var totalPrestamo = 0;
-                var totalPagado = 0;
-                var saldo = 0;
-
-                $.each(data, function (key, value) {
-
-                    if (value.totalPrestamo !== null)
-                        totalPrestamo = value.totalPrestamo.toFixed(2);
-
-                    if (value.totalPagado !== null)
-                        totalPagado = value.totalPagado.toFixed(2);
-
-                    if (value.Saldo !== null)
-                        saldo = value.Saldo.toFixed(2);
-
-                    _html += '<tr><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + totalPrestamo + '</td><td >' + totalPagado + '</td><td >' + saldo + '</td><td >' + value.cuotaPayment + '</td>'
-                        + '<td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + totalPrestamo + '</td><td>' + totalPagado + '</td><td>' + saldo + '</td><td>' + value.cuotaPayment + '</td>';
-
-                });
-                _html += '</tbody >';
-                if (numCbo == 1) {
-                    $('#tblCuponCliente > tbody').html('');
-                    $('#tblCuponCliente').append(_html);
-                }
-                if (numCbo == 2) {
-                    $('#tblCuponCliente2 > tbody').html('');
-                    $('#tblCuponCliente2').append(_html);
-                }
-                if (numCbo == 3) { 
-                    $('#tblCuponCliente3 > tbody').html('');
-                    $('#tblCuponCliente3').append(_html);
-                }
-                if (numCbo == 4) {
-                    $('#tblCuponCliente4 > tbody').html('');
-                    $('#tblCuponCliente4').append(_html);
-                }
-;
+               
             }
             else {
                 alertify.error(data.message);

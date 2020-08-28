@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     GetAllPrestamo(); 
 
-
+    GetVendor();
 });
 
 function getClientCombo() {
@@ -44,7 +44,12 @@ function getClientCombo() {
 
 
 function AddPrestamo() {
+    if($('#cboCliente').val() ==''|| $('#txtConcepto').val() =='' || $('#txtAmount').val() == ''||  $('#txtAmountInterest').val() == ''|| $('#txtQuantity').val() == ''|| $('#txtQuantity').val() == ''||
+        $('#txtDateEnd').val() == ''|| $('#cboVendor').val() == '') {
 
+        alertify.alert('Mensaje de Alerta', 'Todos los campos son obligatorios');
+        return;
+    }
     param = {
 
         cboCliente: $('#cboCliente').val(),
@@ -53,7 +58,8 @@ function AddPrestamo() {
         amountInterest: $('#txtAmountInterest').val(),
         quantity: $('#txtQuantity').val(),
         dateStart: $('#txtDateStart').val(),
-        dateEnd: $('#txtDateEnd').val()
+        dateEnd: $('#txtDateEnd').val(),
+        idVendor: $('#cboVendor').val()
     };
 
     $.post(directories.prestamo.AddPrestamo, param)
@@ -68,6 +74,7 @@ function AddPrestamo() {
                 $('#txtQuantity').val('');
                 $('#txtQuantity').val('');
                 $('#txtDateEnd').val('');
+                $('#cboVendor').val('');
 
                 $("#AddPrestamoModal").modal("hide");
                 GetAllPrestamo();
@@ -98,8 +105,8 @@ function GetAllPrestamo() {
                 _html += '<tbody class="customtable" style= text-align:left;>';
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
-
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalEditPrestamo(' + value.id + ');"><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
+                    var nick = value.nick == null ? '' : value.nick
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalEditPrestamo(' + value.id + ');"><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
                         + '<button type = "button" class="btn btn-primary" onclick = "showModalEditProyect(' + value.id + ');" > <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td><td>'
                         + '<button class="btn btn-danger" id="" type="button" onclick="DeletePrestamo(' + value.id + ', ' + `'${value.cliente}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
@@ -309,6 +316,7 @@ function GetPrestamnoById(id) {
                 $('#txtDateEndPrestamo').val(data[0].dateEnd);
                 $('#txtIdPrestamo').val(id);
                 $('#h5Title').text('Editar Prestamo N°: ' + id);
+                $('#cboVendorEdit').val(data[0].idVendor);
             }
             else {
                 alertify.error(data.message);
@@ -332,7 +340,8 @@ function SavePrestamoForId() {
     param = {
         IdPrestamo: $('#txtIdPrestamo').val(),
         dateStart: $('#txtDateStartPrestamo').val(),
-        dateEnd: $('#txtDateEndPrestamo').val()
+        dateEnd: $('#txtDateEndPrestamo').val(),
+        idVendor: $('#cboVendorEdit').val()
     };
 
     $.post(directories.prestamo.SavePrestamoForId, param)
@@ -385,6 +394,40 @@ function DeletePrestamo(id, name) {
     },
         function () {
             alertify.error('Se canceló la operación');
+        });
+
+}
+
+function GetVendor() {
+
+    $.post('/Vendor/GetAllVendor')
+        .done(function (data) {
+            if (data.status !== "error") {
+
+                var ComboVendorAdd = $('#cboVendor');
+                $("#cboVendor").empty();
+                data = JSON.parse(data.result);
+                ComboVendorAdd.append($("<option />").val('').text('Seleccione un vendedor'));
+                $.each(data, function (key, value) {
+                    ComboVendorAdd.append($("<option />").val(value.id).text(value.nickName));
+                });
+
+                var ComboVendorEdit = $('#cboVendorEdit');
+                $("#cboVendorEdit").empty();
+                ComboVendorEdit.append($("<option />").val('').text('Seleccione un vendedor'));
+                $.each(data, function (key, value) {
+                    ComboVendorEdit.append($("<option />").val(value.id).text(value.nickName));
+                });
+
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
         });
 
 }

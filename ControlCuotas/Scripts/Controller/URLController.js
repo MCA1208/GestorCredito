@@ -40,7 +40,8 @@
         GetReportSummaryClient: 'GetReportSummaryClient',
         GetReportSummaryDetail: 'GetReportSummaryDetail',
         GetReportCobranza: 'GetReportCobranza',
-        GetReportIrregularPayment: 'GetReportIrregularPayment' 
+        GetReportIrregularPayment: 'GetReportIrregularPayment',
+        GetReportQuotaPaid: 'GetReportQuotaPaid'
     },
     vendor: {
         GetAllVendor: 'GetAllVendor',

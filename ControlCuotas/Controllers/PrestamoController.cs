@@ -78,7 +78,7 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd)
+        public JsonResult AddPrestamo(int cboCliente, string concepto, string amount, string amountInterest, int quantity, DateTime dateStart, DateTime dateEnd, int idVendor)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace ControlCuotas.Controllers
                     return Json(data, JsonRequestBehavior.AllowGet);
                 }
 
-                dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateStart, dateEnd, userNameLogin, userIdLogin) ;
+                dt = Service.AddPrestamo(cboCliente, concepto, amount, amountInterest, quantity, dateStart, dateEnd, userNameLogin, userIdLogin, idVendor) ;
 
                 if ( (int)dt.Rows[0]["result"] == 0)
                 {
@@ -210,11 +210,11 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         //
-        public JsonResult SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd)
+        public JsonResult SavePrestamoForId(int IdPrestamo, DateTime dateStart, DateTime dateEnd, int idVendor)
         {
             try
             {
-                dt = Service.SavePrestamoForId(IdPrestamo, dateStart, dateEnd, userNameLogin, userIdLogin);
+                dt = Service.SavePrestamoForId(IdPrestamo, dateStart, dateEnd, userNameLogin, userIdLogin, idVendor);
 
                 if ((int)dt.Rows[0][0] == 0)
                 {

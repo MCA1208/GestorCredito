@@ -82,6 +82,14 @@ namespace ControlCuotas.Controllers
             return View();
         }
 
+        public ActionResult ReportQuotaPaid()
+        {
+            if (System.Web.HttpContext.Current.Session["idUser"] == null)
+                return RedirectToAction("index", "Login");
+
+            return View();
+        }
+
         public JsonResult GetReportPrincipal(int? IdClient, int? IdZone, DateTime? dateFrom, DateTime? DateUp)
         {
             try
@@ -238,6 +246,30 @@ namespace ControlCuotas.Controllers
             try
             {
                 dt = Service.GetReportIrregularPayment(IdClient, IdZone, userIdLogin, userIdProfile);
+
+                if (dt.Rows.Count == 0)
+                {
+                    data.message = "Búsqueda sin resultados";
+                    data.status = "error";
+                }
+
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        
+        public JsonResult GetReportQuotaPaid(int? IdZone, DateTime? dStart, DateTime? dEnd)
+        {
+            try
+            {
+                dt = Service.GetReportQuotaPaid(IdZone,dStart, dEnd, userIdLogin, userIdProfile);
 
                 if (dt.Rows.Count == 0)
                 {

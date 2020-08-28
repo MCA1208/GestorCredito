@@ -155,6 +155,8 @@
     <Content Include="Content\dataTables\images\sort_desc.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\styles\ReportCuponClientStyle.css" />
+    <Content Include="fonts\styles\styleLogin.css" />
     <Content Include="fonts\styles\styleTitle.css" />
     <Content Include="fonts\styles\_MenuLayout.css" />
     <Content Include="Global.asax" />
@@ -217,6 +219,7 @@
     <Content Include="Scripts\Controller\ReportInvestmentAndProfitController.js" />
     <Content Include="Scripts\Controller\ReportIrregularPaymentController.js" />
     <Content Include="Scripts\Controller\ReportPrincipal.js" />
+    <Content Include="Scripts\Controller\ReportQuotaPaidController.js" />
     <Content Include="Scripts\Controller\ReportSummaryClient.js" />
     <Content Include="Scripts\Controller\URLController.js" />
     <Content Include="Scripts\Controller\VendorController.js" />
@@ -278,6 +281,7 @@
     <Content Include="Views\Report\ReportCobranza.cshtml" />
     <Content Include="Views\Report\ReportIrregularPayment.cshtml" />
     <Content Include="Views\Vendor\Principal.cshtml" />
+    <Content Include="Views\Report\ReportQuotaPaid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

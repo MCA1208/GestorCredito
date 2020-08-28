@@ -16,11 +16,12 @@ namespace ControlCuotas.Service
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
 
-        public DataTable AddVendor(string name, int dni, DateTime birthday, string userLogin, int idUser)
+        public DataTable AddVendor(string name,string nick, int dni, DateTime birthday, string userLogin, int idUser)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddVendor, con);
             comando.Parameters.AddWithValue("@name", name);
+            comando.Parameters.AddWithValue("@nick", nick);
             comando.Parameters.AddWithValue("@dni", dni);
             comando.Parameters.AddWithValue("@birthday", birthday);
             comando.Parameters.AddWithValue("@modifyUser", userLogin);
@@ -49,12 +50,13 @@ namespace ControlCuotas.Service
             return dt;
         }
 
-        public DataTable ModifyVendor(int idVendor, string name, int dni, DateTime birthday,string userLogin, int idUser)
+        public DataTable ModifyVendor(int idVendor, string name, string nick, int dni, DateTime birthday,string userLogin, int idUser)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spModifyVendor, con);
             comando.Parameters.AddWithValue("@idVendor", idVendor);
             comando.Parameters.AddWithValue("@name", name);
+            comando.Parameters.AddWithValue("@nick", nick);
             comando.Parameters.AddWithValue("@dni", dni);
             comando.Parameters.AddWithValue("@birthday", birthday);
             comando.Parameters.AddWithValue("@userLogin", userLogin);

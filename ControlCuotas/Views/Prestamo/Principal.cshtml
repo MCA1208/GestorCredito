@@ -23,6 +23,7 @@
                     <th scope="col">Cantidad de cuotas</th>
                     <th scope="col">Fecha de Inicio</th>
                     <th scope="col">Fecha de Fin</th>
+                    <th scope="col">Vendedor</th>
                     <th scope="col">Modificar Préstamo</th>
                     <th scope="col">Modificar Cuotas</th>
                     <th scope="col">Elimnar</th>
@@ -90,6 +91,12 @@
                                 <th>Día vencimiento cuota</th>
                                 <td>
                                     <input style="max-width:100%" class="form-control" id="txtDateEnd" type="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Vendedor</th>
+                                <td>
+                                    <select class="select2 form-control custom-select" id="cboVendor" style="width: 100%; height:36px;"> </select>
                                 </td>
                             </tr>
                         </tbody>
@@ -215,7 +222,12 @@
                                     <input style="max-width:100%" class="form-control" id="txtDateEndPrestamo" type="date">
                                 </td>
                             </tr>
-
+                            <tr>
+                                <th>Vendedor</th>
+                                <td>
+                                    <select class="select2 form-control custom-select" id="cboVendorEdit" style="width: 100%; height:36px;"> </select>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

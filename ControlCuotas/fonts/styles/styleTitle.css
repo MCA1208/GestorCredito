@@ -1,11 +1,19 @@
 ﻿
 #titleDiv {
-    text-shadow: 3px 3px 5px #f00, 
-        6px 6px 5px #0f0, 
-        9px 9px 5px #00f;
+    text-shadow: 3px 3px 5px #f00, 6px 6px 5px #0f0, 9px 9px 5px #00f;
+    border-style: double;
+    border-width: 4px;
+    border-color: #0ff;
 }
 
 #titleLogin {
-    /*text-shadow: 3px 3px 5px #00ffff, 6px 6px 5px #ffffff, 9px 9px 5px #000000;*/
     text-shadow: #0ff 2px 2px 0px;
+    border-style: double;
+    border-width: 4px;
+    border-color: #2DC1D5;
+    color: black;
+    background-color: cadetblue;
+    font-family: fantasy;
+    font-size: xx-large;
+    text-align: center
 }

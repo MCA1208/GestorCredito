@@ -1,5 +1,5 @@
 ﻿<link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
-
+<link href="~/fonts/styles/ReportCuponClientStyle.css" rel="stylesheet" />
 <div class="card">
     <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large; text-align: center">
         CUPÓN POR CLIENTE
@@ -46,385 +46,401 @@
 
 <div class="container" id="areaPrint">
     <div class="col-sm-12">
-        <div class="card">
-            <div class="card-body">
-                <table class="table" style="color:black; text-align:left;">
-                    <tr>
-                        <th class="th1" style="border: 1px solid black;">CLIENTE </th>
-                        <th class="th2" style="border-top: 1px solid black;">Fecha:</th>
-                        <th class="th1" style="border-top: 1px solid black;">Num Préstamo:</th>
-                        <td class="th2" style="border-top: 1px solid black;">
-                            <p id="pNumPrestamo"></p>
-                        </td>
-                        <th class="th1" style="border: 1px solid black;">CREDI-TO </th>
-                        <th class="th2" style="border-top: 1px solid black;">Fecha:</th>
-                        <th class="th1" style="border-top: 1px solid black;">Num Préstamo:</th>
-                        <td class="th2" style="border-top: 1px solid black;">
-                            <p id="pNumPrestamo1"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Cliente:</th>
-                        <td class="th2">
-                            <p id="pNameClient"></p>
-                        </td>
-                        <th class="th1">Tel:</th>
-                        <td class="th2">
-                            <p id="pTelClient"></p>
-                        </td>
-                        <th class="th1" style="border-left: 1px solid black;">Cliente:</th>
-                        <td class="th2">
-                            <p id="pNameClient1"></p>
-                        </td>
-                        <th class="th1">Tel:</th>
-                        <td class="th2">
-                            <p id="pTelClient1"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Domicilio:</th>
-                        <td class="th2">
-                            <p id="pDomicilioClient"></p>
-                        </td>
-                        <th class="th1">Zona:</th>
-                        <td class="th2">
-                            <p id="pZoneClient"></p>
-                        </td>
-                        <th class="th1" style="border-left: 1px solid black;">Domicilio:</th>
-                        <td class="th2">
-                            <p id="pDomicilioClient1"></p>
-                        </td>
-                        <th class="th1">Zona:</th>
-                        <td class="th2">
-                            <p id="pZoneClinet1"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Cuota:</th>
-                        <td class="th2">
-                            <p id="pCuota"></p>
-                        </td>
-                        <th class="th1">Pagó:</th>
-                        <th class="th1">Firma.</th>
-                        <th class="th1" style="border-left: 1px solid black;">Cuota:</th>
-                        <td class="th2">
-                            <p id="pCuota1"></p>
-                        </td>
-                        <th class="th1">Pagó:</th>
-                        <th class="th2">Firma.</th>
-                    </tr>
-                </table>
-                <div class="container">
-                    <div class="row">
-                        <table id="tblCuponCliente" class="table" style="color: black; text-align:left; ">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="col-xs-1">Desde</th>
-                                    <th class="col-xs-1">Hasta</th>
-                                    <th class="col-xs-1">Total</th>
-                                    <th class="col-xs-1">Pagado</th>
-                                    <th class="col-xs-1">Saldo</th>
-                                    <th class="col-xs-1">Cuo</th>
-                                    <th class="col-xs-1 border border-primary">Desde</th>
-                                    <th class="col-xs-1">Hasta</th>
-                                    <th class="col-xs-1">Total</th>
-                                    <th class="col-xs-1">Pagado</th>
-                                    <th class="col-xs-1">Saldo</th>
-                                    <th class="col-xs-1">Cuo</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
+        <div class="row" style="display:flex;">
+            <table class="table table-bordered" style="color:black; text-align:left; width:50%;">
+                <tr>
+                    <th>CLIENTE </th>
+                    <th>Fecha:</th>
+                    <th></th>
+                    <th>Num Préstamo:</th>
+                    <td colspan="2">
+                        <p id="pNumPrestamo"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cliente:</th>
+                    <td colspan="2">
+                        <p id="pNameClient"></p>
+                    </td>
+                    <th>Tel:</th>
+                    <td colspan="2">
+                        <p id="pTelClient"></p>
+                    </td>
 
-            </div>
+                </tr>
+                <tr>
+                    <th>Domicilio:</th>
+                    <td colspan="2">
+                        <p id="pDomicilioClient"></p>
+                    </td>
+                    <th>Zona:</th>
+                    <td colspan="2">
+                        <p id="pZoneClient"></p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>Cuota:</th>
+                    <td>
+                        <p id="pCuota"></p>
+                    </td>
+                    <th colspan="2">Pagó:</th>
+                    <th colspan="2">Firma:</th>
+
+                </tr>
+                <tr>
+                    <th>Desde:  <p id="pDateStart1"></p></th>
+                    <th>Hasta:  <p id="pDateEnd1"></p></th>
+                    <th>Total:  <p id="pTotal1"></p></th>
+                    <th>Pagado: <p id="pPagado1"></p></th>
+                    <th>Saldo:  <p id="pSaldo1"></p></th>
+                    <th>Cuo:    <p id="pCuo1"></p></th>
+                </tr>
+            </table>
+            <table class="table table-bordered" style="width:50%;">
+                <tr>
+                    <th>CREDI-TO </th>
+                    <th>Fecha:</th>
+                    <th></th>
+                    <th>Num Préstamo:</th>
+                    <td colspan="2">
+                        <p id="pNumPrestamo1"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cliente:</th>
+                    <td colspan="2" class="th2">
+                        <p id="pNameClient1"></p>
+                    </td>
+                    <th>Tel:</th>
+                    <td colspan="2">
+                        <p id="pTelClient1"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domicilio:</th>
+                    <td colspan="2">
+                        <p id="pDomicilioClient1"></p>
+                    </td>
+                    <th>Zona:</th>
+                    <td colspan="2">
+                        <p id="pZoneClinet1"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cuota:</th>
+                    <td>
+                        <p id="pCuota1"></p>
+                    </td>
+                    <th colspan="2">Pagó:</th>
+                    <th colspan="2">Firma:</th>
+                </tr>
+                <tr>
+                    <th>Desde:  <p id="pDateStart11"></p></th>
+                    <th>Hasta:  <p id="pDateEnd11"></p></th>
+                    <th>Total:  <p id="pTotal11"></p></th>
+                    <th>Pagado: <p id="pPagado11"></p></th>
+                    <th>Saldo:  <p id="pSaldo11"></p></th>
+                    <th>Cuo:    <p id="pCuo11"></p></th>
+                </tr>
+            </table>
         </div>
     </div>
+    <hr style="border: 1px solid #808080; border-radius: 5px; width:100% " />
     <div class="col-sm-12">
-        <div class="card">
-            <div class="card-body">
-                <table class="table" style="color:black; text-align:left;">
-                    <tr>
-                        <th class="th1" style="border: 1px solid black;">CLIENTE </th>
-                        <th class="th2" style="border-top: 1px solid black;">Fecha:</th>
-                        <th class="th1" style="border-top: 1px solid black;">Num Préstamo:</th>
-                        <td class="th2" style="border-top: 1px solid black;">
-                            <p id="pNumPrestamo2"></p>
-                        </td>
-                        <th class="th1" style="border: 1px solid black;">CREDI-TO </th>
-                        <th class="th2" style="border-top: 1px solid black;">Fecha:</th>
-                        <th class="th1" style="border-top: 1px solid black;">Num Préstamo:</th>
-                        <td class="th2" style="border-top: 1px solid black;">
-                            <p id="pNumPrestamo2_2"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Cliente:</th>
-                        <td class="th2">
-                            <p id="pNameClient2"></p>
-                        </td>
-                        <th class="th1">Tel:</th>
-                        <td class="th2">
-                            <p id="pTelClient2"></p>
-                        </td>
-                        <th class="th1" style="border-left: 1px solid black;">Cliente:</th>
-                        <td class="th2">
-                            <p id="pNameClient2_2"></p>
-                        </td>
-                        <th class="th1">Tel:</th>
-                        <td class="th2">
-                            <p id="pTelClient2_2"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Domicilio:</th>
-                        <td class="th2">
-                            <p id="pDomicilioClient2"></p>
-                        </td>
-                        <th class="th1">Zona:</th>
-                        <td class="th2">
-                            <p id="pZoneClient2"></p>
-                        </td>
-                        <th class="th1" style="border-left: 1px solid black;">Domicilio:</th>
-                        <td class="th2">
-                            <p id="pDomicilioClient2_2"></p>
-                        </td>
-                        <th class="th1">Zona:</th>
-                        <td class="th2">
-                            <p id="pZoneClinet2_2"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Cuota:</th>
-                        <td class="th2">
-                            <p id="pCuota2"></p>
-                        </td>
-                        <th class="th1">Pagó:</th>
-                        <th class="th1">Firma.</th>
-                        <th class="th1" style="border-left: 1px solid black;">Cuota:</th>
-                        <td class="th2">
-                            <p id="pCuota2_2"></p>
-                        </td>
-                        <th class="th1">Pagó:</th>
-                        <th class="th1">Firma.</th>
-                    </tr>
-                </table>
-                <div class="container">
-                    <div class="row">
-                        <table id="tblCuponCliente2" class="table" style="color: black; text-align:left;">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="col-xs-1">Desde</th>
-                                    <th class="col-xs-1">Hasta</th>
-                                    <th class="col-xs-1">Total</th>
-                                    <th class="col-xs-1">Pagado</th>
-                                    <th class="col-xs-1">Saldo</th>
-                                    <th class="col-xs-1">Cuo</th>
-                                    <th class="col-xs-1 border border-primary">Desde</th>
-                                    <th class="col-xs-1">Hasta</th>
-                                    <th class="col-xs-1">Total</th>
-                                    <th class="col-xs-1">Pagado</th>
-                                    <th class="col-xs-1">Saldo</th>
-                                    <th class="col-xs-1">Cuo</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
+        <div class="row" style="display:flex;">
+            <table class="table table-bordered" style="color:black; text-align:left; width:50%;">
+                <tr>
+                    <th>CLIENTE </th>
+                    <th>Fecha:</th>
+                    <th></th>
+                    <th>Num Préstamo:</th>
+                    <td colspan="2">
+                        <p id="pNumPrestamo2"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cliente:</th>
+                    <td colspan="2">
+                        <p id="pNameClient2"></p>
+                    </td>
+                    <th>Tel:</th>
+                    <td colspan="2">
+                        <p id="pTelClient2"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domicilio:</th>
+                    <td colspan="2">
+                        <p id="pDomicilioClient2"></p>
+                    </td>
+                    <th>Zona:</th>
+                    <td colspan="2">
+                        <p id="pZoneClient2"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cuota:</th>
+                    <td>
+                        <p id="pCuota2"></p>
+                    </td>
+                    <th colspan="2">Pagó:</th>
+                    <th colspan="2">Firma.</th>
+                </tr>
+                <tr>
+                    <th>Desde:  <p id="pDateStart2"></p></th>
+                    <th>Hasta:  <p id="pDateEnd2"></p></th>
+                    <th>Total:  <p id="pTotal2"></p></th>
+                    <th>Pagado: <p id="pPagado2"></p></th>
+                    <th>Saldo:  <p id="pSaldo2"></p></th>
+                    <th>Cuo:    <p id="pCuo2"></p></th>
+                </tr>
+            </table>
+            <table class="table table-bordered" style="width:50%;">
+                <tr>
+                    <th>CREDI-TO </th>
+                    <th>Fecha:</th>
+                    <th></th>
+                    <th>Num Préstamo:</th>
+                    <td colspan="2">
+                        <p id="pNumPrestamo22"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cliente:</th>
+                    <td colspan="2">
+                        <p id="pNameClient22"></p>
+                    </td>
+                    <th>Tel:</th>
+                    <td colspan="2">
+                        <p id="pTelClient22"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domicilio:</th>
+                    <td colspan="2">
+                        <p id="pDomicilioClient22"></p>
+                    </td>
+                    <th>Zona:</th>
+                    <td colspan="2">
+                        <p id="pZoneClinet22"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cuota:</th>
+                    <td class="th2">
+                        <p id="pCuota22"></p>
+                    </td>
+                    <th colspan="2">Pagó:</th>
+                    <th colspan="2">Firma.</th>
+                </tr>
+                <tr>
+                    <th>Desde:  <p id="pDateStart22"></p></th>
+                    <th>Hasta:  <p id="pDateEnd22"></p></th>
+                    <th>Total:  <p id="pTotal22"></p></th>
+                    <th>Pagado: <p id="pPagado22"></p></th>
+                    <th>Saldo:  <p id="pSaldo22"></p></th>
+                    <th>Cuo:    <p id="pCuo22"></p></th>
+                </tr>
+            </table>
         </div>
     </div>
-
+    <hr style="border: 1px solid #808080; border-radius: 5px; width:100% " />
     <div class="col-sm-12">
-        <div class="card">
-            <div class="card-body">
-                <table class="table" style="color:black; text-align:left;">
-                    <tr>
-                        <th class="th1" style="border: 1px solid black;">CLIENTE </th>
-                        <th class="th2" style="border-top: 1px solid black;">Fecha:</th>
-                        <th class="th1" style="border-top: 1px solid black;">Num Préstamo:</th>
-                        <td class="th2" style="border-top: 1px solid black;">
-                            <p id="pNumPrestamo3"></p>
-                        </td>
-                        <th class="th1" style="border: 1px solid black;">CREDI-TO </th>
-                        <th class="th2" style="border-top: 1px solid black;">Fecha:</th>
-                        <th class="th1" style="border-top: 1px solid black;">Num Préstamo:</th>
-                        <td class="th2" style="border-top: 1px solid black;">
-                            <p id="pNumPrestamo3_3"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Cliente:</th>
-                        <td class="th2">
-                            <p id="pNameClient3"></p>
-                        </td>
-                        <th class="th1">Tel:</th>
-                        <td class="th2">
-                            <p id="pTelClient3"></p>
-                        </td>
-                        <th class="th1" style="border-left: 1px solid black;">Cliente:</th>
-                        <td class="th2">
-                            <p id="pNameClient3_3"></p>
-                        </td>
-                        <th class="th1">Tel:</th>
-                        <td class="th2">
-                            <p id="pTelClient3_3"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Domicilio:</th>
-                        <td class="th2">
-                            <p id="pDomicilioClient3"></p>
-                        </td>
-                        <th class="th1">Zona</th>
-                        <td class="th2">
-                            <p id="pZoneClient3"></p>
-                        </td>
-                        <th class="th1" style="border-left: 1px solid black;">Domicilio:</th>
-                        <td class="th2">
-                            <p id="pDomicilioClient3_3"></p>
-                        </td>
-                        <th class="th1">Zona:</th>
-                        <td class="th2">
-                            <p id="pZoneClinet3_3"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Cuota:</th>
-                        <td class="th2">
-                            <p id="pCuota3"></p>
-                        </td>
-                        <th class="th1">Pagó:</th>
-                        <th class="th1">Firma.</th>
-                        <th class="th1" style="border-left: 1px solid black;">Cuota:</th>
-                        <td class="th2">
-                            <p id="pCuota3_3"></p>
-                        </td>
-                        <th class="th1">Pagó:</th>
-                        <th class="th1">Firma.</th>
-                    </tr>
-                </table>
-                <div class="container">
-                    <div class="row">
-                        <table id="tblCuponCliente3" class="table" style="color: black; text-align:left; ">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="col-xs-1">Desde</th>
-                                    <th class="col-xs-1">Hasta</th>
-                                    <th class="col-xs-1">Total</th>
-                                    <th class="col-xs-1">Pagado</th>
-                                    <th class="col-xs-1">Saldo</th>
-                                    <th class="col-xs-1">Cuo</th>
-                                    <th class="col-xs-1 border border-primary">Desde</th>
-                                    <th class="col-xs-1">Hasta</th>
-                                    <th class="col-xs-1">Total</th>
-                                    <th class="col-xs-1">Pagado</th>
-                                    <th class="col-xs-1">Saldo</th>
-                                    <th class="col-xs-1">Cuo</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
+        <div class="row" style="display:flex;">
+            <table class="table table-bordered" style="color:black; text-align:left; width:50%;">
+                <tr>
+                    <th>CLIENTE </th>
+                    <th>Fecha:</th>
+                    <th></th>
+                    <th>Num Préstamo:</th>
+                    <td colspan="2">
+                        <p id="pNumPrestamo3"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cliente:</th>
+                    <td colspan="2">
+                        <p id="pNameClient3"></p>
+                    </td>
+                    <th>Tel:</th>
+                    <td colspan="2">
+                        <p id="pTelClient3"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domicilio:</th>
+                    <td colspan="2">
+                        <p id="pDomicilioClient3"></p>
+                    </td>
+                    <th>Zona:</th>
+                    <td colspan="2">
+                        <p id="pZoneClient3"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cuota:</th>
+                    <td>
+                        <p id="pCuota3"></p>
+                    </td>
+                    <th colspan="2">Pagó:</th>
+                    <th colspan="2">Firma.</th>
+                </tr>
+                <tr>
+                    <th>Desde:  <p id="pDateStart3"></p></th>
+                    <th>Hasta:  <p id="pDateEnd3"></p></th>
+                    <th>Total:  <p id="pTotal3"></p></th>
+                    <th>Pagado: <p id="pPagado3"></p></th>
+                    <th>Saldo:  <p id="pSaldo3"></p></th>
+                    <th>Cuo:    <p id="pCuo3"></p></th>
+                </tr>
+            </table>
+            <table class="table table-bordered" style="width:50%;">
+                <tr>
+                    <th>CREDI-TO </th>
+                    <th>Fecha:</th>
+                    <th></th>
+                    <th>Num Préstamo:</th>
+                    <td colspan="2">
+                        <p id="pNumPrestamo33"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cliente:</th>
+                    <td colspan="2">
+                        <p id="pNameClient33"></p>
+                    </td>
+                    <th>Tel:</th>
+                    <td colspan="2">
+                        <p id="pTelClient33"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domicilio:</th>
+                    <td colspan="2">
+                        <p id="pDomicilioClient33"></p>
+                    </td>
+                    <th>Zona:</th>
+                    <td colspan="2">
+                        <p id="pZoneClinet33"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cuota:</th>
+                    <td>
+                        <p id="pCuota33"></p>
+                    </td>
+                    <th colspan="2">Pagó:</th>
+                    <th colspan="2">Firma.</th>
+                </tr>
+                <tr>
+                    <th>Desde:  <p id="pDateStart33"></p></th>
+                    <th>Hasta:  <p id="pDateEnd33"></p></th>
+                    <th>Total:  <p id="pTotal33"></p></th>
+                    <th>Pagado: <p id="pPagado33"></p></th>
+                    <th>Saldo:  <p id="pSaldo33"></p></th>
+                    <th>Cuo:    <p id="pCuo33"></p></th>
+                </tr>
+            </table>
         </div>
     </div>
-
+    <hr style="border: 1px solid #808080; border-radius: 5px; width:100% " />
     <div class="col-sm-12">
-        <div class="card">
-            <div class="card-body">
-                <table class="table" style="color:black; text-align:left;">
-                    <tr>
-                        <th class="th1" style="border: 1px solid black;">CLIENTE </th>
-                        <th class="th2" style="border-top: 1px solid black;">Fecha:</th>
-                        <th class="th1" style="border-top: 1px solid black;">Num Préstamo:</th>
-                        <td class="th2" style="border-top: 1px solid black;">
-                            <p id="pNumPrestamo4"></p>
-                        </td>
-                        <th class="th1" style="border: 1px solid black;">CREDI-TO </th>
-                        <th class="th2" style="border-top: 1px solid black;">Fecha:</th>
-                        <th class="th1" style="border-top: 1px solid black;">Num Préstamo:</th>
-                        <td class="th2" style="border-top: 1px solid black;">
-                            <p id="pNumPrestamo4_4"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Cliente:</th>
-                        <td class="th2">
-                            <p id="pNameClient4"></p>
-                        </td>
-                        <th class="th1">Tel:</th>
-                        <td class="th2">
-                            <p id="pTelClient4"></p>
-                        </td>
-                        <th class="th1" style="border-left: 1px solid black;">Cliente:</th>
-                        <td class="th2">
-                            <p id="pNameClient4_4"></p>
-                        </td>
-                        <th class="th1">Tel:</th>
-                        <td class="th2">
-                            <p id="pTelClient4_4"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Domicilio:</th>
-                        <td class="th2">
-                            <p id="pDomicilioClient4"></p>
-                        </td>
-                        <th class="th1">Zona:</th>
-                        <td class="th2">
-                            <p id="pZoneClient4"></p>
-                        </td>
-                        <th class="th1" style="border-left: 1px solid black;">Domicilio:</th>
-                        <td class="th2">
-                            <p id="pDomicilioClient4_4"></p>
-                        </td>
-                        <th class="th1">Zona:</th>
-                        <td class="th2">
-                            <p id="pZoneClinet4_4"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="th1" style="border-left: 1px solid black;">Cuota:</th>
-                        <td class="th2">
-                            <p id="pCuota4"></p>
-                        </td>
-                        <th class="th1">Pagó:</th>
-                        <th class="th1">Firma.</th>
-                        <th class="th1" style="border-left: 1px solid black;">Cuota:</th>
-                        <td class="th2">
-                            <p id="pCuota4_4"></p>
-                        </td>
-                        <th class="th1">Pagó:</th>
-                        <th class="th2">Firma.</th>
-                    </tr>
-                </table>
-                <div class="container">
-                    <div class="row">
-                        <table id="tblCuponCliente4" class="table" style="color: black; text-align:left; ">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="col-xs-1">Desde</th>
-                                    <th class="col-xs-1">Hasta</th>
-                                    <th class="col-xs-1">Total</th>
-                                    <th class="col-xs-1">Pagado</th>
-                                    <th class="col-xs-1">Saldo</th>
-                                    <th class="col-xs-1">Cuo</th>
-                                    <th class="col-xs-1 border border-primary">Desde</th>
-                                    <th class="col-xs-1">Hasta</th>
-                                    <th class="col-xs-1">Total</th>
-                                    <th class="col-xs-1">Pagado</th>
-                                    <th class="col-xs-1">Saldo</th>
-                                    <th class="col-xs-1">Cuo</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
+        <div class="row" style="display:flex;">
+            <table class="table table-bordered" style="color:black; text-align:left; width:50%;">
+                <tr>
+                    <th>CLIENTE </th>
+                    <th>Fecha:</th>
+                    <th></th>
+                    <th>Num Préstamo:</th>
+                    <td colspan="2">
+                        <p id="pNumPrestamo4"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cliente:</th>
+                    <td colspan="2">
+                        <p id="pNameClient4"></p>
+                    </td>
+                    <th>Tel:</th>
+                    <td colspan="2">
+                        <p id="pTelClient4"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domicilio:</th>
+                    <td colspan="2">
+                        <p id="pDomicilioClient4"></p>
+                    </td>
+                    <th>Zona:</th>
+                    <td colspan="2">
+                        <p id="pZoneClient4"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cuota:</th>
+                    <td>
+                        <p id="pCuota4"></p>
+                    </td>
+                    <th colspan="2">Pagó:</th>
+                    <th colspan="2">Firma.</th>
+                </tr>
+                <tr>
+                    <th>Desde:  <p id="pDateStart4"></p></th>
+                    <th>Hasta:  <p id="pDateEnd4"></p></th>
+                    <th>Total:  <p id="pTotal4"></p></th>
+                    <th>Pagado: <p id="pPagado4"></p></th>
+                    <th>Saldo:  <p id="pSaldo4"></p></th>
+                    <th>Cuo:    <p id="pCuo4"></p></th>
+                </tr>
+            </table>
+            <table class="table table-bordered" style="width:50%;">
+                <tr>
+                    <th>CREDI-TO </th>
+                    <th>Fecha:</th>
+                    <th></th>
+                    <th>Num Préstamo:</th>
+                    <td colspan="2">
+                        <p id="pNumPrestamo44"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cliente:</th>
+                    <td colspan="2">
+                        <p id="pNameClient44"></p>
+                    </td>
+                    <th>Tel:</th>
+                    <td colspan="2">
+                        <p id="pTelClient44"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domicilio:</th>
+                    <td colspan="2">
+                        <p id="pDomicilioClient44"></p>
+                    </td>
+                    <th>Zona:</th>
+                    <td colspan="2">
+                        <p id="pZoneClinet44"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cuota:</th>
+                    <td>
+                        <p id="pCuota44"></p>
+                    </td>
+                    <th colspan="2">Pagó:</th>
+                    <th colspan="2">Firma.</th>
+                </tr>
+                <tr>
+                    <th>Desde:  <p id="pDateStart44"></p></th>
+                    <th>Hasta:  <p id="pDateEnd44"></p></th>
+                    <th>Total:  <p id="pTotal44"></p></th>
+                    <th>Pagado: <p id="pPagado44"></p></th>
+                    <th>Saldo:  <p id="pSaldo44"></p></th>
+                    <th>Cuo:    <p id="pCuo44"></p></th>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -432,8 +448,8 @@
 
 <script>
 
-    $('.th1').attr('class', 'col-xs-1');
-    $('.th2').attr('class', 'col-xs-2');
+    //$('.th1').addClass('col-xs-1');
+    //$('.th2').addClass('col-xs-2');
 
 </script>
 
