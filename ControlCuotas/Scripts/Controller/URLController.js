@@ -49,6 +49,27 @@
         ModifyVendor: 'ModifyVendor',
         GetVendorById: 'GetVendorById',
         DeleteVendor: 'DeleteVendor'
+    },
+    mark: {
+        GetAllMark: 'GetAllMark',
+        AddMark: 'AddMark',
+        ModifyMark: 'ModifyMark',
+        GetMarkById: 'GetMarkById',
+        DeleteMark: 'DeleteMark'
+    },
+    typeProduct: {
+        GetAllTypeProduct: 'GetAllTypeProduct',
+        AddTypeProduct: 'AddTypeProduct',
+        ModifyTypeProduct: 'ModifyTypeProduct',
+        GetTypeProductById: 'GetTypeProductById',
+        DeleteTypeProduct: 'DeleteTypeProduct'
+    },
+    product: {
+        GetAllProduct: 'GetAllProduct',
+        AddProduct: 'AddProduct',
+        ModifyProduct: 'ModifyProduct',
+        GetProductById: 'GetProductById',
+        DeleteProduct: 'DeleteProduct'
     }
 
 };

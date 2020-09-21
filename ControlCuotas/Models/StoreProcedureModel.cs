@@ -59,6 +59,27 @@ namespace ControlCuotas.Models
             public string spDeleteVendor = "spDeleteVendor";
             public string spGetVendorById = "spGetVendorById";
 
+            //MARK
+            public string spGetAllMark = "spGetAllMark";
+            public string spAddMark = "spAddMark";
+            public string spModifyMark = "spModifyMark";
+            public string spDeleteMark = "spDeleteMark";
+            public string spGetMarkById = "spGetMarkById";
+
+            //TYPEPRODUCT
+            public string spGetAllTypeProduct = "spGetAllTypeProduct";
+            public string spAddTypeProduct = "spAddTypeProduct";
+            public string spModifyTypeProduct = "spModifyTypeProduct";
+            public string spDeleteTypeProduct = "spDeleteTypeProduct";
+            public string spGetTypeProductById = "spGetTypeProductById";
+
+            //PRODUCT
+            public string spGetAllProduct = "spGetAllProduct";
+            public string spAddProduct = "spAddProduct";
+            public string spModifyProduct = "spModifyProduct";
+            public string spDeleteProduct = "spDeleteProduct";
+            public string spGetProductById = "spGetProductById";
+
 
         }
     }

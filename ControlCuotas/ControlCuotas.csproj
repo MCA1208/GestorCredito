@@ -121,9 +121,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\TypeProductController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Controllers\ZoneController.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,8 +140,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ClientService.cs" />
     <Compile Include="Service\LoginService.cs" />
+    <Compile Include="Service\MarkService.cs" />
     <Compile Include="Service\PrestamoService.cs" />
+    <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\ReportService.cs" />
+    <Compile Include="Service\TypeProductService.cs" />
     <Compile Include="Service\VendorService.cs" />
     <Compile Include="Service\ZoneService.cs" />
   </ItemGroup>
@@ -211,7 +217,9 @@
     <Content Include="Scripts\chart\chart.js" />
     <Content Include="Scripts\Controller\ClientController.js" />
     <Content Include="Scripts\Controller\LoginController.js" />
+    <Content Include="Scripts\Controller\MarkController.js" />
     <Content Include="Scripts\Controller\PrestamoController.js" />
+    <Content Include="Scripts\Controller\ProductController.js" />
     <Content Include="Scripts\Controller\ReportCobranzaController.js" />
     <Content Include="Scripts\Controller\ReportCuponClientController.js" />
     <Content Include="Scripts\Controller\ReportCuponStatusController.js" />
@@ -220,6 +228,7 @@
     <Content Include="Scripts\Controller\ReportPrincipal.js" />
     <Content Include="Scripts\Controller\ReportQuotaPaidController.js" />
     <Content Include="Scripts\Controller\ReportSummaryClient.js" />
+    <Content Include="Scripts\Controller\TypeProductController.js" />
     <Content Include="Scripts\Controller\URLController.js" />
     <Content Include="Scripts\Controller\VendorController.js" />
     <Content Include="Scripts\Controller\ZoneController.js" />
@@ -281,6 +290,9 @@
     <Content Include="Views\Report\ReportIrregularPayment.cshtml" />
     <Content Include="Views\Vendor\Principal.cshtml" />
     <Content Include="Views\Report\ReportQuotaPaid.cshtml" />
+    <Content Include="Views\Mark\Principal.cshtml" />
+    <Content Include="Views\TypeProduct\Principal.cshtml" />
+    <Content Include="Views\Product\Principal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
