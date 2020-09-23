@@ -28,11 +28,12 @@ namespace ControlCuotas.Service
 
             return dt;
         }
-        public DataTable AddMark(string name, string userName, int userId)
+        public DataTable AddMark(string name, int idTypeProduct,  string userName, int userId)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddMark, con);
             comando.Parameters.AddWithValue("@name", name);
+            comando.Parameters.AddWithValue("@idTypeProduct", idTypeProduct);
             comando.Parameters.AddWithValue("@userName", userName);
             comando.Parameters.AddWithValue("@userId", userId);
             comando.CommandType = CommandType.StoredProcedure;
@@ -42,12 +43,13 @@ namespace ControlCuotas.Service
             return dt;
         }
 
-        public DataTable ModifyMark(int idMark,string name, string userName, int userId)
+        public DataTable ModifyMark(int idMark,string name, int idTypeProduct, string userName, int userId)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spModifyMark, con);
             comando.Parameters.AddWithValue("@idMark", idMark);
             comando.Parameters.AddWithValue("@name", name);
+            comando.Parameters.AddWithValue("@idTypeProduct", idTypeProduct);
             comando.Parameters.AddWithValue("@userName", userName);
             comando.Parameters.AddWithValue("@userId", userId);
             comando.CommandType = CommandType.StoredProcedure;

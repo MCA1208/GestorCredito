@@ -2,15 +2,13 @@
 
 $(document).ready(function () {
 
-
     GetAllProduct();
-
-
+    GetTypeProductCombo();  
 });
 
 function GetAllProduct() {
 
-    //$.blockUI();
+    $.blockUI();
 
     $.post(directories.product.GetAllProduct)
         .done(function (data) {
@@ -22,7 +20,7 @@ function GetAllProduct() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.idTypeProduct + '</td><td>' + value.idMark + '</td><td>' + value.costPrice + '</td><td>' + value.salePrice + '</td><td>' + value.stock + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditProduct(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.productName + '</td><td>' + value.markName + '</td><td>' + value.costPrice + '</td><td>' + value.salePrice + '</td><td>' + value.stock + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditProduct(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
                         + '<button class="btn btn-danger" id="" type="button" onclick="DeleteProduct(' + value.id + ', ' + `'${value.name}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
@@ -30,7 +28,17 @@ function GetAllProduct() {
                 _html += '</tbody >';
 
                 $('#tblProduct').append(_html);
+                $('#tblProduct').DataTable({
+                    destroy: true,
+                    retrieve: true,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        { "extend": 'excel', "text": '<span data-toggle="tooltip" data-placement="top" title="Exportar Excel" class="fas fa-file-excel fa-2x"></span>' },
+                        { "extend": 'pdf', "text": '<span data-toggle="tooltip" data-placement="top" title="Exportar PDF" class="fas fa-file-pdf fa-2x" ></span>' },
+                        { "extend": 'print', "text": '<span data-toggle="tooltip" data-placement="top" title="Imprimir" class="fas fa-print fa-2x"></span>' }
+                    ]
 
+                });
 
             }
             else {
@@ -43,16 +51,17 @@ function GetAllProduct() {
             alertify.error(data.statusText);
         })
         .always(function () {
-            //$.unblockUI();
+            $.unblockUI();
         });
 }
 
 
 function AddProduct() {
 
-    if ($('#txtNameAdd').val() === "") {
+    if ($('#txtNameAdd').val() == "" || $('#cboTypeProductAdd').val() == "" || $('#cboMarkAdd').val() == ""
+        || $('#txtCostPriceAdd').val() == "" || $('#txtSalePriceAdd').val() == "" || $('#txtStockAdd').val() =="") {
 
-        alertify.alert("Debe ingresar un nombre");
+        alertify.alert("Agregar Producto","Todos los campos son obligatorios");
 
         return;
     }
@@ -73,7 +82,13 @@ function AddProduct() {
                 data = JSON.parse(data.result);
 
                 alertify.success(data.message);
-                GetAllMark();
+                GetAllProduct();
+                $('#txtNameAdd').val('');
+                $('#cboTypeProductAdd').val('');
+                $('#cboMarkAdd').val('');
+                $('#txtCostPriceAdd').val('');
+                $('#txtSalePriceAdd').val('');
+                $('#txtStockAdd').val('');
                 $('#AddProductModal').modal('hide');
             }
             else {
@@ -104,7 +119,9 @@ function ShowModalEditProduct(id) {
                 $('#txtIdProduct').val(data[0].id);
                 $('#txtName').val(data[0].name);
                 $('#cboTypeProduct').val(data[0].idTypeProduct);
-                $('#cboMarkAdd').val(data[0].idMark);
+                GetComboMarkAnidadoMod(data[0].idTypeProduct, data[0].idMark);
+                var resu = $('#cboMark').val();
+                //$('#cboMark').val(data[0].idMark);
                 $('#txtCostPrice').val(data[0].costPrice);
                 $('#txtSalePrice').val(data[0].salePrice);
                 $('#txtStock').val(data[0].stock);
@@ -124,14 +141,21 @@ function ShowModalEditProduct(id) {
 
 function ModifyProduct() {
 
+    if ($('#txtName').val() == "" || $('#cboTypeProduct').val() == "" || $('#cboMark').val() == ""
+        || $('#txtCostPrice').val() == "" || $('#txtSalePrice').val() == "" || $('#txtStock').val() == "") {
+
+        alertify.alert("Modificar Producto","Todos los campos son obligatorios");
+
+        return;
+    }
     param = {
         idProduct: $('#txtIdProduct').val(),
         name: $('#txtName').val(),
-        idTypeProduct: $('#cboTypeProduct').val(data[0].idTypeProduct),
-        idMark: $('#cboMark').val(data[0].idMark),
-        costPrice : $('#txtCostPrice').val(data[0].costPrice),
-        salePrice: $('#txtSalePrice').val(data[0].salePrice),
-        stock: $('#txtStock').val(data[0].stock)
+        idTypeProduct: $('#cboTypeProduct').val(),
+        idMark: $('#cboMark').val(),
+        costPrice : $('#txtCostPrice').val(),
+        salePrice: $('#txtSalePrice').val(),
+        stock: $('#txtStock').val()
     };
 
     $.post(directories.product.ModifyProduct, param)
@@ -147,7 +171,7 @@ function ModifyProduct() {
                     alertify.error(data.message);
                 }
 
-                GetAllMark();
+                GetAllProduct();
                 $('#ModifyProductModal').modal('hide');
 
             }
@@ -185,7 +209,7 @@ function DeleteProduct(idProduct, name) {
                 if (data.status !== "error") {
 
                     alertify.success(data.message);
-                    GetAllMark();
+                    GetAllProduct();
 
                 }
                 else {
@@ -201,5 +225,120 @@ function DeleteProduct(idProduct, name) {
     },
         function () {
             alertify.error('Se canceló la operación');
+        });
+}
+
+function GetTypeProductCombo() {
+
+$.post('/TypeProduct/GetAllTypeProduct')
+    .done(function (data) {
+        if (data.status !== "error") {
+
+            var ComboTypeProdAdd = $('#cboTypeProductAdd');
+            var ComboTypeProd = $('#cboTypeProduct');
+
+            $("#cboTypeProductAdd").empty();
+            $("#cboTypeProduct").empty();
+
+            data = JSON.parse(data.result);
+
+            ComboTypeProdAdd.append($("<option />").val('').text('Seleccione un tipo de producto'));
+            ComboTypeProd.append($("<option />").val('').text('Seleccione un tipo de producto'));
+
+            $.each(data, function (key, value) {
+
+                ComboTypeProdAdd.append($("<option />").val(value.id).text(value.name));
+                ComboTypeProd.append($("<option />").val(value.id).text(value.name));
+            });
+
+        }
+        else {
+            alertify.error(data.message);
+
+        }
+
+    })
+    .fail(function (data) {
+        alertify.error(data.statusText);
+    });
+}
+
+$('#cboTypeProductAdd').change(function () {
+
+    if ($('#cboTypeProductAdd').val() != "") {
+        GetComboMarkAnidadoAdd($('#cboTypeProductAdd').val());
+    }
+    else {
+        $('#cboMarkAdd').val('').text('Seleccione una marca');
+    }
+});
+$('#cboTypeProduct').change(function () {
+
+    if ($('#cboTypeProduct').val() != "") {
+        GetComboMarkAnidadoMod($('#cboTypeProduct').val(), 0);
+    }
+    else {
+        $('#cboMark').val('').text('Seleccione una marca');
+    }
+});
+
+function GetComboMarkAnidadoAdd(IdTypeProduct) {
+    param = {
+        idTypeProduct: IdTypeProduct
+    }; 
+    $.post('/Mark/GetComboMarkAnidado', param)
+    .done(function (data) {
+        if (data.status !== "error") {
+
+            var ComboMarkAdd = $('#cboMarkAdd');
+            $("#cboMarkAdd").empty();
+
+            data = JSON.parse(data.result);
+            ComboMarkAdd.append($("<option />").val('').text('Seleccione una marca'));
+            $.each(data, function (key, value) {
+                ComboMarkAdd.append($("<option />").val(value[1]).text(value[2]));
+            });
+
+        }
+        else {
+            alertify.error(data.message);
+
+        }
+
+    })
+    .fail(function (data) {
+        alertify.error(data.statusText);
+    });
+}
+function GetComboMarkAnidadoMod(IdTypeProduct, idMark) {
+    param = {
+        idTypeProduct: IdTypeProduct
+    };
+    $.post('/Mark/GetComboMarkAnidado', param)
+        .done(function (data) {
+            if (data.status !== "error") {
+
+                var ComboMark = $('#cboMark');
+                $("#cboMark").empty();
+
+                data = JSON.parse(data.result);
+                ComboMark.append($("<option />").val('').text('Seleccione una marca'));
+                $.each(data, function (key, value) {
+                    ComboMark.append($("<option />").val(value[1]).text(value[2]));
+                });
+
+                if (idMark != 0) {
+                    $("#cboMark").val(idMark);
+                }
+
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
         });
 }

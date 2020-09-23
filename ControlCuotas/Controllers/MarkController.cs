@@ -50,11 +50,11 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddMark(string name)
+        public JsonResult AddMark(string name, int idTypeProduct)
         {
             try
             {
-                dt = Service.AddMark(name, userNameLogin,userIdLogin);
+                dt = Service.AddMark(name, idTypeProduct, userNameLogin, userIdLogin);
                 if ((int)dt.Rows[0][0] == 0)
                 {
                     data.status = "error";
@@ -94,11 +94,11 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ModifyMark(int idMark, string name)
+        public JsonResult ModifyMark(int idMark, string name, int idTypeProduct)
         {
             try
             {
-                dt = Service.ModifyMark(idMark, name, userNameLogin, userIdLogin);
+                dt = Service.ModifyMark(idMark, name, idTypeProduct, userNameLogin, userIdLogin);
 
                 data.result = dt.Rows[0][0];
 
@@ -155,6 +155,29 @@ namespace ControlCuotas.Controllers
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetComboMarkAnidado(int idTypeProduct)
+        {
+            try
+            {
+                dt = Service.GetAllMark(userIdLogin, userIdProfile);
+                var results = (from myRow in dt.AsEnumerable()
+                              where myRow.Field<int>("idTypeProduct") == idTypeProduct
+                              select myRow).ToList();
 
+                var filterMark = results.Select(x => x.ItemArray).ToList();
+
+                data.result = JsonConvert.SerializeObject(filterMark, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+
+        }
     }//FIN
 }

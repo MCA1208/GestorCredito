@@ -28,7 +28,7 @@ namespace ControlCuotas.Service
 
             return dt;
         }
-        public DataTable AddProduct(string name,int idMark, int  idTypeProduct, string costPrice, string salePrice, int stock, string userName, int userId)
+        public DataTable AddProduct(string name, int idTypeProduct, int idMark, string costPrice, string salePrice, int stock, string userName, int userId)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddProduct, con);

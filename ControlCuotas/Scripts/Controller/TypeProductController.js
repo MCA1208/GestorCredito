@@ -30,6 +30,17 @@ function GetAllTypeProduct() {
                 _html += '</tbody >';
 
                 $('#tblTypeProduct').append(_html);
+                $('#tblTypeProduct').DataTable({
+                    destroy: true,
+                    retrieve: true,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        { "extend": 'excel', "text": '<span data-toggle="tooltip" data-placement="top" title="Exportar Excel" class="fas fa-file-excel fa-2x"></span>' },
+                        { "extend": 'pdf', "text": '<span data-toggle="tooltip" data-placement="top" title="Exportar PDF" class="fas fa-file-pdf fa-2x" ></span>' },
+                        { "extend": 'print', "text": '<span data-toggle="tooltip" data-placement="top" title="Imprimir" class="fas fa-print fa-2x"></span>' }
+                    ]
+
+                });
 
 
             }
@@ -68,7 +79,7 @@ function AddTypeProduct() {
                 data = JSON.parse(data.result);
 
                 alertify.success(data.message);
-                GetAllMark();
+                GetAllTypeProduct();
                 $('#AddTypeProductModal').modal('hide');
             }
             else {

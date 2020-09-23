@@ -49,11 +49,11 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddProduct(string name, int idMark,int idTypeProduct, string costPrice, int stock, string salePrice)
+        public JsonResult AddProduct(string name, int idTypeProduct, int idMark, string costPrice, int stock, string salePrice)
         {
             try
             {
-                dt = Service.AddProduct(name, idTypeProduct, idMark, costPrice, salePrice, stock, userNameLogin, userIdLogin);
+                dt = Service.AddProduct(name, idTypeProduct, idMark,  costPrice, salePrice, stock, userNameLogin, userIdLogin);
                 if ((int)dt.Rows[0][0] == 0)
                 {
                     data.status = "error";
