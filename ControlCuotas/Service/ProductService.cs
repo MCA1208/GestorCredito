@@ -28,10 +28,11 @@ namespace ControlCuotas.Service
 
             return dt;
         }
-        public DataTable AddProduct(string name, int idTypeProduct, int idMark, string costPrice, string salePrice, int stock, string userName, int userId)
+        public DataTable AddProduct(string name, string description, int idTypeProduct, int idMark, string costPrice, string salePrice, int stock, string userName, int userId)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spAddProduct, con);
+            comando.Parameters.AddWithValue("@description", description);
             comando.Parameters.AddWithValue("@name", name);
             comando.Parameters.AddWithValue("@idTypeProduct", idTypeProduct);
             comando.Parameters.AddWithValue("@idMark", idMark);
@@ -47,12 +48,13 @@ namespace ControlCuotas.Service
             return dt;
         }
 
-        public DataTable ModifyProduct(int idProduct, string name, int idTypeProduct, int idMark, string costPrice, string salePrice, int stock, string userName, int userId)
+        public DataTable ModifyProduct(int idProduct, string name, string description, int idTypeProduct, int idMark, string costPrice, string salePrice, int stock, string userName, int userId)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spModifyProduct, con);
             comando.Parameters.AddWithValue("@idProduct", idProduct);
             comando.Parameters.AddWithValue("@name", name);
+            comando.Parameters.AddWithValue("@description", description);
             comando.Parameters.AddWithValue("@idTypeProduct", idTypeProduct);
             comando.Parameters.AddWithValue("@idMark", idMark);
             comando.Parameters.AddWithValue("@costPrice", costPrice);

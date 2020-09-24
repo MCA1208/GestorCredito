@@ -81,6 +81,7 @@ function AddTypeProduct() {
                 alertify.success(data.message);
                 GetAllTypeProduct();
                 $('#AddTypeProductModal').modal('hide');
+                $('#txtNameAdd').val('');
             }
             else {
                 alertify.error(data.message);
@@ -143,7 +144,7 @@ function ModifyTypeProduct() {
                     alertify.error(data.message);
                 }
 
-                GetAllMark();
+                GetAllTypeProduct();
                 $('#ModifyTypeProductModal').modal('hide');
 
             }

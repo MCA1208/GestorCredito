@@ -1,0 +1,18 @@
+﻿.modal-header {
+    background-color: #cbe9f2;
+}
+
+.form-control {
+    background-color: #F7F7F7;
+}
+.modal-footer {
+    background-color: #C1C1C1;
+}
+
+.modal-title {
+    font-weight: bold;
+    color: #000;
+    font-family: 'monospace';
+    text-transform: uppercase;
+    font-size: 18px;
+}

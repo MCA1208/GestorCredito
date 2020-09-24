@@ -162,6 +162,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\styles\ReportCuponClientStyle.css" />
+    <Content Include="fonts\styles\StyleDataTable.css" />
+    <Content Include="fonts\styles\StyleModal.css" />
     <Content Include="fonts\styles\styleTitle.css" />
     <Content Include="fonts\styles\_MenuLayout.css" />
     <Content Include="Global.asax" />

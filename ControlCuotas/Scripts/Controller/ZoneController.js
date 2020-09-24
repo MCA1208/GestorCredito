@@ -30,6 +30,17 @@ function GetAllZone() {
                 _html += '</tbody >';
 
                 $('#tblZone').append(_html);
+                $('#tblZone').DataTable({
+                    destroy: true,
+                    retrieve: true,
+                    dom: 'Bfrtip',
+                    buttons: [
+                        { "extend": 'excel', "text": '<span data-toggle="tooltip" data-placement="top" title="Exportar Excel" class="fas fa-file-excel fa-2x"></span>' },
+                        { "extend": 'pdf', "text": '<span data-toggle="tooltip" data-placement="top" title="Exportar PDF" class="fas fa-file-pdf fa-2x" ></span>' },
+                        { "extend": 'print', "text": '<span data-toggle="tooltip" data-placement="top" title="Imprimir" class="fas fa-print fa-2x"></span>' }
+                    ]
+
+                });
 
 
             }
@@ -52,7 +63,7 @@ function AddZone() {
 
     if ($('#txtDecriptionAdd').val() === "") {
 
-        alertify.alert("Debe ingresar una descripción");
+        alertify.alert("Agregar zona","Debe ingresar una descripción");
 
         return;
     }
@@ -159,7 +170,7 @@ function showModalAddZone() {
 
 function DeleteZone(idZone, description) {
 
-    alertify.confirm('ZONA', 'Confirma eliminar la zona ' + description.bold() + '?', function () {
+    alertify.confirm('Eliminar zona', 'Confirma eliminar la zona ' + description.bold() + '?', function () {
 
         param = {
             IdZone: idZone

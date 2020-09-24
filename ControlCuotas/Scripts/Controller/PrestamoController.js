@@ -172,8 +172,6 @@ function GetPrestamoDetail(id) {
         .done(function (data) {
             if (data.status !== "error") {
 
-                
-
                 $('#tblPrestamoDetail > tbody').html('');
                 var _html = '';
                 _html += '<tbody class="customtable" style= text-align:left;>';
@@ -194,7 +192,7 @@ function GetPrestamoDetail(id) {
                 _html += '</tbody >';
 
                 $('#tblPrestamoDetail').append(_html);
-
+                $('#editCuotaPrestamo').text('Editar Cuotas de Préstamo: ' + id);
                 $('#tblPrestamoDetail').DataTable({
                     destroy: true,
                     retrieve: true,

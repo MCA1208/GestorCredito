@@ -111,6 +111,10 @@ function AddVendor() {
                 alertify.success(data.message);
                 GetAllVendor();
                 $('#AddVendorModal').modal('hide');
+                $('#txtNameAdd').val('');
+                $('#txtNickAdd').val('');
+                $('#txtDNIAdd').val('');
+                $('#txtBirthdayAdd').val('');
             }
             else {
                 alertify.error(data.message);

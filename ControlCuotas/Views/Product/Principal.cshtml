@@ -4,7 +4,8 @@
 }
 
 <link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
-
+<link href="~/fonts/styles/StyleDataTable.css" rel="stylesheet" />
+<link href="~/fonts/styles/StyleModal.css" rel="stylesheet" />
 <div class="card">
     <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large">
         ARTICULOS
@@ -18,11 +19,12 @@
 <br />
 <div>
     <div class="table-responsive">
-        <table id="tblProduct" class="table table-striped table-bordered" style="color: black; text-align:left; ">
+        <table id="tblProduct" class="table table-striped table-bordered table-hover" style="color: black; text-align:left; ">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Código</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">Tipo de articulo</th>
                     <th scope="col">Marca</th>
                     <th scope="col">Precio costo</th>
@@ -63,6 +65,13 @@
                                 <td>
                                     <input id="txtIdProduct" type="text" style="display:none" />
                                 </td>
+                            </tr>
+                            <tr>
+                                <th>Descripción</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtDescription" type="text">
+                                </td>
+
                             </tr>
                             <tr>
                                 <th>Tipo de producto</th>
@@ -125,6 +134,13 @@
                                 <td>
 
                                     <input style="max-width:100%" class="form-control" id="txtNameAdd" type="text">
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>Descripción</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtDescriptionAdd" type="text">
                                 </td>
 
                             </tr>

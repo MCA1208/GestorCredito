@@ -1,18 +1,22 @@
 ﻿<link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
-
+<link href="~/fonts/styles/StyleDataTable.css" rel="stylesheet" />
+<link href="~/fonts/styles/StyleModal.css" rel="stylesheet" />
 <div class="card">
     <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large; text-align: center">
-        PRESTAMOS
+        PRÉSTAMOS
     </div>
 </div>
 <br />
 <div class="card-body">
-    <button id="btnModal" type="button" class="btn btn-primary" onclick="showModalAddProyect()"><i class="fas fa-arrow-circle-right"></i> Agregar prestamo </button>
+    <button id="btnModal" type="button" class="btn btn-primary" onclick="showModalAddProyect()"><i class="fas fa-arrow-circle-right"></i> Agregar préstamo </button>
 </div>
 <br />
 <div>
+
     <div class="table-responsive">
-        <table id="tblPrestamo" class="table" style="color: black; text-align:left; ">
+        <br />
+        <table id="tblPrestamo" class="table table-bordered table-striped table-hover" style="color: black; text-align:left; ">
+
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Número préstamo</th>
@@ -40,7 +44,7 @@
     <div class="modal-dialog" style="max-width:60%">
         <div class="modal-content" style="color:black">
             <div class="modal-header">
-                <h5 class="modal-title" id="">Nuevo Prestamo</h5>
+                <h5 class="modal-title" id="">Nuevo Préstamo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -115,7 +119,7 @@
     <div class="modal-dialog" role="document" style="max-width:80%">
         <div class="modal-content" style="color:black">
             <div class="modal-header">
-                <h5 class="modal-title" id="">Editar Cuotas de Prestamo</h5>
+                <h5 class="modal-title" id="editCuotaPrestamo">Editar Cuotas de Préstamo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -179,7 +183,7 @@
                                 <th>Observación de pago parcial</th>
                                 <td>
                                     @*<textarea name="textarea" rows="10" cols="50">Write something here</textarea>*@
-                                    <textarea style="max-width:100%" rows="10"  class="form-control" id="txtObservationPartial" type="text"></textarea>
+                                    <textarea style="max-width:100%" rows="10" class="form-control" id="txtObservationPartial" type="text"></textarea>
                                 </td>
                             </tr>
 

@@ -20,7 +20,7 @@ function GetAllProduct() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.productName + '</td><td>' + value.markName + '</td><td>' + value.costPrice + '</td><td>' + value.salePrice + '</td><td>' + value.stock + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditProduct(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.description + '</td><td>' + value.productName + '</td><td>' + value.markName + '</td><td>' + value.costPrice + '</td><td>' + value.salePrice + '</td><td>' + value.stock + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditProduct(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
                         + '<button class="btn btn-danger" id="" type="button" onclick="DeleteProduct(' + value.id + ', ' + `'${value.name}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
@@ -57,9 +57,9 @@ function GetAllProduct() {
 
 
 function AddProduct() {
-
+    
     if ($('#txtNameAdd').val() == "" || $('#cboTypeProductAdd').val() == "" || $('#cboMarkAdd').val() == ""
-        || $('#txtCostPriceAdd').val() == "" || $('#txtSalePriceAdd').val() == "" || $('#txtStockAdd').val() =="") {
+        || $('#txtCostPriceAdd').val() == "" || $('#txtSalePriceAdd').val() == "" || $('#txtStockAdd').val() == "" || $('#txtDescription').val() == "") {
 
         alertify.alert("Agregar Producto","Todos los campos son obligatorios");
 
@@ -72,7 +72,8 @@ function AddProduct() {
         idMark: $('#cboMarkAdd').val(),
         costPrice: $('#txtCostPriceAdd').val(),
         salePrice: $('#txtSalePriceAdd').val(),
-        stock: $('#txtStockAdd').val()
+        stock: $('#txtStockAdd').val(),
+        description: $('#txtDescriptionAdd').val()
     };
 
     $.post(directories.product.AddProduct, param)
@@ -84,6 +85,7 @@ function AddProduct() {
                 alertify.success(data.message);
                 GetAllProduct();
                 $('#txtNameAdd').val('');
+                $('#txtDescriptionAdd').val('');
                 $('#cboTypeProductAdd').val('');
                 $('#cboMarkAdd').val('');
                 $('#txtCostPriceAdd').val('');
@@ -118,10 +120,9 @@ function ShowModalEditProduct(id) {
                 $('#ModifyProductModal').modal('show');
                 $('#txtIdProduct').val(data[0].id);
                 $('#txtName').val(data[0].name);
+                $('#txtDescription').val(data[0].description);
                 $('#cboTypeProduct').val(data[0].idTypeProduct);
                 GetComboMarkAnidadoMod(data[0].idTypeProduct, data[0].idMark);
-                var resu = $('#cboMark').val();
-                //$('#cboMark').val(data[0].idMark);
                 $('#txtCostPrice').val(data[0].costPrice);
                 $('#txtSalePrice').val(data[0].salePrice);
                 $('#txtStock').val(data[0].stock);
@@ -142,7 +143,7 @@ function ShowModalEditProduct(id) {
 function ModifyProduct() {
 
     if ($('#txtName').val() == "" || $('#cboTypeProduct').val() == "" || $('#cboMark').val() == ""
-        || $('#txtCostPrice').val() == "" || $('#txtSalePrice').val() == "" || $('#txtStock').val() == "") {
+        || $('#txtCostPrice').val() == "" || $('#txtSalePrice').val() == "" || $('#txtStock').val() == "" || $('#txtDescription').val() == "") {
 
         alertify.alert("Modificar Producto","Todos los campos son obligatorios");
 
@@ -155,7 +156,8 @@ function ModifyProduct() {
         idMark: $('#cboMark').val(),
         costPrice : $('#txtCostPrice').val(),
         salePrice: $('#txtSalePrice').val(),
-        stock: $('#txtStock').val()
+        stock: $('#txtStock').val(),
+        description: $('#txtDescription').val()
     };
 
     $.post(directories.product.ModifyProduct, param)

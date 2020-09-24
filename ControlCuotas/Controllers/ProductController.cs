@@ -49,11 +49,11 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult AddProduct(string name, int idTypeProduct, int idMark, string costPrice, int stock, string salePrice)
+        public JsonResult AddProduct(string name, string description, int idTypeProduct, int idMark, string costPrice, int stock, string salePrice)
         {
             try
             {
-                dt = Service.AddProduct(name, idTypeProduct, idMark,  costPrice, salePrice, stock, userNameLogin, userIdLogin);
+                dt = Service.AddProduct(name, description, idTypeProduct, idMark,  costPrice, salePrice, stock, userNameLogin, userIdLogin);
                 if ((int)dt.Rows[0][0] == 0)
                 {
                     data.status = "error";
@@ -93,11 +93,11 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ModifyProduct(int idProduct, string name, int idTypeProduct, int idMark, string costPrice, string salePrice, int stock)
+        public JsonResult ModifyProduct(int idProduct, string name, string description, int idTypeProduct, int idMark, string costPrice, string salePrice, int stock)
         {
             try
             {
-                dt = Service.ModifyProduct(idProduct, name,  idTypeProduct,  idMark,  costPrice,  salePrice, stock, userNameLogin, userIdLogin);
+                dt = Service.ModifyProduct(idProduct, name, description, idTypeProduct,  idMark,  costPrice,  salePrice, stock, userNameLogin, userIdLogin);
 
                 data.result = dt.Rows[0][0];
 
