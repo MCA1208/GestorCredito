@@ -80,6 +80,11 @@ namespace ControlCuotas.Models
             public string spDeleteProduct = "spDeleteProduct";
             public string spGetProductById = "spGetProductById";
 
+            //SALE
+            public string spAddSale = "spAddSale";
+            public string spAddSaleDetail = "spAddSaleDetail";
+            public string spAddSaleQuota = "spAddSaleQuota";
+            public string spAddSaleError = "spAddSaleError";
 
         }
     }

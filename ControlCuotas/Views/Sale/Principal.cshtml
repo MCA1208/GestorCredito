@@ -1,0 +1,146 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
+<link href="~/fonts/styles/StyleDataTable.css" rel="stylesheet" />
+<link href="~/fonts/styles/StyleModal.css" rel="stylesheet" />
+<link href="~/fonts/styles/StyleSale.css" rel="stylesheet" />
+<div class="card">
+    <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large">
+        BOLETA DE VENTA
+    </div>
+</div>
+<br />
+<div class="table-responsive">
+    <div class="col-sm-12 colBorder">
+        <div class="row">
+            <div class="col-sm-4">
+                <label class="lblLeft">Fecha: </label>
+                <input class="form-control" type="date" id="txtDate" />
+            </div>
+            <div class="col-sm-4">
+                <label class="lblLeft">Elegir cliente: </label>
+                <select class="select2 form-control custom-select" id="cboClient">  </select>
+            </div>
+            <div class="col-sm-4">
+                <label class="lblLeft">Elegir vendedor: </label>
+                <select class="select2 form-control custom-select" id="cboVendor"> </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 colBorder">
+        <div class="table-responsive">
+            <div>
+                <label>Cantidad más de 1: <input type="number" id="txtQuantity"/></label>
+            </div>
+            <table id="tblSearchProduct" class="table table-bordered table-striped table-hover" style="color: black; text-align:left; ">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">N° Articulo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Agregar</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table-responsive">
+            <table id="tblSaleProduct" class="table table-bordered table-striped table-hover" style="color: black; text-align:left; ">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">N° Articulo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio unitario</th>
+                        <th scope="col">Importe</th>
+                        <th scope="col">Quitar</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table-responsive">
+
+            <table id="tblModify" class="table" style="color:black">
+
+                <tbody style="text-align:left">
+                    <tr>
+                        <th class="col-sm-10" style="text-align:right">SUB TOTAL:</th>
+                        <td class="col-sm-10">
+                            <label id="txtSubTotal"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-10" style="text-align:right">TOTAL:</th>
+                        <td class="col-sm-10">
+                            <label id="txtTotal"></label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-12 colBorder">
+        <div class="row">
+            <div class="col-sm-4">
+                <label class="lblLeft"> Cuo:</label>
+                <input class="lblRight form-control" id="txtQuantityQuota" type="number">
+            </div>
+            <div class="col-sm-4">
+                <label class="lblLeft">Interés(%): </label>
+                <input class="lblRight form-control" id="txtInteres" type="number">
+            </div>
+            <div class="col-sm-4">
+                <label class="lblLeft"> Desc(%):</label>
+                <input class="lblRight form-control" id="txtDesc" type="number">
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label class="lblLeft">Fecha fin: </label>
+                <input class="form-control" type="date" id="txtDateEnd" />
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-success" onclick="Recalculate();" style="float:right"><i class="fa fa-retweet" aria-hidden="true"></i> Recalcular</button>
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-warning" onclick="Clear();" style="float:right"><i class="fa fa-eraser" aria-hidden="true"></i> Limpiar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12" style="padding-top:15px;">
+        @*<div class="col-sm-6">
+            <button type="button" class="btn btn-primary"><i class="fa fa-print" aria-hidden="true"></i> Guardar e imprimir </button>
+        </div>*@
+        <div class="col-sm-4 col-sm-offset-8">
+            <button type="button" class="btn btn-primary" onclick="AddSale();"><i class="fa fa-save" aria-hidden="true"></i> Guardar</button>
+        </div>
+    </div>
+</div>
+    <br />
+    <link href="~/Scripts/AlertMessage/alertifyjs/css/alertify.css" rel="stylesheet" />
+    <link href="~/Scripts/AlertMessage/alertifyjs/css/themes/default.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.0/jquery-3.4.0.min.js"></script>
+    <script src="~/Scripts/bootstrap-4.2.1/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/fontawesome/all.js"></script>
+    <script src="~/Scripts/AlertMessage/alertifyjs/alertify.js"></script>
+
+    <!--DataTables-->
+    <link href="~/Content/dataTables/DataTables-1.10.18/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/dataTables/Buttons-1.5.6/buttons.dataTables.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.0/datatables/DataTables-1.10.18/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/jszip.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/pdfmake.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/vfs_fonts.js"></script>
+    <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.print.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.html5.min.js"></script>
+    <script src="~/Scripts/Controller/SaleController.js"></script>
+    <script src="~/Scripts/Controller/URLController.js"></script>
+    <script src="~/Scripts/jquery-3.4.0/BlockUI/jquery.blockUI.min.js"></script>
+

@@ -70,6 +70,9 @@
         ModifyProduct: 'ModifyProduct',
         GetProductById: 'GetProductById',
         DeleteProduct: 'DeleteProduct'
+    },
+    sale: {
+        AddSale: 'AddSale'
     }
 
 };

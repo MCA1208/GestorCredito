@@ -1,0 +1,34 @@
+﻿.colBorder {
+    border: 3px solid #3c763d;
+    border-radius: 25px;
+    border-style: ridge;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.lblLeft {
+    float: left;
+    /*padding-top: 30px;*/
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.lblRight {
+    float: right;
+    /*padding-top: 30px;*/
+    padding-right: 10px;
+    width: 60%;
+    text-align:left;
+}
+.form-control {
+    width: 60%;
+    height: 36px;
+    float: right;
+    display: block;
+   
+}
+.row {
+    padding-top: 30px;
+    padding-right: 10px;
+}
+#txtTotal{
+   font-weight:bold;
+}
