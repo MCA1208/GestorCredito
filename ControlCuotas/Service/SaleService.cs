@@ -14,13 +14,14 @@ namespace ControlCuotas.Service
     {
         DataTable dt = new DataTable();
         DataTable dt2 = new DataTable();
+        DataTable dt3 = new DataTable();
         SqlConnection con;
         SqlCommand comando;
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
 
         public DataTable AddSale(DateTime saleDate, int idClient, int idVendor, string subTotalSale, string totalSale, int quotaSale, int? interest,
-            int? discount, DateTime? dateEnd, string productString, string userName , int userId)
+            int? discount, DateTime? dateEnd, string productString, string quotaPrice, string userName , int userId)
         {
             int idSale = 0 ;
             con = new SqlConnection(Connection.stringConn);
@@ -68,21 +69,20 @@ namespace ControlCuotas.Service
                     comando.Parameters.AddWithValue("@userId", userId);
                     comando.CommandType = CommandType.StoredProcedure;
                     SqlDataAdapter da2 = new SqlDataAdapter(comando);
-                    da2.Fill(dt);
+                    da2.Fill(dt2);
                 }
-                double quoteCal = Math.Round((double.Parse(totalSale) / quotaSale),2);
-                var calculo = quotaSale;
+
                 for (var item = 1; item <= quotaSale; item++) 
                 {
                     comando = new SqlCommand(spName.spAddSaleQuota, con);
                     comando.Parameters.AddWithValue("@idSale", idSale);
                     comando.Parameters.AddWithValue("@quotaNumber", item);
-                    comando.Parameters.AddWithValue("@totalQuota", quoteCal);
+                    comando.Parameters.AddWithValue("@totalQuota", quotaPrice);
                     comando.Parameters.AddWithValue("@userName", userName);
                     comando.Parameters.AddWithValue("@userId", userId);
                     comando.CommandType = CommandType.StoredProcedure;
                     SqlDataAdapter da3 = new SqlDataAdapter(comando);
-                    da3.Fill(dt2);
+                    da3.Fill(dt3);
 
                 }               
             }
@@ -106,7 +106,7 @@ namespace ControlCuotas.Service
 
 
 
-            return dt2;
+            return dt;
         }
     }
 }

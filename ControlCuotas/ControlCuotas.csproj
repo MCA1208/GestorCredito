@@ -126,6 +126,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReportProductController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\TypeProductController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Service\MarkService.cs" />
     <Compile Include="Service\PrestamoService.cs" />
     <Compile Include="Service\ProductService.cs" />
+    <Compile Include="Service\ReportProductService.cs" />
     <Compile Include="Service\ReportService.cs" />
     <Compile Include="Service\SaleService.cs" />
     <Compile Include="Service\TypeProductService.cs" />
@@ -227,6 +229,7 @@
     <Content Include="Scripts\Controller\ProductController.js" />
     <Content Include="Scripts\Controller\ReportCobranzaController.js" />
     <Content Include="Scripts\Controller\ReportCuponClientController.js" />
+    <Content Include="Scripts\Controller\ReportCuponProductClientController.js" />
     <Content Include="Scripts\Controller\ReportCuponStatusController.js" />
     <Content Include="Scripts\Controller\ReportInvestmentAndProfitController.js" />
     <Content Include="Scripts\Controller\ReportIrregularPaymentController.js" />
@@ -300,6 +303,7 @@
     <Content Include="Views\TypeProduct\Principal.cshtml" />
     <Content Include="Views\Product\Principal.cshtml" />
     <Content Include="Views\Sale\Principal.cshtml" />
+    <Content Include="Views\ReportProduct\ReportCuponProductClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

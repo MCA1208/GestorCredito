@@ -73,6 +73,10 @@
     },
     sale: {
         AddSale: 'AddSale'
+    },
+    reportProduct: {
+        GetReportProductCuponClient:'GetReportProductCuponClient'
     }
+
 
 };

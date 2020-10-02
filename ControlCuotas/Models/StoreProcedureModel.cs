@@ -86,6 +86,9 @@ namespace ControlCuotas.Models
             public string spAddSaleQuota = "spAddSaleQuota";
             public string spAddSaleError = "spAddSaleError";
 
+            //REPORT PRODUCT
+            public string spGetReportProductCuponByClient = "spGetReportProductCuponByClient";
+
         }
     }
 }

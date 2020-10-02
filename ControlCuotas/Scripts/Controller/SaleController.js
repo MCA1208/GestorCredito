@@ -74,6 +74,8 @@ function AddSale() {
     else {
         quote = $('#txtQuantityQuota').val();
     }
+
+    var QuotaPrice = ($('#txtTotal').text() / quote).toFixed(2);
     param = {
         saleDate: $('#txtDate').val(),
         idClient: $('#cboClient').val(),
@@ -84,7 +86,8 @@ function AddSale() {
         interest: $('#txtInteres').val(),
         discount: $('#txtDesc').val(),
         dateEnd: $('#txtDateEnd').val(),
-        productString: _productString
+        productString: _productString,
+        quotaPrice: QuotaPrice
     };
 
     $.post(directories.sale.AddSale, param)
@@ -93,21 +96,26 @@ function AddSale() {
 
                 data = JSON.parse(data.result);
 
-                alertify.success(data.message);
+                //alertify.confirm('Confirm Title', 'Confirm Message', function () {window.location.reload();});
 
-                window.location.reload();
-                //GetAllProduct();
-                //GetClientCombo();
-                //GetVendorCombo();
-                //saleDate: $('#txtDate').val(),
+                alertify.alert('Venta exitosa', data.message, function () {
+                    window.location.reload();
+                });
+
+                //window.location.reload();
+                //$('#tblSearchProduct > tbody').html('');
                 //$('#cboClient').val('');
                 //$('#cboVendor').val('');
+                //$('#txtDate').val(),
                 //$('#txtSubTotal').text('');
                 //$('#txtTotal').text('');
                 //$('#txtQuantityQuota').val('');
                 //$('#txtInteres').val('');
                 //$('#txtDesc').val('');
                 //$('#txtDateEnd').val('');
+                //GetAllProduct();
+                //GetClientCombo();
+                //GetVendorCombo();
 
             }
             else {
