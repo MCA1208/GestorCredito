@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 function GetAllTypeProduct() {
 
-    //$.blockUI();
+    $.blockUI();
 
     $.post(directories.typeProduct.GetAllTypeProduct)
         .done(function (data) {
@@ -54,7 +54,7 @@ function GetAllTypeProduct() {
             alertify.error(data.statusText);
         })
         .always(function () {
-            //$.unblockUI();
+            $.unblockUI();
         });
 }
 
@@ -182,7 +182,7 @@ function DeleteTypeProduct(idTypeProduct, name) {
                 if (data.status !== "error") {
 
                     alertify.success(data.message);
-                    GetAllMark();
+                    GetAllTypeProduct();
 
                 }
                 else {

@@ -85,9 +85,19 @@ namespace ControlCuotas.Models
             public string spAddSaleDetail = "spAddSaleDetail";
             public string spAddSaleQuota = "spAddSaleQuota";
             public string spAddSaleError = "spAddSaleError";
+            public string spGetSaleDetailById = "spGetSaleDetailById";
+            public string spGetSaleById = "spGetSaleById";
+            public string spSaveSaleById = "spSaveSaleById";
+            public string spGetProductCuotaDetail = "spGetProductCuotaDetail";
+            public string spSavePaductCuotaById = "spSavePaductCuotaById";
+            public string spDeleteSale = "spDeleteSale";
 
             //REPORT PRODUCT
             public string spGetReportProductCuponByClient = "spGetReportProductCuponByClient";
+            public string spReportProductCobranza = "spReportProductCobranza";
+            public string spReportProductIrregularPayment = "spReportProductIrregularPayment";
+            public string spReportProductQuotaPaid = "spReportProductQuotaPaid";
+            public string spGetAllProductSale = "spGetAllProductSale";
 
         }
     }

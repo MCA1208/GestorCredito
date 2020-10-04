@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 function GetAllMark() {
 
-    //$.blockUI();
+    $.blockUI();
 
     $.post(directories.mark.GetAllMark)
         .done(function (data) {
@@ -52,7 +52,7 @@ function GetAllMark() {
             alertify.error(data.statusText);
         })
         .always(function () {
-            //$.unblockUI();
+            $.unblockUI();
         });
 }
 

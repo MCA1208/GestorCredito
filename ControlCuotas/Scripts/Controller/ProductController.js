@@ -59,7 +59,7 @@ function GetAllProduct() {
 function AddProduct() {
     
     if ($('#txtNameAdd').val() == "" || $('#cboTypeProductAdd').val() == "" || $('#cboMarkAdd').val() == ""
-        || $('#txtCostPriceAdd').val() == "" || $('#txtSalePriceAdd').val() == "" || $('#txtStockAdd').val() == "" || $('#txtDescription').val() == "") {
+        || $('#txtCostPriceAdd').val() == "" || $('#txtSalePriceAdd').val() == "" || $('#txtStockAdd').val() == "" || $('#txtDescriptionAdd').val() == "") {
 
         alertify.alert("Agregar Producto","Todos los campos son obligatorios");
 

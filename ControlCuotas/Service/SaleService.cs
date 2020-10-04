@@ -108,5 +108,104 @@ namespace ControlCuotas.Service
 
             return dt;
         }
-    }
+        public DataTable GetAllProductSale(int idUser, int idProfile)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetAllProductSale, con);
+            comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@IdProfile", idProfile);
+            comando.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
+        public DataTable GetSaleById(int IdSale)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetSaleById, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdSale", IdSale);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+            return dt;
+        }
+        public DataTable SaveSaleById(int IdPrestamo, DateTime dateStart, DateTime dateEnd, string userLogin, int idUser, int idVendor)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spSaveSaleById, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdSale", IdPrestamo);
+            comando.Parameters.AddWithValue("@dateStart", dateStart);
+            comando.Parameters.AddWithValue("@dateEnd", dateEnd);
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
+            comando.Parameters.AddWithValue("@idUser", idUser);
+            comando.Parameters.AddWithValue("@idVendor", idVendor);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+            return dt;
+        }
+        public DataTable GetSaleDetailById(int IdSale)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetSaleDetailById, con);
+
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdSale", IdSale);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+        public DataTable GetCuotaDetail(int IdCuota)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetProductCuotaDetail, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdCuota", IdCuota);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
+        public DataTable SaveCuotaForId(int IdCuota, DateTime? fecha, string observation, string observationPartial, string userLogin, int idUser)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spSavePaductCuotaById, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdCuota", IdCuota);
+            comando.Parameters.AddWithValue("@fecha", fecha);
+            comando.Parameters.AddWithValue("@observation", observation);
+            comando.Parameters.AddWithValue("@observationPartial", observationPartial);
+            comando.Parameters.AddWithValue("@userLogin", userLogin);
+            comando.Parameters.AddWithValue("@idUser", idUser);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+            return dt;
+        }
+        public DataTable DeleteSale(int IdSale)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spDeleteSale, con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdSale", IdSale);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+            return dt;
+        }
+
+    }//FIN
 }

@@ -57,9 +57,9 @@ function GetAllProduct() {
 
 function AddSale() {
 
-    if ($('#txtDate').val() == "" || $('#cboClient').val() == "" || $('#cboVendor').val() == "" || $('#txtSubTotal').text() == "" || $('#txtTotal').text() == "")
+    if ($('#txtDate').val() == "" || $('#cboClient').val() == "" || $('#cboVendor').val() == "" || $('#txtSubTotal').text() == "" || $('#txtTotal').text() == "" || $('#txtDateEnd').val() =="" )
     {
-        alertify.alert('Venta de articulo', 'Falta cargar campos obligatorios: Fecha, cliente, vendedor, importes' );
+        alertify.alert('Venta de articulo', 'Falta cargar campos obligatorios: Fechas, cliente, vendedor, importes' );
         return;
     }
 

@@ -227,6 +227,7 @@
     <Content Include="Scripts\Controller\MarkController.js" />
     <Content Include="Scripts\Controller\PrestamoController.js" />
     <Content Include="Scripts\Controller\ProductController.js" />
+    <Content Include="Scripts\Controller\ProductSaleController.js" />
     <Content Include="Scripts\Controller\ReportCobranzaController.js" />
     <Content Include="Scripts\Controller\ReportCuponClientController.js" />
     <Content Include="Scripts\Controller\ReportCuponProductClientController.js" />
@@ -234,6 +235,9 @@
     <Content Include="Scripts\Controller\ReportInvestmentAndProfitController.js" />
     <Content Include="Scripts\Controller\ReportIrregularPaymentController.js" />
     <Content Include="Scripts\Controller\ReportPrincipal.js" />
+    <Content Include="Scripts\Controller\ReportProductCobranzaController.js" />
+    <Content Include="Scripts\Controller\ReportProductIrregularPaymentController.js" />
+    <Content Include="Scripts\Controller\ReportProductQuotaPaidController.js" />
     <Content Include="Scripts\Controller\ReportQuotaPaidController.js" />
     <Content Include="Scripts\Controller\ReportSummaryClient.js" />
     <Content Include="Scripts\Controller\SaleController.js" />
@@ -304,6 +308,10 @@
     <Content Include="Views\Product\Principal.cshtml" />
     <Content Include="Views\Sale\Principal.cshtml" />
     <Content Include="Views\ReportProduct\ReportCuponProductClient.cshtml" />
+    <Content Include="Views\ReportProduct\ReportProductCobranza.cshtml" />
+    <Content Include="Views\ReportProduct\ReportProductIrregularPayment.cshtml" />
+    <Content Include="Views\ReportProduct\ReportProductQuotaPaid.cshtml" />
+    <Content Include="Views\Sale\ProductSale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

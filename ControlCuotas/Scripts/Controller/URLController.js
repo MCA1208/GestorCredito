@@ -72,10 +72,21 @@
         DeleteProduct: 'DeleteProduct'
     },
     sale: {
-        AddSale: 'AddSale'
+        AddSale: 'AddSale',
+        GetAllProductSale: 'GetAllProductSale',
+        GetSaleDetail: 'GetSaleDetail',
+        SaveSaleById: 'SaveSaleById',
+        GetSaleDetailById: 'GetSaleDetailById',
+        GetCuotaDetail: 'GetCuotaDetail',
+        SaveCuotaForId: 'SaveCuotaForId',
+        DeleteSale: 'DeleteSale'
     },
     reportProduct: {
-        GetReportProductCuponClient:'GetReportProductCuponClient'
+        GetReportProductCuponClient: 'GetReportProductCuponClient',
+        GetReportProductCobranza: 'GetReportProductCobranza',
+        GetReportProductIrregularPayment: 'GetReportProductIrregularPayment',
+        GetReportProductQuotaPaid: 'GetReportProductQuotaPaid'
+
     }
 
 
