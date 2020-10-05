@@ -182,7 +182,7 @@ namespace ControlCuotas.Service
         public DataTable SaveCuotaForId(int IdCuota, DateTime? fecha, string observation, string observationPartial, string userLogin, int idUser)
         {
             con = new SqlConnection(Connection.stringConn);
-            comando = new SqlCommand(spName.spSavePaductCuotaById, con);
+            comando = new SqlCommand(spName.spSaveProductCuotaById, con);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@IdCuota", IdCuota);
             comando.Parameters.AddWithValue("@fecha", fecha);

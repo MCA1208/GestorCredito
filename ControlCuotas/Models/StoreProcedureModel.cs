@@ -89,7 +89,7 @@ namespace ControlCuotas.Models
             public string spGetSaleById = "spGetSaleById";
             public string spSaveSaleById = "spSaveSaleById";
             public string spGetProductCuotaDetail = "spGetProductCuotaDetail";
-            public string spSavePaductCuotaById = "spSavePaductCuotaById";
+            public string spSaveProductCuotaById = "spSaveProductCuotaById";
             public string spDeleteSale = "spDeleteSale";
 
             //REPORT PRODUCT
