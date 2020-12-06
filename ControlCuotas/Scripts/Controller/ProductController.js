@@ -198,12 +198,12 @@ function showModalAddProduct() {
 
 }
 
-function DeleteProduct(idProduct, name) {
+function DeleteProduct(IdProduct, name) {
 
     alertify.confirm('PRODUCTO', 'Confirma eliminar el producto ' + name.bold() + '?', function () {
 
         param = {
-            idTypeProduct: idTypeProduct
+            idProduct: IdProduct
         };
 
         $.post(directories.product.DeleteProduct, param)

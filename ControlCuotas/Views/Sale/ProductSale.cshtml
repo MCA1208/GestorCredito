@@ -1,9 +1,10 @@
 ﻿<link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
 <link href="~/fonts/styles/StyleDataTable.css" rel="stylesheet" />
 <link href="~/fonts/styles/StyleModal.css" rel="stylesheet" />
+
 <div class="card">
     <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large; text-align: center">
-        VENTAS DE PRODUCTOS
+        VENTAS DE ARTÍCULOS
     </div>
 </div>
 <br />
@@ -27,6 +28,7 @@
                     <th scope="col">Fecha de Inicio</th>
                     <th scope="col">Fecha de Fin</th>
                     <th scope="col">Vendedor</th>
+                    <th scope="col">Ver venta</th>
                     <th scope="col">Modificar Venta</th>
                     <th scope="col">Modificar Cuotas</th>
                     <th scope="col">Elimnar</th>
@@ -168,6 +170,91 @@
     </div>
 </div>
 
+<div class="modal fade" id="PrintDetailSaleModal">
+    <div class="modal-dialog" style="max-width:100%">
+        <div class="modal-content" style="color:black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Pre visualización de venta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="areaPrint" class="table-responsive">
+                    <table class="table" style="color: black; text-align:left; ">
+                        <tr>
+                            <th colspan="2" style="text-align:center">Detalle de venta</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">CREDI-TO</th>
+                            <th scope="col">E-Mail: cliente@credi-to.com.ar</th>
+                        </tr>
+                    </table>
+                    <table id="" class="table" style="color:black">
+
+                        <tbody style="text-align:left">
+                            <tr>
+                                <th class="col-sm-4">Número de venta:</th>
+                                <td>
+                                    <label id="lblVenta"></label>
+                                </td>
+                                <th class="col-sm-4">Fecha inicio:</th>
+                                <td>
+                                    <label id="lblDateStart"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="col-sm-4">Cliente:</th>
+                                <td>
+                                    <label id="lblCliente"></label>
+                                </td>
+                                <th class="col-sm-4">Fecha Fin:</th>
+                                <td>
+                                    <label id="lblDateEnd"></label>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="table-responsive">
+                        <table id="tblDetailSale" class="table" style="color: black; text-align:left; ">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Sub total</th>
+                                    <th scope="col">total</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <table class="table">
+                        <tbody style="text-align:left">
+                            <tr>
+                                <th>Cu:</th>
+                                <td><p id="pCuota"></p></td>
+                                <th>Interes:</th>
+                                <td><p id="pInterest"></p></td>
+                                <th>Sub total:</th>
+                                <td><p id="pSTotal"></p></td>
+                                <th>Total:</th>
+                                <td><p id="pTotal"></p></td>
+
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="printDiv();"><i class="fas fa-print"></i> Imprimir</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- En Modal  -->
 
 

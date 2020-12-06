@@ -206,6 +206,21 @@ namespace ControlCuotas.Service
             da.Fill(dt);
             return dt;
         }
+        public DataTable GetSalProducteDetailById(int IdSale)
+        {
+            con = new SqlConnection(Connection.stringConn);
+            comando = new SqlCommand(spName.spGetSaleProducteDetailById, con);
 
-    }//FIN
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@IdSale", IdSale);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+
+            da.Fill(dt);
+
+            return dt;
+
+        }
+
+    }//FIN               
+
 }

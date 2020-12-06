@@ -21,7 +21,7 @@ function GetAllProductSale() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
                     var nick = value.nick == null ? '' : value.nick
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td>' + value.subTotal + '</td><td>' + value.totalSale + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalEditSale(' + value.id + ');"><i class="fas fa-edit"></i> Editar venta</button>' + '</td><td>'
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td>' + value.subTotal + '</td><td>' + value.totalSale + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button style="background-color:#0BD34E" type="button" class="btn btn-info" onclick="showModalSeeDetail(' + value.id + ', ' + `'${value.cliente}'` + ', ' + `'${value.dateStart}'` + ', ' + `'${value.dateEnd}'` + ', ' + `'${value.cuotaPayment}'` + ', ' + `'${value.subTotal}'` + ',' + `'${value.totalSale}'` +');"><i class="fas fa-eye"></i> Ver venta</button>' + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalEditSale(' + value.id + ');"><i class="fas fa-edit"></i> Editar venta</button>' + '</td><td>'
                         + '<button type = "button" class="btn btn-primary" onclick = "showModalEditQuotaSale(' + value.id + ');" > <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td><td>'
                         + '<button class="btn btn-danger" id="" type="button" onclick="DeleteSale(' + value.id + ', ' + `'${value.cliente}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
@@ -336,5 +336,74 @@ function GetVendor() {
         .fail(function (data) {
             alertify.error(data.statusText);
         });
+
+}
+
+function showModalSeeDetail(id, client, dateStart, dateEnd, cuo, subTotal, total) {
+
+    param = {
+        IdSale: id
+    };
+
+    $.post(directories.sale.GetSalProducteDetailById, param)
+        .done(function (data) {
+
+            var interest = 0;
+
+            if (data.status !== "error") {
+
+                $('#tblDetailSale > tbody').html('');
+                var _html = '';
+                _html += '<tbody class="customtable" style= text-align:left;>';
+                data = JSON.parse(data.result);
+                $.each(data, function (key, value) {
+
+                    _html += '<tr><td>' + value.quantity + '</td><td>' + value.detail + '</td><td >' + value.unitPrice + '</td><td >' + value.totalPrice + '</td>';
+                    interest = value.Interest;
+
+                });
+
+                _html += '</tbody >';
+
+                $('#tblDetailSale').append(_html);
+
+                $('#PrintDetailSaleModal').modal('show');
+                $('#lblDateStart').text(dateStart);
+                $('#lblDateEnd').text(dateEnd);
+                $('#lblVenta').text(id);
+                $('#lblCliente').text(client);
+
+                $('#pCuota').text(cuo);
+                $('#pInterest').text(interest);
+                $('#pSTotal').text(subTotal);
+                $('#pTotal').text(total);
+                             
+     
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
+        });
+
+}
+
+function printDiv() {
+
+    var contenido = document.getElementById('areaPrint').innerHTML;
+    var contenidoOriginal = document.body.innerHTML;
+    document.body.innerHTML = contenido;
+    window.print();
+    document.body.innerHTML = contenidoOriginal;
+
+    $('#PrintDetailSaleModal').css('display', 'none')
+
+    $('#PrintDetailSaleModal').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
 
 }

@@ -59,7 +59,7 @@ function AddSale() {
 
     if ($('#txtDate').val() == "" || $('#cboClient').val() == "" || $('#cboVendor').val() == "" || $('#txtSubTotal').text() == "" || $('#txtTotal').text() == "" || $('#txtDateEnd').val() =="" )
     {
-        alertify.alert('Venta de articulo', 'Falta cargar campos obligatorios: Fechas, cliente, vendedor, importes' );
+        alertify.alert('Venta de artículo', 'Falta cargar campos obligatorios: Fechas, cliente, vendedor, importes' );
         return;
     }
 

@@ -1,4 +1,5 @@
 ﻿using ControlCuotas.Models;
+using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -233,6 +234,24 @@ namespace ControlCuotas.Controllers
             }
 
             return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetSalProducteDetailById(int IdSale)
+        {
+            try
+            {
+                dt = Service.GetSalProducteDetailById(IdSale);
+                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+
         }
 
 

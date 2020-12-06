@@ -91,6 +91,7 @@ namespace ControlCuotas.Models
             public string spGetProductCuotaDetail = "spGetProductCuotaDetail";
             public string spSaveProductCuotaById = "spSaveProductCuotaById";
             public string spDeleteSale = "spDeleteSale";
+            public string spGetSaleProducteDetailById = "spGetSaleProducteDetailById";
 
             //REPORT PRODUCT
             public string spGetReportProductCuponByClient = "spGetReportProductCuponByClient";

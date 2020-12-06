@@ -171,7 +171,7 @@ function showModalAddTypeProduct() {
 
 function DeleteTypeProduct(idTypeProduct, name) {
 
-    alertify.confirm('TIPO PRODUCTO', 'Confirma eliminar el tipo de producto ' + name.bold() + '?', function () {
+    alertify.confirm('TIPO ARTÍCULO', 'Confirma eliminar el tipo de producto ' + name.bold() + '?', function () {
 
         param = {
             idTypeProduct: idTypeProduct

@@ -79,7 +79,8 @@
         GetSaleDetailById: 'GetSaleDetailById',
         GetCuotaDetail: 'GetCuotaDetail',
         SaveCuotaForId: 'SaveCuotaForId',
-        DeleteSale: 'DeleteSale'
+        DeleteSale: 'DeleteSale',
+        GetSalProducteDetailById:'GetSalProducteDetailById'
     },
     reportProduct: {
         GetReportProductCuponClient: 'GetReportProductCuponClient',

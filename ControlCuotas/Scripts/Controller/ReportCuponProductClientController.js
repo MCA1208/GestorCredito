@@ -5,6 +5,8 @@ $(document).ready(function () {
 
     getClientCombo();
 
+    $('.single-select').selectize();
+
 });
 
 function getClientCombo() {
@@ -119,6 +121,8 @@ function SearchCuponClient(numCbo) {
                     $('#pDomicilioClient').text(data[0].address);
                     $('#pZoneClient').text(data[0].zone);
                     $('#pCuota').text(data[0].totalCuota);
+                    $('#descriptionProduct').text(data[0].detailSale);
+                    $('#mora').text(data[0].mora);
                     $('#pNumPrestamo1').text(data[0].id);
                     $('#pNameClient1').text(data[0].name);
                     $('#pTelClient1').text(data[0].phone);
@@ -131,6 +135,8 @@ function SearchCuponClient(numCbo) {
                     $('#pPagado1').text(totalPagado);
                     $('#pSaldo1').text(saldo);
                     $('#pCuo1').text(data[0].cuotaPayment);
+                    $('#descriptionProduct1').text(data[0].detailSale);
+                    $('#mora1').text(data[0].mora);
                     $('#pDateStart11').text(data[0].dateStart);
                     $('#pDateEnd11').text(data[0].dateEnd);
                     $('#pTotal11').text(totalPrestamo);
@@ -146,6 +152,8 @@ function SearchCuponClient(numCbo) {
                     $('#pDomicilioClient2').text(data[0].address);
                     $('#pZoneClient2').text(data[0].zone);
                     $('#pCuota2').text(data[0].totalCuota);
+                    $('#descriptionProduct2').text(data[0].detailSale);
+                    $('#mora2').text(data[0].mora);
                     $('#pNumPrestamo22').text(data[0].id);
                     $('#pNameClient22').text(data[0].name);
                     $('#pTelClient22').text(data[0].phone);
@@ -158,6 +166,8 @@ function SearchCuponClient(numCbo) {
                     $('#pPagado2').text(totalPagado);
                     $('#pSaldo2').text(saldo);
                     $('#pCuo2').text(data[0].cuotaPayment);
+                    $('#descriptionProduct22').text(data[0].detailSale);
+                    $('#mora22').text(data[0].mora);
                     $('#pDateStart22').text(data[0].dateStart);
                     $('#pDateEnd22').text(data[0].dateEnd);
                     $('#pTotal22').text(totalPrestamo);
@@ -172,6 +182,8 @@ function SearchCuponClient(numCbo) {
                     $('#pDomicilioClient3').text(data[0].address);
                     $('#pZoneClient3').text(data[0].zone);
                     $('#pCuota3').text(data[0].totalCuota);
+                    $('#descriptionProduct3').text(data[0].detailSale);
+                    $('#mora3').text(data[0].mora);
                     $('#pNumPrestamo33').text(data[0].id);
                     $('#pNameClient33').text(data[0].name);
                     $('#pTelClient33').text(data[0].phone);
@@ -184,6 +196,8 @@ function SearchCuponClient(numCbo) {
                     $('#pPagado3').text(totalPagado);
                     $('#pSaldo3').text(saldo);
                     $('#pCuo3').text(data[0].cuotaPayment);
+                    $('#descriptionProduct33').text(data[0].detailSale);
+                    $('#mora33').text(data[0].mora);
                     $('#pDateStart33').text(data[0].dateStart);
                     $('#pDateEnd33').text(data[0].dateEnd);
                     $('#pTotal33').text(totalPrestamo);
@@ -198,6 +212,8 @@ function SearchCuponClient(numCbo) {
                     $('#pDomicilioClient4').text(data[0].address);
                     $('#pZoneClient4').text(data[0].zone);
                     $('#pCuota4').text(data[0].totalCuota);
+                    $('#descriptionProduct4').text(data[0].detailSale);
+                    $('#mora4').text(data[0].mora);
                     $('#pNumPrestamo44').text(data[0].id);
                     $('#pNameClient44').text(data[0].name);
                     $('#pTelClient44').text(data[0].phone);
@@ -210,6 +226,8 @@ function SearchCuponClient(numCbo) {
                     $('#pPagado4').text(totalPagado);
                     $('#pSaldo4').text(saldo);
                     $('#pCuo4').text(data[0].cuotaPayment);
+                    $('#descriptionProduct44').text(data[0].detailSale);
+                    $('#mora44').text(data[0].mora);
                     $('#pDateStart44').text(data[0].dateStart);
                     $('#pDateEnd44').text(data[0].dateEnd);
                     $('#pTotal44').text(totalPrestamo);

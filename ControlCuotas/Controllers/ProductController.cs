@@ -124,7 +124,7 @@ namespace ControlCuotas.Controllers
         }
 
 
-        public JsonResult DeleteTypeProduct(int idProduct)
+        public JsonResult DeleteProduct(int idProduct)
         {
             try
             {

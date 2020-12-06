@@ -1,5 +1,6 @@
 ﻿<link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
 <link href="~/fonts/styles/ReportCuponClientStyle.css" rel="stylesheet" />
+
 <div class="card">
     <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large; text-align: center">
         CUPÓN DE ARTICULOS POR CLIENTE
@@ -11,19 +12,19 @@
         <br />
         <div class="col-md-3 card-body">
             <label>Cliente 1: </label>
-            <select class="select2 form-control custom-select" id="cboCliente" style="width: 100%; height:36px;"> </select>
+            <select class="select2 form-control custom-select single-select" id="cboCliente" style="width: 100%; height:36px;"> </select>
         </div>
         <div class="col-md-3 card-body">
             <label>Cliente 2: </label>
-            <select class="select2 form-control custom-select" id="cboCliente2" style="width: 100%; height:36px;"> </select>
+            <select class="select2 form-control custom-select single-select" id="cboCliente2" style="width: 100%; height:36px;"> </select>
         </div>
         <div class="col-md-3 card-body">
             <label>Cliente 3: </label>
-            <select class="select2 form-control custom-select" id="cboCliente3" style="width: 100%; height:36px;"> </select>
+            <select class="select2 form-control custom-select single-select" id="cboCliente3" style="width: 100%; height:36px;"> </select>
         </div>
         <div class="col-md-3 card-body">
             <label>Cliente 4: </label>
-            <select class="select2 form-control custom-select" id="cboCliente4" style="width: 100%; height:36px;"> </select>
+            <select class="select2 form-control custom-select single-select" id="cboCliente4" style="width: 100%; height:36px;"> </select>
         </div>
     </div>
     <br />
@@ -89,6 +90,17 @@
 
                 </tr>
                 <tr>
+                    <th>Descripción:</th>
+                    <td colspan="3">
+                        <p id="descriptionProduct"></p>
+                    </td>
+                    <th>Mora:</th>
+                    <td colspan="1">
+                        <p id="mora"></p>
+                    </td>
+
+                </tr>
+                <tr>
                     <th>Desde:  <p id="pDateStart1"></p></th>
                     <th>Hasta:  <p id="pDateEnd1"></p></th>
                     <th>Total:  <p id="pTotal1"></p></th>
@@ -134,6 +146,17 @@
                     </td>
                     <th colspan="2">Pagó:</th>
                     <th colspan="2">Firma:</th>
+                </tr>
+                <tr>
+                    <th>Descripción:</th>
+                    <td colspan="3">
+                        <p id="descriptionProduct1"></p>
+                    </td>
+                    <th>Mora:</th>
+                    <td colspan="1">
+                        <p id="mora1"></p>
+                    </td>
+
                 </tr>
                 <tr>
                     <th>Desde:  <p id="pDateStart11"></p></th>
@@ -188,6 +211,17 @@
                     <th colspan="2">Firma:</th>
                 </tr>
                 <tr>
+                    <th>Descripción:</th>
+                    <td colspan="3">
+                        <p id="descriptionProduct2"></p>
+                    </td>
+                    <th>Mora:</th>
+                    <td colspan="1">
+                        <p id="mora2"></p>
+                    </td>
+
+                </tr>
+                <tr>
                     <th>Desde:  <p id="pDateStart2"></p></th>
                     <th>Hasta:  <p id="pDateEnd2"></p></th>
                     <th>Total:  <p id="pTotal2"></p></th>
@@ -233,6 +267,17 @@
                     </td>
                     <th colspan="2">Pagó:</th>
                     <th colspan="2">Firma:</th>
+                </tr>
+                <tr>
+                    <th>Descripción:</th>
+                    <td colspan="3">
+                        <p id="descriptionProduct22"></p>
+                    </td>
+                    <th>Mora:</th>
+                    <td colspan="1">
+                        <p id="mora22"></p>
+                    </td>
+
                 </tr>
                 <tr>
                     <th>Desde:  <p id="pDateStart22"></p></th>
@@ -287,6 +332,17 @@
                     <th colspan="2">Firma:</th>
                 </tr>
                 <tr>
+                    <th>Descripción:</th>
+                    <td colspan="3">
+                        <p id="descriptionProduct3"></p>
+                    </td>
+                    <th>Mora:</th>
+                    <td colspan="1">
+                        <p id="mora3"></p>
+                    </td>
+
+                </tr>
+                <tr>
                     <th>Desde:  <p id="pDateStart3"></p></th>
                     <th>Hasta:  <p id="pDateEnd3"></p></th>
                     <th>Total:  <p id="pTotal3"></p></th>
@@ -332,6 +388,17 @@
                     </td>
                     <th colspan="2">Pagó:</th>
                     <th colspan="2">Firma:</th>
+                </tr>
+                <tr>
+                    <th>Descripción:</th>
+                    <td colspan="3">
+                        <p id="descriptionProduct33"></p>
+                    </td>
+                    <th>Mora:</th>
+                    <td colspan="1">
+                        <p id="mora33"></p>
+                    </td>
+
                 </tr>
                 <tr>
                     <th>Desde:  <p id="pDateStart33"></p></th>
@@ -386,6 +453,17 @@
                     <th colspan="2">Firma:</th>
                 </tr>
                 <tr>
+                    <th>Descripción:</th>
+                    <td colspan="3">
+                        <p id="descriptionProduct4"></p>
+                    </td>
+                    <th>Mora:</th>
+                    <td colspan="1">
+                        <p id="mora4"></p>
+                    </td>
+
+                </tr>
+                <tr>
                     <th>Desde:  <p id="pDateStart4"></p></th>
                     <th>Hasta:  <p id="pDateEnd4"></p></th>
                     <th>Total:  <p id="pTotal4"></p></th>
@@ -431,6 +509,17 @@
                     </td>
                     <th colspan="2">Pagó:</th>
                     <th colspan="2">Firma:</th>
+                </tr>
+                <tr>
+                    <th>Descripción:</th>
+                    <td colspan="3">
+                        <p id="descriptionProduct44"></p>
+                    </td>
+                    <th>Mora:</th>
+                    <td colspan="1">
+                        <p id="mora44"></p>
+                    </td>
+
                 </tr>
                 <tr>
                     <th>Desde:  <p id="pDateStart44"></p></th>
