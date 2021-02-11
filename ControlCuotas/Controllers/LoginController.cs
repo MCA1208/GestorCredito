@@ -1,4 +1,5 @@
 ﻿using ControlCuotas.Models;
+using ControlCuotas.Service;
 using ControlSheet.Helper;
 using Newtonsoft.Json;
 using System;
@@ -27,7 +28,8 @@ namespace ControlCuotas.Controllers
         {
             try
             {
-                dt = Service.SpUserLogin(user, pass);
+ 
+                dt = Service.SpUserLogin(user);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -39,6 +41,25 @@ namespace ControlCuotas.Controllers
                         data.status = "error";
                         return Json(data, JsonRequestBehavior.AllowGet);
                     }
+                    var active = Convert.ToInt32(dt.Rows[0]["active"]);
+                    if (active == 0)
+                    {
+
+                        data.message = "El usuario se encuentra inactivo";
+                        data.status = "error";
+                        return Json(data, JsonRequestBehavior.AllowGet);
+
+                    }
+
+                    var PassDB = dt.Rows[0]["password"].ToString();
+                    var passDescryp = new SecurityService().Decrypt(PassDB);
+                    if (passDescryp != pass)
+                    {
+                        data.message = "Contraseña Invalida";
+                        data.status = "error";
+                        return Json(data, JsonRequestBehavior.AllowGet);
+                    }
+
 
                     System.Web.HttpContext.Current.Session["idUser"] = dt.Rows[0]["id"];
                     System.Web.HttpContext.Current.Session["userName"] = dt.Rows[0]["name"];

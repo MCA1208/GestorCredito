@@ -3,7 +3,7 @@
     home: {
         loginUser: 'Login/LoginUser'
     },
-    prestamo: {        
+    prestamo: {
         GetClientCombo: 'GetClientCombo',
         AddPrestamo: 'AddPrestamo',
         GetAllPrestamo: 'GetAllPrestamo',
@@ -13,7 +13,7 @@
         GetPrestamoDetail: 'GetPrestamoDetail',
         SavePrestamoForId: 'SavePrestamoForId',
         DeletePrestamo: 'DeletePrestamo'
-       
+
     },
     client: {
         CreateClient: 'CreateClient',
@@ -80,13 +80,23 @@
         GetCuotaDetail: 'GetCuotaDetail',
         SaveCuotaForId: 'SaveCuotaForId',
         DeleteSale: 'DeleteSale',
-        GetSalProducteDetailById:'GetSalProducteDetailById'
+        GetSalProducteDetailById: 'GetSalProducteDetailById'
     },
     reportProduct: {
         GetReportProductCuponClient: 'GetReportProductCuponClient',
         GetReportProductCobranza: 'GetReportProductCobranza',
         GetReportProductIrregularPayment: 'GetReportProductIrregularPayment',
         GetReportProductQuotaPaid: 'GetReportProductQuotaPaid'
+
+    },
+    user: {
+        GetAllUser: 'GetAllUser',
+        AddUser: 'AddUser',
+        ModifyUser: 'ModifyUser',
+        GetUserById: 'GetUserById',
+        DeleteUser: 'DeleteUser',
+        GetAllUserPermits: 'GetAllUserPermits',
+        ModifyPermits: 'modifyPermits'
 
     }
 

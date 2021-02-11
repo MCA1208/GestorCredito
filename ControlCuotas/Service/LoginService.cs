@@ -17,14 +17,14 @@ namespace ControlCuotas.Service
         StoreProcedureModel.SPName spName = new StoreProcedureModel.SPName();
         readonly ConnectionModel Connection = new ConnectionModel();
 
-        public DataTable SpUserLogin(string users, string password)
+        public DataTable SpUserLogin(string users)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spUserLogin, con);
 
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@users", users);
-            comando.Parameters.AddWithValue("@password", password);
+            //comando.Parameters.AddWithValue("@password", password);
 
             SqlDataAdapter da = new SqlDataAdapter(comando);
 

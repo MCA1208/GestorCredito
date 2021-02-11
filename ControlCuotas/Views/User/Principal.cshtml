@@ -1,0 +1,249 @@
+﻿@{    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/fonts/styles/styleTitle.css" rel="stylesheet" />
+<link href="~/fonts/styles/StyleDataTable.css" rel="stylesheet" />
+<link href="~/fonts/styles/StyleModal.css" rel="stylesheet" />
+<div class="card">
+    <div id="titleDiv" class="card-body" style="color:black; background-color:cadetblue; font-family:fantasy; font-size:xx-large">
+        USUARIOS
+    </div>
+</div>
+<br />
+<div class="card-body">
+
+    <button id="btnModal" type="button" class="btn btn-primary" onclick="ShowModalAddUser();">
+        <i class="fas fa-arrow-circle-right"></i> Agregar usuario 
+    </button>
+</div>
+<br />
+<div>
+    <div class="table-responsive">
+        <table id="tblUser" class="table table-bordered table-striped table-hover" style="color: black; text-align:left; ">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Descripción usuario</th>
+                    <th scope="col">Perfil</th>
+                    <th scope="col" style="text-align:center">Activo</th>
+                    <th scope="col">Modificar usuario</th>
+                    <th scope="col">Modificar Permisos</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="ModifyUserModal">
+    <div class="modal-dialog" style="max-width:60%">
+        <div class="modal-content" style="color:black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modificar Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <input style="display:none" id="txtIdUser" />
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+
+                    <table id="tblModifyUser" class="table" style="color:black">
+
+                        <tbody style="text-align:left">
+
+                            <tr>
+                                <th>Usuario</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtUserName" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Descripción usuario</th>
+                                <td>
+
+                                    <input style="max-width:100%" class="form-control" id="txtDescriptionUser" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Perfil de usuario</th>
+                                <td>
+                                    <select class="select2 form-control custom-select" id="cboTypeUser" style="width: 100%; height:36px;">
+                                        <option value="1">Administrador</option>
+                                        <option value="2">Operador</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Activo</th>
+                                <td>
+                                    <input style="max-width:100%; width:20px; height: 20px;" id="cbxActive" type="checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Contraseña</th>
+                                <td>
+
+                                    <input style="max-width:100%" class="form-control" id="txtPass" type="password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Repetir contraseña</th>
+                                <td>
+
+                                    <input style="max-width:100%" class="form-control" id="txtRepeatPass" type="password">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="ModifyUser();"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="AddUserModal">
+    <div class="modal-dialog" style="max-width:60%">
+        <div class="modal-content" style="color:black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblAddVendor" class="table" style="color:black">
+                        <tbody style="text-align:left">
+
+                            <tr>
+                                <th>Usuario</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtUserNameAdd" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Descripción usuario</th>
+                                <td>
+
+                                    <input style="max-width:100%" class="form-control" id="txtDescriptionUserAdd" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Perfil de usuario</th>
+                                <td>
+                                    <select class="select2 form-control custom-select" id="cboTypeUserAdd" style="width: 100%; height:36px;">
+                                        <option value="0">Seleccionar</option>
+                                        <option value="1">Administrador</option>
+                                        <option value="2">Operador</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Activo</th>
+                                <td>
+                                    <input style="max-width:100%; width:20px; height: 20px;" id="cbxActiveAdd" type="checkbox">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Contraseña</th>
+                                <td>
+
+                                    <input style="max-width:100%" class="form-control" id="txtPassAdd" type="password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Repetir contraseña</th>
+                                <td>
+
+                                    <input style="max-width:100%" class="form-control" id="txtRepeatPassAdd" type="password">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="AddUser();"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="EditPermitsModal">
+    <div class="modal-dialog" style="max-width:60%">
+        <div class="modal-content" style="color:black">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titlePermits">Editar permisos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <input style="display:none" id="txtIdUserPermits" />
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblPermitsEdit" class="table table-bordered table-striped table-hover" style="color:black">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Aplicación</th>
+                                <th scope="col">Permiso</th>
+                                <th style="text-align:center;" scope="col">Activo</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i> Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="ModifyPermits();"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--END MODAL-->
+
+<link href="~/Scripts/AlertMessage/alertifyjs/css/alertify.css" rel="stylesheet" />
+<link href="~/Scripts/AlertMessage/alertifyjs/css/themes/default.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.0/jquery-3.4.0.min.js"></script>
+<script src="~/Scripts/bootstrap-4.2.1/js/bootstrap.min.js"></script>
+
+<script src="~/Scripts/fontawesome/all.js"></script>
+<script src="~/Scripts/AlertMessage/alertifyjs/alertify.js"></script>
+
+<!--DataTables-->
+<link href="~/Content/dataTables/DataTables-1.10.18/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/dataTables/Buttons-1.5.6/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.0/datatables/DataTables-1.10.18/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/dataTables.buttons.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/jszip.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/pdfmake.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/vfs_fonts.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.print.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/datatables/Buttons-1.5.6/buttons.html5.min.js"></script>
+<script src="~/Scripts/jquery-3.4.0/BlockUI/jquery.blockUI.min.js"></script>
+<script src="~/Scripts/Controller/UserController.js"></script>
+<script src="~/Scripts/Controller/URLController.js"></script>
+
+@*<script type="text/javascript">
+    function ShowModalAddUser() {
+
+        alert('alert1');
+
+    }
+
+</script>*@
+
+

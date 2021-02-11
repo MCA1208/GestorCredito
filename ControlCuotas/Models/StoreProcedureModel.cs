@@ -100,6 +100,15 @@ namespace ControlCuotas.Models
             public string spReportProductQuotaPaid = "spReportProductQuotaPaid";
             public string spGetAllProductSale = "spGetAllProductSale";
 
+            //User
+            public string spGetAllUser = "spGetAllUser";
+            public string spAddUser = "spAddUser";
+            public string spModifyUser = "spModifyUser";
+            public string spDeleteUser = "spDeleteUser";
+            public string spGetUserById = "spGetUserById";
+            public string spGetAllPermitsApplication ="spGetAllPermitsApplication";
+            public string spModifyPermits = "spModifyPermits";
+
         }
     }
 }
