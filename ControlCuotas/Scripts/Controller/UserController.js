@@ -115,12 +115,12 @@ function AddUser() {
 
     if ($('#txtUserNameAdd').val() == "" || $('#cboTypeUserAdd').val() == 0 || $('#txtPassAdd').val() == ""){
 
-        alertify.alert("Nombre, tipo de usuario y contraseña son campos requeridos");
+        alertify.alert("Usuario","Nombre, tipo de usuario y contraseña son campos requeridos");
         return;
     }
     if ( $('#txtPassAdd').val() != $('#txtRepeatPassAdd').val() ) {
 
-        alertify.alert("las contraseña no son iguales");
+        alertify.alert("Usuario","las contraseña no son iguales");
         return;
     }
   
@@ -161,13 +161,13 @@ function ModifyUser() {
 
     if ($('#txtUserName').val() == "" || $('#cboTypeUser').val() == 0){
 
-        alertify.alert("Nombre, tipo de usuario son campos requeridos");
+        alertify.alert("Usuario","Nombre, tipo de usuario son campos requeridos");
         return;
     }
     if ($('#txtPass').val() != "") {
         if ($('#txtPass').val() != $('#txtRepeatPass').val()) {
 
-            alertify.alert("las contraseña no son iguales");
+            alertify.alert("Usuario","las contraseña no son iguales");
             return;
         }
     }

@@ -71,12 +71,12 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ModifyVendor(int IdVendor, string name,string nick, int dni, DateTime birthday)
+        public JsonResult ModifyVendor(int IdVendor, string name,string nick, int dni, DateTime birthday, bool active)
         {
 
             try
             {
-                dt = service.ModifyVendor(IdVendor, name, nick, dni, birthday, userNameLogin, userIdLogin);
+                dt = service.ModifyVendor(IdVendor, name, nick, dni, birthday,active, userNameLogin, userIdLogin);
                 data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
                 if ((int)dt.Rows[0][0] == 1)
                 {

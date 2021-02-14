@@ -66,12 +66,13 @@ namespace ControlCuotas.Service
 
         }
         
-        public DataTable ModifyZone(int IdZone,string Description, string userLogin, int idUser)
+        public DataTable ModifyZone(int IdZone,string Description, bool Active, string userLogin, int idUser)
         {
             con = new SqlConnection(Connection.stringConn);
             comando = new SqlCommand(spName.spModifyZone, con);
             comando.Parameters.AddWithValue("@IdZone", IdZone);
             comando.Parameters.AddWithValue("@Description", Description);
+            comando.Parameters.AddWithValue("@Active", Active);
             comando.Parameters.AddWithValue("@userLogin", userLogin);
             comando.Parameters.AddWithValue("@idUser", idUser);
             comando.CommandType = CommandType.StoredProcedure;

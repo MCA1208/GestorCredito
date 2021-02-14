@@ -12,7 +12,8 @@
         SaveCuotaForId: 'SaveCuotaForId',
         GetPrestamoDetail: 'GetPrestamoDetail',
         SavePrestamoForId: 'SavePrestamoForId',
-        DeletePrestamo: 'DeletePrestamo'
+        DeletePrestamo: 'DeletePrestamo',
+        GetCboVendor: 'GetCboVendor'
 
     },
     client: {

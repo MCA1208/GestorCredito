@@ -109,8 +109,9 @@ namespace ControlCuotas.Controllers
             {
 
                 dt = ServiceClient.GetComboZona(userIdLogin, userIdProfile);
+                var dt2 = dt.AsEnumerable().Where(x => x.Field<bool>("active") == true);
 
-                data.result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                data.result = JsonConvert.SerializeObject(dt2, Formatting.Indented);
             }
             catch (Exception ex)
             {
@@ -150,6 +151,7 @@ namespace ControlCuotas.Controllers
 
             try
             {
+
 
                 dt = ServiceClient.ModifyClient(IdClient, name, dni, address, phone, zone, birthDate, married, conyuge,dniConyuge, cboSitCred, userNameLogin, userIdLogin);
 

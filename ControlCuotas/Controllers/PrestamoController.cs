@@ -1,4 +1,5 @@
 ﻿using ControlCuotas.Models;
+using ControlCuotas.Service;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -261,6 +262,44 @@ namespace ControlCuotas.Controllers
                 data.status = "error";
                 return Json(data, JsonRequestBehavior.AllowGet);
 
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetAllPermitsByUserProgram()
+        {
+            try
+            {
+                dt = new SecurityService().GetAllPermitsByUserProgram(userIdLogin);
+                var dt2 = dt.AsEnumerable().Where(x => x.Field<string>("application").Contains("prestamo")).GroupBy(x => x.Field<string>("application"));
+
+                data.result = JsonConvert.SerializeObject(dt2, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
+
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetCboVendor()
+        {
+            try
+            {
+                dt = new VendorService().GetAllVendor(userIdLogin, userIdProfile);
+                var dt2 = dt.AsEnumerable().Where(x => x.Field<bool>("active") == true);
+                data.result = JsonConvert.SerializeObject(dt2, Formatting.Indented);
+            }
+            catch (Exception ex)
+            {
+                data.message = ex.Message;
+                data.status = "error";
+                return Json(data, JsonRequestBehavior.AllowGet);
             }
 
             return Json(data, JsonRequestBehavior.AllowGet);

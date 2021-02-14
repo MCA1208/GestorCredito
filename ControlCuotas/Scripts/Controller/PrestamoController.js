@@ -106,9 +106,9 @@ function GetAllPrestamo() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
                     var nick = value.nick == null ? '' : value.nick
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button type="button" class="btn btn-info" onclick="showModalEditPrestamo(' + value.id + ');"><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
-                        + '<button type = "button" class="btn btn-primary" onclick = "showModalEditProyect(' + value.id + ');" > <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td><td>'
-                        + '<button class="btn btn-danger" id="" type="button" onclick="DeletePrestamo(' + value.id + ', ' + `'${value.cliente}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button type="button" class="btn btn-info btnEditPrestamo" onclick="showModalEditPrestamo(' + value.id + ');"><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
+                        + '<button type = "button" class="btn btn-primary btnEditCuota" onclick = "showModalEditProyect(' + value.id + ');" > <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td><td>'
+                        + '<button class="btn btn-danger btnDelete" id="" type="button" onclick="DeletePrestamo(' + value.id + ', ' + `'${value.cliente}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
 
@@ -134,6 +134,8 @@ function GetAllPrestamo() {
 
             }
 
+
+
         })
         .fail(function (data) {
             alertify.error(data.statusText);
@@ -141,6 +143,41 @@ function GetAllPrestamo() {
         .always(function () {
             $.unblockUI();
         });
+
+        param = { nameView: 'prestamo' };
+
+        $.post('/Security/GetAllPermitsByUserProgram', param)
+            .done(function (data) {
+                if (data.status !== "error") {
+
+                    data = JSON.parse(data.result);
+
+                    if (data[0][0].ItemArray[5] == false) {
+                        $('#btnAddPrestamo').attr('disabled', true);
+                    }
+                    if (data[0][1].ItemArray[5] == false) {
+                        $('.btnEditPrestamo').attr('disabled', true);
+                        $('.btnEditCuota').attr('disabled', true);
+
+                    }
+                    if (data[0][2].ItemArray[5] == false) { 
+                        $('.btnDelete').attr('disabled', true);
+                    }
+                   
+                }
+                else {
+                    alertify.error(data.message);
+
+                }
+
+            })
+            .fail(function (data) {
+                alertify.error(data.statusText);
+            })
+            .always(function () {
+                $.unblockUI();
+            });
+
 
 }
 
@@ -398,23 +435,27 @@ function DeletePrestamo(id, name) {
 
 function GetVendor() {
 
-    $.post('/Vendor/GetAllVendor')
+    $.post(directories.prestamo.GetCboVendor)
         .done(function (data) {
             if (data.status !== "error") {
 
                 var ComboVendorAdd = $('#cboVendor');
                 $("#cboVendor").empty();
                 data = JSON.parse(data.result);
+                var i = 0;
                 ComboVendorAdd.append($("<option />").val('').text('Seleccione un vendedor'));
                 $.each(data, function (key, value) {
-                    ComboVendorAdd.append($("<option />").val(value.id).text(value.nickName));
+                    ComboVendorAdd.append($("<option />").val(data[i].ItemArray[1]).text(data[i].ItemArray[8]));
+                    i++;
                 });
 
                 var ComboVendorEdit = $('#cboVendorEdit');
                 $("#cboVendorEdit").empty();
                 ComboVendorEdit.append($("<option />").val('').text('Seleccione un vendedor'));
+                var i = 0;
                 $.each(data, function (key, value) {
-                    ComboVendorEdit.append($("<option />").val(value.id).text(value.nickName));
+                    ComboVendorEdit.append($("<option />").val(data[i].ItemArray[1]).text(data[i].ItemArray[8]));
+                    i++;
                 });
 
             }

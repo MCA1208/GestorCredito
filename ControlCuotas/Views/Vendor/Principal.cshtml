@@ -13,7 +13,7 @@
 <br />
 <div class="card-body">
 
-    <button id="btnModal" type="button" class="btn btn-primary" onclick="showModalAddVendor()"><i class="fas fa-arrow-circle-right"></i> Agregar Vendedor </button>
+    <button id="btnAddVendor" type="button" class="btn btn-primary" onclick="showModalAddVendor()"><i class="fas fa-arrow-circle-right"></i> Agregar Vendedor </button>
 </div>
 <br />
 <div>
@@ -26,6 +26,7 @@
                     <th scope="col">Alias</th>
                     <th scope="col">DNI</th>
                     <th scope="col">Fecha nacimiento</th>
+                    <th scope="col">Activo</th>
                     <th scope="col">Modificar</th>
                     <th scope="col">Eliminar</th>
                 </tr>
@@ -79,6 +80,12 @@
                                 <th>Fecha nacimiento</th>
                                 <td>
                                     <input style="max-width:100%" class="form-control" id="txtBirthday" type="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Activo</th>
+                                <td>
+                                    <input style="max-width:100%;width:20px; height: 20px;" id="cbxActive" type="checkbox">
                                 </td>
                             </tr>
                         </tbody>

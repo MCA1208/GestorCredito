@@ -100,11 +100,11 @@ namespace ControlCuotas.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult ModifyZone(int IdZone, string Description)
+        public JsonResult ModifyZone(int IdZone, string Description, bool Active)
         {
             try
             {
-                dt = Service.ModifyZone(IdZone, Description, userNameLogin, userIdLogin);
+                dt = Service.ModifyZone(IdZone, Description, Active, userNameLogin, userIdLogin);
 
                 data.result = dt.Rows[0][0];
 

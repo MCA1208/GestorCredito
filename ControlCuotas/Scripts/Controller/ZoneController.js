@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 function GetAllZone() {
 
-    //$.blockUI();
+    $.blockUI();
 
     $.post(directories.zona.getAllZone)
         .done(function (data) {
@@ -22,9 +22,16 @@ function GetAllZone() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
 
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td >' + '<button type="button" class="btn btn-primary" onclick="ShowModalEditZone(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
-                        + '<button class="btn btn-danger" id="" type="button" onclick="DeleteZone(' + value.id + ', ' + `'${value.description}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                    if (value.active == true) {
 
+                        _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-check-circle"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditZone" onclick="ShowModalEditZone(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                            + '<button class="btn btn-danger btnDeleteZone" id="" type="button" onclick="DeleteZone(' + value.id + ', ' + `'${value.description}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                    }
+                    else {
+                        _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-ban"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditZone" onclick="ShowModalEditZone(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                            + '<button class="btn btn-danger btnDeleteZone" id="" type="button" onclick="DeleteZone(' + value.id + ', ' + `'${value.description}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+
+                    }
                 });
 
                 _html += '</tbody >';
@@ -54,8 +61,42 @@ function GetAllZone() {
             alertify.error(data.statusText);
         })
         .always(function () {
-            //$.unblockUI();
+            $.unblockUI();
         });
+
+        param = { nameView: 'zona' };
+
+        $.post('/Security/GetAllPermitsByUserProgram', param)
+            .done(function (data) {
+                if (data.status !== "error") {
+
+                    data = JSON.parse(data.result);
+
+                    if (data[0][0].ItemArray[5] == false) {
+                        $('#btnAddZone').attr('disabled', true);
+                    }
+                    if (data[0][1].ItemArray[5] == false) {
+                        $('.btnEditZone').attr('disabled', true);
+
+                    }
+                    if (data[0][2].ItemArray[5] == false) {
+                        $('.btnDeleteZone').attr('disabled', true);
+                    }
+
+                }
+                else {
+                    alertify.error(data.message);
+
+                }
+
+            })
+            .fail(function (data) {
+                alertify.error(data.statusText);
+            })
+            .always(function () {
+                $.unblockUI();
+            });
+
 }
 
 
@@ -109,6 +150,7 @@ function ShowModalEditZone(id) {
                 $('#ModifyZonaModal').modal('show');
                 $('#txtIdZone').val(data[0].id);
                 $('#txtDescription').val(data[0].description);
+                $('#cbxActive').prop('checked', data[0].active )
             }
             else {
                 alertify.error(data.message);
@@ -127,7 +169,8 @@ function ModifyZone() {
 
     param = {
         IdZone: $('#txtIdZone').val(),
-        Description: $('#txtDescription').val()
+        Description: $('#txtDescription').val(),
+        Active: $('#cbxActive').prop('checked'),
     };
 
     $.post(directories.zona.ModifyZone, param)

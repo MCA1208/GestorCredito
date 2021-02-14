@@ -4,6 +4,7 @@ using ControlSheet.Helper;
 using Newtonsoft.Json;
 using System;
 using System.Data;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -28,7 +29,6 @@ namespace ControlCuotas.Controllers
         {
             try
             {
- 
                 dt = Service.SpUserLogin(user);
 
                 if (dt.Rows.Count > 0)
@@ -59,6 +59,18 @@ namespace ControlCuotas.Controllers
                         data.status = "error";
                         return Json(data, JsonRequestBehavior.AllowGet);
                     }
+
+                    int idUser = (int)dt.Rows[0]["id"];
+                    DataTable permits =  new UserService().GetAllUserPermits(idUser);
+                    var obj = permits.AsEnumerable().GroupBy(x => x.Field<string>("application"));
+
+                    System.Web.HttpContext.Current.Session["permitsUser"] = obj;
+
+                    //foreach (var obj in permits.AsEnumerable().GroupBy(x => x.Field<string>("application")))
+                    //{
+                    //    var verObj = obj;
+
+                    //}
 
 
                     System.Web.HttpContext.Current.Session["idUser"] = dt.Rows[0]["id"];
