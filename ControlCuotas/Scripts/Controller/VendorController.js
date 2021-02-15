@@ -215,7 +215,7 @@ function ModifyVendor() {
         nick: $('#txtNick').val(),
         dni: $('#txtDNI').val(),
         birthday: $('#txtBirthday').val(),
-        active: $('#cbxActive').attr('checked')
+        active: $('#cbxActive').prop('checked')
     };
 
     $.post(directories.vendor.ModifyVendor, param)
