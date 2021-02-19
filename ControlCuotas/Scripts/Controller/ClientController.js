@@ -1,4 +1,6 @@
 ﻿var param = null;
+var disabledEdit = "";
+var disabledDelete = "";
 
 $(document).ready(function () {
 
@@ -15,7 +17,38 @@ function GetAllClient() {
 
     $.blockUI();
 
-    $.post(directories.client.GetAllClient)
+    param = { nameView: 'cliente' };
+
+    $.post('/Security/GetAllPermitsByUserProgram', param)
+        .done(function (data) {
+            if (data.status !== "error") {
+
+                data = JSON.parse(data.result);
+
+                if (data[0][0].ItemArray[5] == false) {
+                    $('#btnAddClient').attr('disabled', true);
+                }
+                if (data[0][1].ItemArray[5] == false) {
+                    disabledEdit = "disabled";
+
+                }
+                if (data[0][2].ItemArray[5] == false) {
+                    disabledDelete = "disabled";
+                }
+
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
+        });
+
+
+        $.post(directories.client.GetAllClient)
         .done(function (data) {
             if (data.status !== "error") {
 
@@ -34,8 +67,8 @@ function GetAllClient() {
                     if (value.situationCred === 3)
                         sitCred = "class='fas fa-angry'style='font - size: 60px; color: red'";
                     
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.dni + '</td><td>' + value.address + '</td><td>' + value.phone + '</td><td>' + value.birthdate + '</td><td>' + value.married + '</td><td>' + value.conyuge + '</td><td>' + value.dniMarried + '</td><td>' + value.zone + '</td>><td>' + value.cantidadPrestamo + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i ' + sitCred + '></i></span></a>' + '</td ><td>' + '<button type="button" class="btn btn-primary btnEditClient" onclick="showModalEditProyect(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
-                        + '<button class="btn btn-danger btnDeleteClient" id="" type="button" onclick="DeleteClient(' + value.id + ', ' + `'${ value.name }'` +');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.dni + '</td><td>' + value.address + '</td><td>' + value.phone + '</td><td>' + value.birthdate + '</td><td>' + value.married + '</td><td>' + value.conyuge + '</td><td>' + value.dniMarried + '</td><td>' + value.zone + '</td>><td>' + value.cantidadPrestamo + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i ' + sitCred + '></i></span></a>' + '</td ><td>' + '<button type="button" class="btn btn-primary btnEditClient" onclick="showModalEditProyect(' + value.id + ');"'+ disabledEdit +'><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                        + '<button class="btn btn-danger btnDeleteClient" id="" type="button" onclick="DeleteClient(' + value.id + ', ' + `'${ value.name }'` +');"'+ disabledDelete +'><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
 
@@ -69,38 +102,7 @@ function GetAllClient() {
             $.unblockUI();
         });
 
-    param = { nameView: 'cliente' };
-
-    $.post('/Security/GetAllPermitsByUserProgram', param)
-        .done(function (data) {
-            if (data.status !== "error") {
-
-                data = JSON.parse(data.result);
-
-                if (data[0][0].ItemArray[5] == false) {
-                    $('#btnAddClient').attr('disabled', true);
-                }
-                if (data[0][1].ItemArray[5] == false) {
-                    $('.btnEditClient').attr('disabled', true);
-
-                }
-                if (data[0][2].ItemArray[5] == false) {
-                    $('.btnDeleteClient').attr('disabled', true);
-                }
-
-            }
-            else {
-                alertify.error(data.message);
-
-            }
-
-        })
-        .fail(function (data) {
-            alertify.error(data.statusText);
-        })
-        .always(function () {
-            $.unblockUI();
-        });
+   
 
 }
 

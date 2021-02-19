@@ -1,4 +1,6 @@
 ﻿var param = null;
+var disabledEdit = "";
+var disabledDelete = "";
 
 $(document).ready(function () {
     
@@ -96,6 +98,39 @@ function GetAllPrestamo() {
 
     $.blockUI();
 
+    param = { nameView: 'prestamo' };
+
+    $.post('/Security/GetAllPermitsByUserProgram', param)
+        .done(function (data) {
+            if (data.status !== "error") {
+
+                data = JSON.parse(data.result);
+
+                if (data[0][0].ItemArray[5] == false) {
+                    $('#btnAddPrestamo').attr('disabled', true);
+                }
+                if (data[0][1].ItemArray[5] == false) {
+
+                    disabledEdit = "disabled";
+
+                }
+                if (data[0][2].ItemArray[5] == false) {
+
+                    disabledDelete = "disabled";
+                }
+
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
+        });
+
+
     $.post(directories.prestamo.GetAllPrestamo)
         .done(function (data) {
             if (data.status !== "error") {
@@ -106,9 +141,9 @@ function GetAllPrestamo() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
                     var nick = value.nick == null ? '' : value.nick
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button type="button" class="btn btn-info btnEditPrestamo" onclick="showModalEditPrestamo(' + value.id + ');"><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
-                        + '<button type = "button" class="btn btn-primary btnEditCuota" onclick = "showModalEditProyect(' + value.id + ');" > <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td><td>'
-                        + '<button class="btn btn-danger btnDelete" id="" type="button" onclick="DeletePrestamo(' + value.id + ', ' + `'${value.cliente}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button type="button" class="btn btn-info btnEditPrestamo" onclick="showModalEditPrestamo(' + value.id + ');" ' + disabledEdit +'><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
+                        + '<button type = "button" class="btn btn-primary btnEditCuota" onclick = "showModalEditProyect(' + value.id + ');" ' + disabledEdit +'> <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td><td>'
+                        + '<button class="btn btn-danger btnDelete" id="" type="button" onclick="DeletePrestamo(' + value.id + ', ' + `'${value.cliente}'` + ');"' + disabledDelete +'><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                 });
 
@@ -144,39 +179,7 @@ function GetAllPrestamo() {
             $.unblockUI();
         });
 
-        param = { nameView: 'prestamo' };
-
-        $.post('/Security/GetAllPermitsByUserProgram', param)
-            .done(function (data) {
-                if (data.status !== "error") {
-
-                    data = JSON.parse(data.result);
-
-                    if (data[0][0].ItemArray[5] == false) {
-                        $('#btnAddPrestamo').attr('disabled', true);
-                    }
-                    if (data[0][1].ItemArray[5] == false) {
-                        $('.btnEditPrestamo').attr('disabled', true);
-                        $('.btnEditCuota').attr('disabled', true);
-
-                    }
-                    if (data[0][2].ItemArray[5] == false) { 
-                        $('.btnDelete').attr('disabled', true);
-                    }
-                   
-                }
-                else {
-                    alertify.error(data.message);
-
-                }
-
-            })
-            .fail(function (data) {
-                alertify.error(data.statusText);
-            })
-            .always(function () {
-                $.unblockUI();
-            });
+       
 
 
 }
@@ -470,3 +473,7 @@ function GetVendor() {
         });
 
 }
+
+
+
+

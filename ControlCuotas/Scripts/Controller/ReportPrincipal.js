@@ -81,11 +81,12 @@ function getzona() {
                 $("#cboZona").empty();
 
                 data = JSON.parse(data.result);
+                var i = 0;
                 ComboZona.append($("<option />").val('').text('Seleccione una zona'));
                 $.each(data, function (key, value) {
 
-                    ComboZona.append($("<option />").val(value.id).text(value.description));
-
+                    ComboZona.append($("<option />").val(data[i].ItemArray[0]).text(data[i].ItemArray[1]));
+                    i++;
                 });
 
             }

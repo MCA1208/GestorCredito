@@ -1,4 +1,6 @@
 ﻿var param = null;
+var disabledEdit = "";
+var disabledDelete = "";
 
 $(document).ready(function () {
 
@@ -11,8 +13,38 @@ $(document).ready(function () {
 function GetAllZone() {
 
     $.blockUI();
+    param = { nameView: 'zona' };
 
-    $.post(directories.zona.getAllZone)
+    $.post('/Security/GetAllPermitsByUserProgram', param)
+        .done(function (data) {
+            if (data.status !== "error") {
+
+                data = JSON.parse(data.result);
+
+                if (data[0][0].ItemArray[5] == false) {
+                    $('#btnAddZone').attr('disabled', true);
+                }
+                if (data[0][1].ItemArray[5] == false) {
+                    disabledEdit = "disabled";
+
+                }
+                if (data[0][2].ItemArray[5] == false) {
+                    disabledDelete = "disabled";
+                }
+
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
+        });
+
+
+        $.post(directories.zona.getAllZone)
         .done(function (data) {
             if (data.status !== "error") {
 
@@ -24,12 +56,12 @@ function GetAllZone() {
 
                     if (value.active == true) {
 
-                        _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-check-circle"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditZone" onclick="ShowModalEditZone(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
-                            + '<button class="btn btn-danger btnDeleteZone" id="" type="button" onclick="DeleteZone(' + value.id + ', ' + `'${value.description}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                        _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-check-circle"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditZone" onclick="ShowModalEditZone(' + value.id + ');"'+ disabledEdit +'><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                            + '<button class="btn btn-danger btnDeleteZone" id="" type="button" onclick="DeleteZone(' + value.id + ', ' + `'${value.description}'` + ');"'+ disabledDelete +'><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
                     }
                     else {
-                        _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-ban"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditZone" onclick="ShowModalEditZone(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
-                            + '<button class="btn btn-danger btnDeleteZone" id="" type="button" onclick="DeleteZone(' + value.id + ', ' + `'${value.description}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                        _html += '<tr><td>' + value.id + '</td><td>' + value.description + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-ban"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditZone" onclick="ShowModalEditZone(' + value.id + ');"' + disabledEdit +'><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                            + '<button class="btn btn-danger btnDeleteZone" id="" type="button" onclick="DeleteZone(' + value.id + ', ' + `'${value.description}'` + ');"' + disabledDelete +'><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
                     }
                 });
@@ -63,39 +95,6 @@ function GetAllZone() {
         .always(function () {
             $.unblockUI();
         });
-
-        param = { nameView: 'zona' };
-
-        $.post('/Security/GetAllPermitsByUserProgram', param)
-            .done(function (data) {
-                if (data.status !== "error") {
-
-                    data = JSON.parse(data.result);
-
-                    if (data[0][0].ItemArray[5] == false) {
-                        $('#btnAddZone').attr('disabled', true);
-                    }
-                    if (data[0][1].ItemArray[5] == false) {
-                        $('.btnEditZone').attr('disabled', true);
-
-                    }
-                    if (data[0][2].ItemArray[5] == false) {
-                        $('.btnDeleteZone').attr('disabled', true);
-                    }
-
-                }
-                else {
-                    alertify.error(data.message);
-
-                }
-
-            })
-            .fail(function (data) {
-                alertify.error(data.statusText);
-            })
-            .always(function () {
-                $.unblockUI();
-            });
 
 }
 

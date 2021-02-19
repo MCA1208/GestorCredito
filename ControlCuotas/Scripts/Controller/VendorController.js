@@ -1,4 +1,6 @@
 ﻿var param = null;
+var disabledEdit = "";
+var disabledDelete = "";
 
 $(document).ready(function () {
 
@@ -12,7 +14,37 @@ function GetAllVendor() {
 
     $.blockUI();
 
-    $.post(directories.vendor.GetAllVendor)
+    param = { nameView: 'vendedor' };
+
+    $.post('/Security/GetAllPermitsByUserProgram', param)
+        .done(function (data) {
+            if (data.status !== "error") {
+
+                data = JSON.parse(data.result);
+
+                if (data[0][0].ItemArray[5] == false) {
+                    $('#btnAddVendor').attr('disabled', true);
+                }
+                if (data[0][1].ItemArray[5] == false) {
+                    disabledEdit = "disabled";
+
+                }
+                if (data[0][2].ItemArray[5] == false) {
+                    disabledDelete = "disabled";
+                }
+
+            }
+            else {
+                alertify.error(data.message);
+
+            }
+
+        })
+        .fail(function (data) {
+            alertify.error(data.statusText);
+        });
+
+        $.post(directories.vendor.GetAllVendor)
         .done(function (data) {
             if (data.status !== "error") {
 
@@ -27,12 +59,12 @@ function GetAllVendor() {
                 $.each(data, function (key, value) {
 
                     if (value.active == true) {
-                        _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.nickName + '</td><td>' + value.dni + '</td><td>' + value.birthday + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-check-circle"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditVendor" onclick="ShowModalEditVendor(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
-                            + '<button class="btn btn-danger btnDeleteVendor" id="" type="button" onclick="DeleteVendor(' + value.id + ', ' + `'${value.name}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                        _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.nickName + '</td><td>' + value.dni + '</td><td>' + value.birthday + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-check-circle"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditVendor" onclick="ShowModalEditVendor(' + value.id + ');"'+ disabledEdit +'><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                            + '<button class="btn btn-danger btnDeleteVendor" id="" type="button" onclick="DeleteVendor(' + value.id + ', ' + `'${value.name}'` + ');"'+ disabledDelete +'><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
                     }
                     else {
-                        _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.nickName + '</td><td>' + value.dni + '</td><td>' + value.birthday + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-ban"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditVendor" onclick="ShowModalEditVendor(' + value.id + ');"><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
-                            + '<button class="btn btn-danger btnDeleteVendor" id="" type="button" onclick="DeleteVendor(' + value.id + ', ' + `'${value.name}'` + ');"><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
+                        _html += '<tr><td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.nickName + '</td><td>' + value.dni + '</td><td>' + value.birthday + '</td><td style="text-align: center;"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" ><span class="" ><i class="fas fa-ban"></i></span></a>' + '</td ><td >' + '<button type="button" class="btn btn-primary btnEditVendor" onclick="ShowModalEditVendor(' + value.id + ');"' + disabledEdit +'><i class="fas fa-edit"></i> Editar </button>' + '</td><td>'
+                            + '<button class="btn btn-danger btnDeleteVendor" id="" type="button" onclick="DeleteVendor(' + value.id + ', ' + `'${value.name}'` + ');"' + disabledDelete +'><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
                     }
                 });
 
@@ -53,42 +85,7 @@ function GetAllVendor() {
         })
         .always(function () {
             $.unblockUI();
-        });
-
-        param = { nameView: 'vendedor' };
-
-        $.post('/Security/GetAllPermitsByUserProgram', param)
-            .done(function (data) {
-                if (data.status !== "error") {
-
-                    data = JSON.parse(data.result);
-
-                    if (data[0][0].ItemArray[5] == false) {
-                        $('#btnAddVendor').attr('disabled', true);
-                    }
-                    if (data[0][1].ItemArray[5] == false) {
-                        $('.btnEditVendor').attr('disabled', true);
-
-                    }
-                    if (data[0][2].ItemArray[5] == false) {
-                        $('.btnDeleteVendor').attr('disabled', true);
-                    }
-
-                }
-                else {
-                    alertify.error(data.message);
-
-                }
-
-            })
-            .fail(function (data) {
-                alertify.error(data.statusText);
-            })
-            .always(function () {
-                $.unblockUI();
-            });
-       
-
+        });   
 
 }
 
