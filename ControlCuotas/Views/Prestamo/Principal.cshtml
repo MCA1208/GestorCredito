@@ -48,7 +48,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
+            </div>            
             <div class="modal-body">
                 <div class="table-responsive">
 
@@ -74,21 +74,40 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Monto a cobrar</th>
-                                <td>
-                                    <input style="max-width:100%" class="form-control" id="txtAmountInterest" type="number">
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>Cantidad de cuotas</th>
                                 <td>
                                     <input style="max-width:100%" class="form-control" id="txtQuantity" type="number">
                                 </td>
                             </tr>
                             <tr>
+                                <th>Interés</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtInt" type="number">
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Fecha de inicio</th>
                                 <td>
                                     <input style="max-width:100%" class="form-control" id="txtDateStart" type="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="radCalDay" id="radDay">
+                                    <label>Día</label>
+                                    <input type="radio" name="radCalDay" id="radWeek" checked>
+                                    <label>Semana</label>
+                                    <input type="radio" name="radCalDay" id="radMonth">
+                                    <label>Mes</label>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" type="button" id="txtCalc">Calcular</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Monto a cobrar</th>
+                                <td>
+                                    <input style="max-width:100%" class="form-control" id="txtAmountInterest" type="number">
                                 </td>
                             </tr>
                             <tr>

@@ -141,7 +141,7 @@ function GetAllPrestamo() {
                 data = JSON.parse(data.result);
                 $.each(data, function (key, value) {
                     var nick = value.nick == null ? '' : value.nick
-                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + value.amountInterest + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button type="button" class="btn btn-info btnEditPrestamo" onclick="showModalEditPrestamo(' + value.id + ');" ' + disabledEdit +'><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
+                    _html += '<tr><td>' + value.id + '</td><td>' + value.cliente + '</td><td >' + value.description + '</td><td>' + value.amount + '</td><td>' + Math.trunc(value.amountInterest) + '</td><td>' + value.cuotaPayment + '</td><td>' + value.dateStart + '</td><td>' + value.dateEnd + '</td><td>' + nick + '</td><td>' + '<button type="button" class="btn btn-info btnEditPrestamo" onclick="showModalEditPrestamo(' + value.id + ');" ' + disabledEdit +'><i class="fas fa-edit"></i> Editar préstamo</button>' + '</td><td>'
                         + '<button type = "button" class="btn btn-primary btnEditCuota" onclick = "showModalEditProyect(' + value.id + ');" ' + disabledEdit +'> <i class="fas fa-edit"></i> Editar cuota </button > ' + '</td><td>'
                         + '<button class="btn btn-danger btnDelete" id="" type="button" onclick="DeletePrestamo(' + value.id + ', ' + `'${value.cliente}'` + ');"' + disabledDelete +'><i class="fas fa-trash-alt"></i> Eliminar </button>' + '</td>';
 
@@ -473,6 +473,57 @@ function GetVendor() {
         });
 
 }
+
+$('#txtCalc').click(function () {
+
+    var interes = 0;
+    var amount = 0;
+    var total = 0;
+
+    if ( $('#txtAmount').val() == '' || $('#txtQuantity').val() == '' || $('#txtInt').val() == '' || $('#txtDateStart').val() == '') {
+        alertify.alert("Préstamo", "Ingrese importe, cuotas, interes y fecha de inicio");
+        return;
+    }
+    amount = parseFloat($('#txtAmount').val());
+    interes = parseFloat($('#txtInt').val());
+    var result = amount * (1 + (interes / 100));
+    $('#txtAmountInterest').val(result.toFixed(2));
+
+    var fecha = new Date($('#txtDateStart').val()); 
+    var cantidad = parseInt($('#txtQuantity').val());
+    if ($('#radDay').prop('checked') == true) {
+
+        fecha.setDate(fecha.getDate() + (cantidad + 1));
+    }
+    if ($('#radWeek').prop('checked') == true) {
+
+        fecha.setDate(fecha.getDate() + ((cantidad * 7) + 1));
+    }
+    if ($('#radMonth').prop('checked') == true) {
+
+        fecha.setDate(fecha.getDate() + 1);
+        fecha.setMonth(fecha.getMonth() + cantidad );
+    }
+
+    fecha = formatDate(fecha);
+    $('#txtDateEnd').val(fecha);
+
+});
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 
 
 

@@ -114,7 +114,7 @@ function ShowModalEditVendor(id) {
                 $('#txtDNI').val(data[0].dni);
                 $('#txtBirthday').val(data[0].birthday);
                 $('#txtNick').val(data[0].nickName);
-                $('#cbxActive').attr('checked', data[0].active);
+                $('#cbxActive').prop('checked', data[0].active);
       
             }
             else {
